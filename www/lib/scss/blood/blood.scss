@@ -1,6 +1,6 @@
 $light: #ffffff !default;
 $stable:#ccc !default;
-$positive: #e11d2b !default;
+$positive: #6ed3cf !default;
 $calm: #11c1f3 !default;
 $balanced: #33cd5f !default;
 $energized: #ffc900 !default;
@@ -17,7 +17,7 @@ $icon-color:#7a7a7a !default;
 $menu-color:#bbbbbd !default;
 $border-color:#eee;
 $color1:#909090;
-$color2:#45b0e3;
+$color2:#1d224b;
 $color3:#33477E;
 $color4:#7EBCDA;
 $color5:#343e48;
@@ -32,6 +32,7 @@ $font-family-light-sans-serif: "Lato-light",
 "Segoe UI-Light",
 sans-serif-light !default;
 $login-bg-image:url('../img/background/1.jpg') no-repeat center center;
+$menu-bg-image:url('../img/background/menu.jpg') !important;
 $card-box-shadow: none !default;
 $border-radius-base: 0px !default;
 $border-radius-large: 0px !default;
@@ -116,6 +117,8 @@ a {
 //button
 .button {
     font-weight: $font-weight;
+    min-height: 40px;
+    line-height: 44px;
 }
 
 //input 
@@ -195,25 +198,32 @@ marzero {
 }
 
 .bar-side {
-    background-image: url('../img/background/menu.jpg') !important;
+    background-image: $menu-bg-image;
     height: 166px !important;
     background-size: 100% 100% !important;
 }
-.menu{
-        background-color: #1d224b !important;
-    .item{
+
+.menus {
+    background-color: $color2 !important;
+    .item {
         border-width: 0px;
-         background-color: #1d224b;
-        color:#a6aff1;
+        background-color: $color2;
+        color: #a6aff1;
         font-size: 13px;
-        .item-content{
-            background-color: #1d224b; 
-                padding: 16px 49px 16px 16px;
-          
+        .item-content {
+            background-color: $color2;
+            padding: 16px 49px 16px 16px;
         }
-          i{
-                font-size: 22px;
-               padding-right:11px;
-            }
+        i {
+            font-size: 22px;
+            padding-right: 11px;
+            vertical-align: text-bottom;
+        }
+        .activated{
+            background: #5F67AB !important;
+        }
     }
+}
+.padd30{
+    padding: 0px 30px 0px 30px;
 }

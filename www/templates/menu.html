@@ -16,10 +16,7 @@
         <ion-header-bar class="bar-side">
             <div class="side-image">
                 <figure>
-                    <!--
-                    <a href="#/app/profile" menu-close><img src="img/component/profile.png"></a>
-                    <figcaption>Ana Todurie</figcaption>
--->
+<div class="user-back" ></div>
                 </figure>
                 <div class="profile-set">
                     <!--                    <a href="#/app/setting" menu-close> <i class="icon ln-gear2 "></i>-->
@@ -27,25 +24,34 @@
                 </div>
             </div>
         </ion-header-bar>
-        <ion-content style="top:166px;" class="menu">
+        <ion-content style="top:166px;" class="menus">
             <ion-list>
-                <ion-item menu-close ng-click="login()">
+                <ion-item menu-close ui-sref="app.profile">
                     <i class="icon ln-user side-menu-i"></i>Profile
                 </ion-item>
-                <ion-item menu-close href="#/app/search">
+                <ion-item menu-close ui-sref="app.hospital">
                     <i class="icon ln-first-aid side-menu-i"></i>Hospital
                 </ion-item>
-                <ion-item menu-close href="#/app/browse">
+                <ion-item menu-close ui-sref="app.family">
                     <i class="icon ln-users2 side-menu-i"></i>Family Member
                 </ion-item>
-                <ion-item menu-close href="#/app/playlists">
+                <ion-item menu-close ui-sref="app.donatior">
                     <i class="icon ln-accessibility side-menu-i"></i>Volunteer Donatior
                 </ion-item>
-                <ion-item menu-close href="#/app/playlists">
+                <ion-item menu-close ui-sref="app.needblood">
                     <i class="icon ln-bottle side-menu-i"></i>Need Blood
                 </ion-item>
-                <ion-item menu-close href="#/app/playlists">
+                <ion-item menu-close ui-sref="app.camp">
                     <i class="icon ln-map side-menu-i"></i>Camp
+                </ion-item>
+                <ion-item menu-close ui-sref="app.notification">
+                    <i class="icon ln-map side-menu-i"></i>Notification
+                </ion-item>
+                <ion-item menu-close ui-sref="app.bout">
+                    <i class="icon ln-map side-menu-i"></i>About Us
+                </ion-item>
+                <ion-item menu-close ui-sref="app.contact">
+                    <i class="icon ln-map side-menu-i"></i>Contact
                 </ion-item>
             </ion-list>
         </ion-content>
