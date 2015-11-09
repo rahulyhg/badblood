@@ -1,46 +1,73 @@
-		$light: #fff !default;
-		$stable: #f8f8f8 !default;
-		$positive: #019fda !default;
-		$calm: #002c5f !default;
-		$balanced: #33cd5f !default;
-		$energized: #ffc900 !default;
-		$assertive: #ef473a !default;
-		$royal: #886aea !default;
-		$dark: #444 !default;
-		$font-family-sans-serif: "Lato",
-		"Helvetica Neue",
-		"Roboto",
-		"Segoe UI",
-		sans-serif !default;
-		$font-family-light-sans-serif: "Lato",
-		"HelveticaNeue-Light",
-		"Roboto-Light",
-		"Segoe UI-Light",
-		sans-serif-light !default;
-		$base-color: #4a606f !default;
-		$input-color: $base-color !default;
-		$button-border-radius: 0px !default;
-		$button-border-width: 0px !default;
-		$bar-title-font-size: 18px !default;
-		$headings-font-weight: 300 !default;
-		$button-font-size: 15px !default;
-		$button-height: 40px !default;
-		$font-size-input: 15px !default;
+$light: #ffffff !default;
+$stable:#ccc !default;
+$positive: #e62739 !default;
+$calm: #11c1f3 !default;
+$balanced: #33cd5f !default;
+$energized: #ffc900 !default;
+$assertive: #ef473a !default;
+$royal: #886aea !default;
+$twitter: #00aced;
+$facebook: #3b5998;
+$google: #dd4b39;
+$instagram: #517fa4;
+$youtube: #bb0000;
+$tumblr: #32506d;
+
+$base-color:#555 !default;
+
+$icon-color:#9e9ea3 !default;
+
+$menu-color:#bbbbbd !default;
+$border-color:#eee;
+
+$color1:#2d4486;
+$color2:#45b0e3;
+$color3:#33477E;
+$color4:#7EBCDA;
+$color5:#343e48;
+
+$font-family-sans-serif: "Lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
+$font-family-light-sans-serif: "Lato-light", "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+
+$login-bg-image:url('../img/login-bg.jpg') no-repeat center center;
+
+$card-box-shadow: none !default;
+
+$border-radius-base:              0px !default;
+$border-radius-large:             0px !default;
+$border-radius-small:             0px !default;
+$button-border-radius:            0px !default;
+$button-border-width:             0px !default;
+
+//$line-height-base:                1.8 !default; // 20/14
+
+$font-size-base:                  14px !default;
+$card-border-radius:              0px !default;
+
+@mixin square($some-number) {
+  width: $some-number;
+  height: $some-number;
+}
 
 		//***** Font Famliy ********
-//		@font-face {
-//		    font-family: 'Lato';
-//		    src: url("../fonts/Lato-Bold.ttf");
-//		    font-weight: 700;
-//		}
-//		
-//		@font-face {
-//		    font-family: 'Lato';
-//		    src: url(../fonts/Lato-Light.ttf);
-//		    font-weight: 300;
-//		}
-//		
-//		@font-face {
-//		    font-family: 'Lato';
-//		    src: url(../fonts/Lato-Regular.ttf);
-//		}
+		@font-face {
+		    font-family: 'Lato';
+		    src: url("../fonts/Lato-Bold.ttf");
+		    font-weight: 700;
+		}
+		
+		@font-face {
+		    font-family: 'Lato';
+		    src: url(../fonts/Lato-Light.ttf);
+		    font-weight: 300;
+		}
+		
+		@font-face {
+		    font-family: 'Lato';
+		    src: url(../fonts/Lato-Regular.ttf);
+            font-weight: 400;
+		}
+
+.item {
+    font-size: $font-size-base;
+}
