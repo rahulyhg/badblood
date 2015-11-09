@@ -52,12 +52,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             controller: 'SignupCtrl'
 
         })
-        .state('app.single', {
-            url: '/playlists/:playlistId',
+        .state('app.home', {
+            url: '/home',
             views: {
                 'menuContent': {
-                    templateUrl: 'templates/playlist.html',
-                    controller: 'PlaylistCtrl'
+                    templateUrl: 'templates/home.html',
+                    controller: 'HomeCtrl'
                 }
             }
         });
