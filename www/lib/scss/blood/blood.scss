@@ -1,6 +1,6 @@
 $light: #ffffff !default;
 $stable:#ccc !default;
-$positive: #e62739 !default;
+$positive: #e11d2b !default;
 $calm: #11c1f3 !default;
 $balanced: #33cd5f !default;
 $energized: #ffc900 !default;
@@ -12,62 +12,178 @@ $google: #dd4b39;
 $instagram: #517fa4;
 $youtube: #bb0000;
 $tumblr: #32506d;
-
-$base-color:#555 !default;
-
-$icon-color:#9e9ea3 !default;
-
+$base-color:#212121 !default;
+$icon-color:#7a7a7a !default;
 $menu-color:#bbbbbd !default;
 $border-color:#eee;
-
-$color1:#2d4486;
+$color1:#909090;
 $color2:#45b0e3;
 $color3:#33477E;
 $color4:#7EBCDA;
 $color5:#343e48;
-
-$font-family-sans-serif: "Lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
-$font-family-light-sans-serif: "Lato-light", "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
-
-$login-bg-image:url('../img/login-bg.jpg') no-repeat center center;
-
+$font-family-sans-serif: "Lato",
+"Helvetica Neue",
+"Roboto",
+"Segoe UI",
+sans-serif !default;
+$font-family-light-sans-serif: "Lato-light",
+"HelveticaNeue-Light",
+"Roboto-Light",
+"Segoe UI-Light",
+sans-serif-light !default;
+$login-bg-image:url('../img/background/1.jpg') no-repeat center center;
 $card-box-shadow: none !default;
-
-$border-radius-base:              0px !default;
-$border-radius-large:             0px !default;
-$border-radius-small:             0px !default;
-$button-border-radius:            0px !default;
-$button-border-width:             0px !default;
-
+$border-radius-base: 0px !default;
+$border-radius-large: 0px !default;
+$border-radius-small: 0px !default;
+$button-border-radius: 0px !default;
+$button-border-width: 0px !default;
 //$line-height-base:                1.8 !default; // 20/14
-
-$font-size-base:                  14px !default;
-$card-border-radius:              0px !default;
-
+$font-size-base: 14px !default;
+$font-weight: 300;
+$card-border-radius: 0px !default;
 @mixin square($some-number) {
-  width: $some-number;
-  height: $some-number;
+    width: $some-number;
+    height: $some-number;
 }
 
-		//***** Font Famliy ********
-		@font-face {
-		    font-family: 'Lato';
-		    src: url("../fonts/Lato-Bold.ttf");
-		    font-weight: 700;
-		}
-		
-		@font-face {
-		    font-family: 'Lato';
-		    src: url(../fonts/Lato-Light.ttf);
-		    font-weight: 300;
-		}
-		
-		@font-face {
-		    font-family: 'Lato';
-		    src: url(../fonts/Lato-Regular.ttf);
-            font-weight: 400;
-		}
+@mixin transition($transition-property,
+$transition-time) {
+    -webkit-transition: $transition-property $transition-time;
+    -moz-transition: $transition-property $transition-time;
+    -ms-transition: $transition-property $transition-time;
+    -o-transition: $transition-property $transition-time;
+    transition: $transition-property $transition-time;
+}
+
+@mixin clip-path($clip) {
+    -webkit-clip-path: $clip;
+    -moz-clip-path: $clip;
+    -ms-clip-path: $clip;
+    clip-path: $clip;
+}
+
+//***** Font Famliy ********
+@font-face {
+    font-family: 'Lato';
+    src: url("../fonts/Lato-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url(../fonts/Lato-Light.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url(../fonts/Lato-Regular.ttf);
+    font-weight: 400;
+}
+a{
+    text-decoration: none;
+}
+.bar-transparent{
+    background: transparent !important;
+//       .title {
+//        color: $light;
+//        font-weight: $font-weight;
+//    }
+}
+// Social Buttons
+.button.button-positive-facebook {
+    border-color: $facebook;
+    background-color: $facebook;
+    color: white;
+}
+
+.button.button-positive-twitter {
+    border-color: $twitter;
+    background-color: $twitter;
+    color: white;
+}
+
+.button.button-positive-google {
+    border-color: $google;
+    background-color: $google;
+    color: white;
+}
+
+//button
+.button {
+    font-weight: $font-weight;
+}
+
+//input 
+.input-tag {
+    color: $base-color !important;
+    font-weight: $font-weight;
+    font-size: $font-size-base;
+}
 
 .item {
     font-size: $font-size-base;
+}
+
+.pull-right {
+    text-align: right;
+}
+
+.pull-left {
+    text-align: left;
+}
+
+.padzero {
+    padding: 0;
+}
+
+marzero {
+    margin: 0;
+}
+
+.logo {
+    margin: 40px auto;
+}
+
+.border-none {
+    border: none !important;
+}
+
+.login-user {
+    .item-input {
+        border-bottom: 1px solid #ddd;
+        padding: 6px 0 8px 0px;
+    }
+    i {
+        font-size: 22px;
+        color: $icon-color;
+        margin: 0px 15px 0px 12px;
+    }
+    input {
+        @extend .input-tag;
+    }
+}
+
+.login-forget {
+    color: $color1;
+    font-weight: $font-weight;
+    padding: 8px 10px;
+}
+
+.login-form:-webkit-placeholder {
+    color: $base-color !important;
+    font-weight: $font-weight;
+    font-size: $font-size-base;
+}
+
+.sign {
+    span {
+        color: $color1;
+        a {
+            color: $base-color;
+            padding-left: 5px;
+            
+        }
+    }
 }
