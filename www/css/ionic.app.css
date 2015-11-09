@@ -108,6 +108,25 @@ marzero {
 .m100 {
   margin-top: 100px; }
 
+.bar-side {
+  background-image: url("../img/background/menu.jpg") !important;
+  height: 166px !important;
+  background-size: 100% 100% !important; }
+
+.menu {
+  background-color: #1d224b !important; }
+  .menu .item {
+    border-width: 0px;
+    background-color: #1d224b;
+    color: #a6aff1;
+    font-size: 13px; }
+    .menu .item .item-content {
+      background-color: #1d224b;
+      padding: 16px 49px 16px 16px; }
+    .menu .item i {
+      font-size: 22px;
+      padding-right: 11px; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

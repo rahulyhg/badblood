@@ -81,16 +81,19 @@ $transition-time) {
     src: url(../fonts/Lato-Regular.ttf);
     font-weight: 400;
 }
-a{
+
+a {
     text-decoration: none;
 }
-.bar-transparent{
+
+.bar-transparent {
     background: transparent !important;
-//       .title {
-//        color: $light;
-//        font-weight: $font-weight;
-//    }
+    //       .title {
+    //        color: $light;
+    //        font-weight: $font-weight;
+    //    }
 }
+
 // Social Buttons
 .button.button-positive-facebook {
     border-color: $facebook;
@@ -183,10 +186,34 @@ marzero {
         a {
             color: $base-color;
             padding-left: 5px;
-            
         }
     }
 }
-.m100{
+
+.m100 {
     margin-top: 100px;
+}
+
+.bar-side {
+    background-image: url('../img/background/menu.jpg') !important;
+    height: 166px !important;
+    background-size: 100% 100% !important;
+}
+.menu{
+        background-color: #1d224b !important;
+    .item{
+        border-width: 0px;
+         background-color: #1d224b;
+        color:#a6aff1;
+        font-size: 13px;
+        .item-content{
+            background-color: #1d224b; 
+                padding: 16px 49px 16px 16px;
+          
+        }
+          i{
+                font-size: 22px;
+               padding-right:11px;
+            }
+    }
 }
