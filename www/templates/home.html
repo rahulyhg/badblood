@@ -1,5 +1,33 @@
 <ion-view view-title="Home">
-  <ion-content>
-    <h1>Home</h1>
-  </ion-content>
+    <ion-content>
+        <ion-slide-box on-slide-changed="slideHasChanged($index)">
+            <ion-slide ng-repeat="slid in slider">
+                <img ng-src="{{slid.image}}" class="full-image">
+            </ion-slide>
+
+        </ion-slide-box>
+        <div class="padding mtop text-center">
+            <h4 class="h4">" Blood Donation will cost you nothing but it will save a life !!! "</h4>
+        </div>
+        <div class="noti">
+            <div class="item item-divider">
+                Monday, feb 8, 2001
+            </div>
+        </div>
+        <div class="noti-list">
+            <div class="list" ng-repeat="noti in notification">
+
+                <a class="item item-avatar" href="#" >
+                    <div class="noti-img" ng-style="{'background-image':'url({{noti.image}})'}"></div>
+                    <h2>{{noti.title}}</h2>
+                    <p>{{noti.desc}}</p>
+                    <span class="span"><i class="ln-clock3"></i>2 Days ago</span>
+                </a>
+
+            </div>
+        </div>
+
+
+    </ion-content>
+
 </ion-view>

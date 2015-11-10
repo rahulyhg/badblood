@@ -15,14 +15,15 @@
     <ion-side-menu side="left">
         <ion-header-bar class="bar-side">
             <div class="side-image">
-                <figure>
-<div class="user-back" ></div>
-                </figure>
-                <div class="profile-set">
-                    <!--                    <a href="#/app/setting" menu-close> <i class="icon ln-gear2 "></i>-->
-                    </a>
+            <div class="user-setting text-center">
+               <div class="user-back" ng-style="{'background-image':'url(../img/user1.png)'}">
+
                 </div>
+                <h5 class="h5">Json Format</h5>
+                <p class="p"><i class="ln-map-marker"></i>Mumbai, Maharashtra</p> 
             </div>
+             
+           </div>
         </ion-header-bar>
         <ion-content style="top:166px;" class="menus">
             <ion-list>
@@ -43,15 +44,17 @@
                 </ion-item>
                 <ion-item menu-close ui-sref="app.camp">
                     <i class="icon ln-map side-menu-i"></i>Camp
+                    <span class="badge badge-positive">1</span>
                 </ion-item>
                 <ion-item menu-close ui-sref="app.notification">
-                    <i class="icon ln-map side-menu-i"></i>Notification
+                    <i class="icon ln-bell side-menu-i"></i>Notification
+                    <span class="badge badge-positive">3</span>
                 </ion-item>
                 <ion-item menu-close ui-sref="app.bout">
-                    <i class="icon ln-map side-menu-i"></i>About Us
+                    <i class="icon ln-man side-menu-i"></i>About Us
                 </ion-item>
                 <ion-item menu-close ui-sref="app.contact">
-                    <i class="icon ln-map side-menu-i"></i>Contact
+                    <i class="icon ln-contacts side-menu-i"></i>Contact
                 </ion-item>
             </ion-list>
         </ion-content>

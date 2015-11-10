@@ -1,6 +1,6 @@
 $light: #ffffff !default;
 $stable:#ccc !default;
-$positive: #6ed3cf !default;
+$positive: #00bbd3 !default;
 $calm: #11c1f3 !default;
 $balanced: #33cd5f !default;
 $energized: #ffc900 !default;
@@ -14,25 +14,28 @@ $youtube: #bb0000;
 $tumblr: #32506d;
 $base-color:#212121 !default;
 $icon-color:#7a7a7a !default;
-$menu-color:#bbbbbd !default;
+$menu-color:#8A8A8A !default;
 $border-color:#eee;
 $color1:#909090;
 $color2:#1d224b;
-$color3:#33477E;
+$color3:#dedfe1;
 $color4:#7EBCDA;
-$color5:#343e48;
+$color5:#f5f5f5;
+$color6: #555555;
+
 $font-family-sans-serif: "Lato",
+"Nunito",
 "Helvetica Neue",
 "Roboto",
 "Segoe UI",
 sans-serif !default;
 $font-family-light-sans-serif: "Lato-light",
+"Nunito",
 "HelveticaNeue-Light",
 "Roboto-Light",
 "Segoe UI-Light",
 sans-serif-light !default;
 $login-bg-image:url('../img/background/1.jpg') no-repeat center center;
-$menu-bg-image:url('../img/background/menu.jpg') !important;
 $card-box-shadow: none !default;
 $border-radius-base: 0px !default;
 $border-radius-large: 0px !default;
@@ -62,6 +65,15 @@ $transition-time) {
     -moz-clip-path: $clip;
     -ms-clip-path: $clip;
     clip-path: $clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: nunito !important;
 }
 
 //***** Font Famliy ********
@@ -198,32 +210,157 @@ marzero {
 }
 
 .bar-side {
-    background-image: $menu-bg-image;
+    background: #f5f5f5;
+    background-color: $color3 !important;
+    background-image: linear-gradient(0deg, $color3, $color3 50%, transparent 50%) !important;
     height: 166px !important;
     background-size: 100% 100% !important;
 }
 
 .menus {
-    background-color: $color2 !important;
+    background-color: $color5;
     .item {
         border-width: 0px;
-        background-color: $color2;
-        color: #a6aff1;
         font-size: 13px;
+        color: $menu-color;
+        background-color: $color5;
         .item-content {
-            background-color: $color2;
-            padding: 16px 49px 16px 16px;
+            padding: 16px 0px 16px 26px;
+            background-color: $color5;
         }
         i {
             font-size: 22px;
-            padding-right: 11px;
+            color: $icon-color;
+            padding-right: 19px;
             vertical-align: text-bottom;
         }
-        .activated{
-            background: #5F67AB !important;
+        .activated {
+            background: #bbbbbb !important;
+        }
+        .badge {
+            font-weight: $font-weight;
+            border-radius: 2px;
         }
     }
 }
-.padd30{
+
+.padd30 {
     padding: 0px 30px 0px 30px;
+}
+
+.user-back {
+    width: 70px;
+    height: 70px;
+    border-radius: 3px;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+.user-setting {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.h5 {
+    text-transform: capitalize;
+    font-size: 15px !important;
+    color: grey !important;
+    margin: 10px 0px 2px 0px !important;
+}
+
+.p {
+    margin: 0;
+    padding: 0;
+    color: #3B97D3;
+    i {
+        color: $icon-color;
+        vertical-align: text-top;
+        padding-right: 5px;
+        font-size: 16px;
+    }
+}
+
+.h4 {
+    font-family: nunito !important;
+    font-size: 17px !important;
+    color: $color6 !important;
+    text-transform: capitalize;
+    font-weight: 300 !important;
+}
+
+.mtop {
+    margin: 15px auto;
+}
+
+.noti-list {
+    .item {
+        padding: 15px 0px 15px 72px;
+        border-top: none;
+    }
+    p {
+        padding: 0px 10px 0px 0px;
+        font-weight: 100;
+        font-size: 15px !important;
+    }
+    h2 {
+        font-weight: $font-weight !important;
+    }
+    .list {
+        margin-bottom: 0px;
+    }
+}
+
+.noti-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: absolute;
+    left: 10px;
+    top: 18px;
+}
+
+.noti {
+    .item-divider {
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        min-height: 30px;
+        background-color: #f8f8f8 !important;
+        color: $color6 !important;
+        font-weight: 100 !important;
+        text-transform: uppercase;
+        font-size: $font-size-base !important;
+        border-width: 0px !important;
+        border-color: #f8f8f8;
+        border-style: none !important;
+        font-family: nunito;
+    }
+}
+
+.span {
+    font-size: 13px;
+    font-weight: 100;
+    color: #B7B7B7;
+    font-family: nunito;
+   
+    i{
+            color: #B7B7B7;
+    padding-right: 6px;
+    vertical-align: baseline;
+    }
 }
