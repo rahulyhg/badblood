@@ -275,6 +275,7 @@ marzero {
     font-size: 15px !important;
     color: grey !important;
     margin: 10px 0px 2px 0px !important;
+    font-weight: $font-weight !important;
 }
 
 .p {
@@ -309,10 +310,11 @@ marzero {
     p {
         padding: 0px 10px 0px 0px;
         font-weight: 100;
-        font-size: 15px !important;
+        font-size: 14px !important;
     }
     h2 {
         font-weight: $font-weight !important;
+        font-size: 14px !important;
     }
     .list {
         margin-bottom: 0px;
@@ -341,7 +343,7 @@ marzero {
         padding-bottom: 15px !important;
         min-height: 30px;
         background-color: #f8f8f8 !important;
-        color: $color6 !important;
+        color: #bbb !important;
         font-weight: 100 !important;
         text-transform: uppercase;
         font-size: $font-size-base !important;
