@@ -80,7 +80,7 @@ a {
   text-align: left; }
 
 .padzero {
-  padding: 0; }
+  padding: 0 !important; }
 
 marzero {
   margin: 0; }
@@ -289,7 +289,7 @@ marzero {
 .hoback {
   @extent .noti-img;
   width: 100%;
-  height: 100px;
+  height: 160px;
   border-radius: 0px;
   position: relative;
   background-size: cover;
@@ -301,22 +301,29 @@ marzero {
   height: 100%;
   width: 100%;
   top: 0;
-  left: 0;
-  opacity: 0.35; }
+  left: 0; }
 
 .bg-black {
-  background: black; }
+  background: rgba(0, 0, 0, 0.58); }
 
 .hos-name {
   position: relative;
-  top: 50%;
-  transform: translatey(-50%);
-  left: 20px; }
+  padding: 10px 0px 0px 10px;
+  height: 160px; }
   .hos-name h4 {
     color: #fff;
     font-weight: 300;
-    font-size: 22px;
-    margin: 0px; }
+    font-size: 15px;
+    margin: 0px;
+    padding-bottom: 10px; }
+  .hos-name p {
+    color: #fff;
+    line-height: 150%;
+    font-weight: 300;
+    margin: 0;
+    font-size: 13px; }
+    .hos-name p i {
+      padding-right: 5px; }
 
 /*!
   Ionicons, v2.0.1
