@@ -60,11 +60,13 @@ $transition-time) {
     transition: $transition-property $transition-time;
 }
 
-@mixin clip-path($clip) {
-    -webkit-clip-path: $clip;
-    -moz-clip-path: $clip;
-    -ms-clip-path: $clip;
-    clip-path: $clip;
+@function grayscale($value) {
+    @return #{ "grayscale(" + $value + ")" };
+}
+
+@mixin filter($properties) {
+    // Your vendor prefixing stuff here, I am using Bourbon:
+    filter: $properties, webkit moz spec;
 }
 
 h1,
@@ -404,8 +406,45 @@ marzero {
     }
     .input-label {
         padding: 7px 10px 7px 20px;
-        color: @color7;
+        color: $color7;
         font-size: 14px;
         font-weight: 300;
+    }
+}
+
+.hoback {
+    @extent .noti-img;
+    width: 100%;
+    height: 100px;
+    border-radius: 0px;
+    position: relative;
+    background-size: cover;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.bg-layer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.35;
+}
+
+.bg-black {
+    background: black;
+}
+
+.hos-name {
+    position: relative;
+    top: 50%;
+    transform: translatey(-50%);
+    left: 20px;
+    h4 {
+        color: #fff;
+        font-weight: $font-weight;
+        font-size: 22px;
+        margin: 0px;
     }
 }

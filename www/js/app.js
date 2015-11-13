@@ -48,6 +48,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     controller: 'RegisterCtrl'
                 }
             }
+        })  
+        .state('app.hospital', {
+            url: '/hospital',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/hospital.html',
+                    controller: 'HospitalCtrl'
+                }
+            }
         })
         .state('login', {
             url: "/login",

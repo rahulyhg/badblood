@@ -286,6 +286,38 @@ marzero {
   font-size: 14px;
   font-weight: 300; }
 
+.hoback {
+  @extent .noti-img;
+  width: 100%;
+  height: 100px;
+  border-radius: 0px;
+  position: relative;
+  background-size: cover;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%); }
+
+.bg-layer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.35; }
+
+.bg-black {
+  background: black; }
+
+.hos-name {
+  position: relative;
+  top: 50%;
+  transform: translatey(-50%);
+  left: 20px; }
+  .hos-name h4 {
+    color: #fff;
+    font-weight: 300;
+    font-size: 22px;
+    margin: 0px; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

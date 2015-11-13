@@ -15,6 +15,9 @@ angular.module('starter.controllers', [])
     }) 
     .controller('RegisterCtrl', function ($scope) {
 
+    })    
+    .controller('HospitalCtrl', function ($scope) {
+
     })
 
 .controller('HomeCtrl', function ($scope, $stateParams) {
