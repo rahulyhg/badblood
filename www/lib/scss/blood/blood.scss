@@ -1,6 +1,6 @@
 $light: #ffffff !default;
 $stable:#ccc !default;
-$positive: #00bbd3 !default;
+$positive:#e62739 !default;
 $calm: #11c1f3 !default;
 $balanced: #33cd5f !default;
 $energized: #ffc900 !default;
@@ -22,7 +22,7 @@ $color3:#dedfe1;
 $color4:#7EBCDA;
 $color5:#f5f5f5;
 $color6: #555555;
-
+$color7:#B0B0B0;
 $font-family-sans-serif: "Lato",
 "Nunito",
 "Helvetica Neue",
@@ -35,7 +35,7 @@ $font-family-light-sans-serif: "Lato-light",
 "Roboto-Light",
 "Segoe UI-Light",
 sans-serif-light !default;
-$login-bg-image:url('../img/background/1.jpg') no-repeat center center;
+$pro-bg-image:url('../img/background/1.jpg') no-repeat center center;
 $card-box-shadow: none !default;
 $border-radius-base: 0px !default;
 $border-radius-large: 0px !default;
@@ -138,6 +138,7 @@ a {
     color: $base-color !important;
     font-weight: $font-weight;
     font-size: $font-size-base;
+    padding-right: 20px !important;
 }
 
 .item {
@@ -207,6 +208,10 @@ marzero {
 
 .m100 {
     margin-top: 100px;
+}
+
+.m40 {
+    margin-top: 40px;
 }
 
 .bar-side {
@@ -359,10 +364,48 @@ marzero {
     font-weight: 100;
     color: #B7B7B7;
     font-family: nunito;
-   
-    i{
-            color: #B7B7B7;
-    padding-right: 6px;
-    vertical-align: baseline;
+    i {
+        color: #B7B7B7;
+        padding-right: 6px;
+        vertical-align: baseline;
+    }
+}
+
+.pro-back {
+    background: $pro-bg-image;
+    position: relative;
+    height: 146px;
+    background-size: cover;
+}
+
+.post {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.posts {
+    @extend .post;
+    position: absolute !important;
+    transform: translateX(50%) !important;
+    border-radius: 100% !important;
+    font-size: 19px !important;
+    padding: 1px 0px 2px 2px !important;
+    min-width: 26px !important;
+    min-height: 26px !important;
+    line-height: 17px !important;
+}
+
+.regi-user {
+    @extend .login-user;
+    input {
+        padding-left: 20px !important;
+    }
+    .input-label {
+        padding: 7px 10px 7px 20px;
+        color: @color7;
+        font-size: 14px;
+        font-weight: 300;
     }
 }

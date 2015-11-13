@@ -12,6 +12,9 @@ angular.module('starter.controllers', [])
     })
     .controller('SignupCtrl', function ($scope) {
 
+    }) 
+    .controller('RegisterCtrl', function ($scope) {
+
     })
 
 .controller('HomeCtrl', function ($scope, $stateParams) {
