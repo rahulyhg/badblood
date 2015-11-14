@@ -43,7 +43,7 @@ $card-box-shadow: none !default;
 $border-radius-base: 0px !default;
 $border-radius-large: 0px !default;
 $border-radius-small: 0px !default;
-$button-border-radius: 0px !default;
+$button-border-radius: 4px !default;
 $button-border-width: 0px !default;
 //$line-height-base:                1.8 !default; // 20/14
 $font-size-base: 14px !default;
@@ -335,9 +335,9 @@ a {
 .h4 {
     font-family: roboto slab !important;
     font-size: 17px !important;
-    color: $color6 !important;
+    color: $color7 !important;
     text-transform: capitalize;
-    font-weight: 400 !important;
+    font-weight: 300 !important;
 }
 
 .mtop {
@@ -526,5 +526,26 @@ a {
 }
 
 .m12 {
-    margin-top: 12px;
+    margin-top: 12px !important;
+}
+
+.f-title {
+    margin-bottom: 10px;
+}
+.pclass{
+    h2{
+        margin-bottom: 12px !important;
+    }
+    p{
+        color:$color7 !important;
+        line-height: 150%;
+        i{
+            padding-right: 8px;
+        }
+    }
+}
+.sm-btn{
+    padding: 0px 20px !important; 
+    line-height: 16px !important;
+    min-height: 30px !important;
 }

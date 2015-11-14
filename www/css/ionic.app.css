@@ -211,9 +211,9 @@ a {
 .h4 {
   font-family: roboto slab !important;
   font-size: 17px !important;
-  color: #555555 !important;
+  color: #B0B0B0 !important;
   text-transform: capitalize;
-  font-weight: 400 !important; }
+  font-weight: 300 !important; }
 
 .mtop {
   margin: 15px auto; }
@@ -366,7 +366,24 @@ a {
   height: 45px; }
 
 .m12 {
-  margin-top: 12px; }
+  margin-top: 12px !important; }
+
+.f-title {
+  margin-bottom: 10px; }
+
+.pclass h2 {
+  margin-bottom: 12px !important; }
+
+.pclass p {
+  color: #B0B0B0 !important;
+  line-height: 150%; }
+  .pclass p i {
+    padding-right: 8px; }
+
+.sm-btn {
+  padding: 0px 20px !important;
+  line-height: 16px !important;
+  min-height: 30px !important; }
 
 /*!
   Ionicons, v2.0.1
@@ -8261,7 +8278,7 @@ progress {
   min-height: 47px;
   border-width: 0px;
   border-style: solid;
-  border-radius: 0px;
+  border-radius: 4px;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
@@ -8710,10 +8727,10 @@ a.button, a.primary-btn {
   .button-bar > .primary-btn .icon:before {
     line-height: 44px; }
   .button-bar > .button:first-child, .button-bar > .primary-btn:first-child {
-    border-radius: 0px 0px 0px 0px; }
+    border-radius: 4px 0px 0px 4px; }
   .button-bar > .button:last-child, .button-bar > .primary-btn:last-child {
     border-right-width: 1px;
-    border-radius: 0px 0px 0px 0px; }
+    border-radius: 0px 4px 4px 0px; }
 
 .button-bar > .button-small:before,
 .button-bar > .button-small .icon:before {

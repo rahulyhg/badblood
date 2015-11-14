@@ -4,8 +4,13 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PlaylistsCtrl', function ($scope) {
+.controller('EmergencyCtrl', function ($scope) {
+    $scope.notification = [{
+        image: "img/slider/3.jpg",
+        title: "Lorem ipsum dolor",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 
+    }];
     })
     .controller('LoginCtrl', function ($scope) {
 
@@ -110,7 +115,11 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function ($scope, $stateParams) {
 
+    $scope.head = [{
+        qoute: "Blood Donation will cost you nothing but it will save a life !!!" 
 
+    }];
+    
     $scope.slider = [{
         image: "img/slider/1.jpg",
 
