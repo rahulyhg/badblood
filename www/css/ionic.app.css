@@ -21,7 +21,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: nunito !important; }
+  font-family: Roboto Slab !important; }
 
 @font-face {
   font-family: 'Lato';
@@ -44,25 +44,40 @@ a {
 .bar-transparent {
   background: transparent !important; }
 
-.button.button-positive-facebook {
+.button.button-positive-facebook, .button-positive-facebook.primary-btn {
   border-color: #3b5998;
   background-color: #3b5998;
   color: white; }
 
-.button.button-positive-twitter {
+.button.button-positive-twitter, .button-positive-twitter.primary-btn {
   border-color: #00aced;
   background-color: #00aced;
   color: white; }
 
-.button.button-positive-google {
+.button.button-positive-google, .button-positive-google.primary-btn {
   border-color: #dd4b39;
   background-color: #dd4b39;
   color: white; }
 
-.button {
+.button, .primary-btn {
   font-weight: 300;
-  min-height: 40px;
-  line-height: 44px; }
+  min-height: 40px !important;
+  line-height: 40px !important; }
+
+.primary-btn {
+  padding: 0 18px !important;
+  font-size: 15px !important;
+  border-radius: 4px !important; }
+
+.slider-pager-page {
+  color: #e62739 !important; }
+
+.popup-body {
+  padding: 20px !important;
+  overflow: auto; }
+
+.popup {
+  height: 175px; }
 
 .input-tag, .login-user input, .regi-user input {
   color: #212121 !important;
@@ -85,8 +100,8 @@ a {
 .padzero {
   padding: 0 !important; }
 
-marzero {
-  margin: 0; }
+.marzero {
+  margin: 0 !important; }
 
 .logo {
   margin: 40px auto; }
@@ -156,7 +171,7 @@ marzero {
 .padd30 {
   padding: 0px 30px 0px 30px; }
 
-.user-back {
+.user-back, .m-list .h-w {
   width: 70px;
   height: 70px;
   border-radius: 3px;
@@ -194,11 +209,11 @@ marzero {
     font-size: 16px; }
 
 .h4 {
-  font-family: nunito !important;
+  font-family: roboto slab !important;
   font-size: 17px !important;
   color: #555555 !important;
   text-transform: capitalize;
-  font-weight: 300 !important; }
+  font-weight: 400 !important; }
 
 .mtop {
   margin: 15px auto; }
@@ -246,13 +261,13 @@ marzero {
   border-width: 0px !important;
   border-color: #f8f8f8;
   border-style: none !important;
-  font-family: nunito; }
+  font-family: roboto slab; }
 
 .span {
   font-size: 13px;
   font-weight: 100;
   color: #B7b7b7;
-  font-family: nunito; }
+  font-family: roboto slab; }
   .span i {
     color: #B7b7b7;
     padding-right: 6px;
@@ -301,8 +316,8 @@ marzero {
 
 .bg-layer {
   position: absolute;
-  height: 100%;
   width: 100%;
+  height: 100%;
   top: 0;
   left: 0; }
 
@@ -311,7 +326,7 @@ marzero {
 
 .hos-name {
   position: relative;
-  padding: 10px 0px 0px 10px;
+  padding: 16px 0px 0px 16px;
   height: 160px; }
   .hos-name h4 {
     color: #ffffff;
@@ -327,6 +342,31 @@ marzero {
     font-size: 13px; }
     .hos-name p i {
       padding-right: 5px; }
+
+.pop .ln-circle-checkmark,
+.pop .ln-circle-cross {
+  font-size: 40px;
+  color: #e62739;
+  padding-top: 28px; }
+
+.pop .popup-head {
+  padding: 10px 10px;
+  background: #dedfe1; }
+
+.bord .list .item:first-child {
+  border-top-left-radius: 4px !important;
+  border-top-right-radius: 4px !important; }
+
+.bord .list .item:last-child {
+  border-bottom-left-radius: 4px !important;
+  border-bottom-right-radius: 4px !important; }
+
+.m-list .h-w {
+  width: 45px;
+  height: 45px; }
+
+.m12 {
+  margin-top: 12px; }
 
 /*!
   Ionicons, v2.0.1
@@ -3651,7 +3691,7 @@ body,
   color: #212121;
   word-wrap: break-word;
   font-size: 14px;
-  font-family: "Lato", "Nunito", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "Lato", "Nunito", "Roboto Slab", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 20px;
   text-rendering: optimizeLegibility;
   -webkit-backface-visibility: hidden;
@@ -3889,7 +3929,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #212121;
   font-weight: 500;
-  font-family: "Lato", "Nunito", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "Lato", "Nunito", "Roboto Slab", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 1.2; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small,
   .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small {
@@ -4049,7 +4089,7 @@ a.subdued {
   width: auto;
   z-index: 11;
   overflow: hidden; }
-  .action-sheet .button {
+  .action-sheet .button, .action-sheet .primary-btn {
     display: block;
     padding: 1px;
     width: 100%;
@@ -4058,13 +4098,13 @@ a.subdued {
     background-color: transparent;
     color: #007aff;
     font-size: 21px; }
-    .action-sheet .button:hover {
+    .action-sheet .button:hover, .action-sheet .primary-btn:hover {
       color: #007aff; }
-    .action-sheet .button.destructive {
+    .action-sheet .button.destructive, .action-sheet .destructive.primary-btn {
       color: #ff3b30; }
-      .action-sheet .button.destructive:hover {
+      .action-sheet .button.destructive:hover, .action-sheet .destructive.primary-btn:hover {
         color: #ff3b30; }
-  .action-sheet .button.active, .action-sheet .button.activated {
+  .action-sheet .button.active, .action-sheet .active.primary-btn, .action-sheet .button.activated, .action-sheet .activated.primary-btn {
     box-shadow: none;
     border-color: #d1d3d6;
     color: #007aff;
@@ -4085,15 +4125,15 @@ a.subdued {
   border-radius: 4px;
   background-color: #fff;
   overflow: hidden; }
-  .action-sheet-group .button {
+  .action-sheet-group .button, .action-sheet-group .primary-btn {
     border-width: 1px 0px 0px 0px; }
-  .action-sheet-group .button:first-child:last-child {
+  .action-sheet-group .button:first-child:last-child, .action-sheet-group .primary-btn:first-child:last-child {
     border-width: 0; }
 
 .action-sheet-options {
   background: #f1f2f3; }
 
-.action-sheet-cancel .button {
+.action-sheet-cancel .button, .action-sheet-cancel .primary-btn {
   font-weight: 500; }
 
 .action-sheet-open {
@@ -4109,7 +4149,8 @@ a.subdued {
 .platform-android .action-sheet {
   margin: 0; }
   .platform-android .action-sheet .action-sheet-title,
-  .platform-android .action-sheet .button {
+  .platform-android .action-sheet .button,
+  .platform-android .action-sheet .primary-btn {
     text-align: left;
     border-color: transparent;
     font-size: 16px;
@@ -4118,8 +4159,9 @@ a.subdued {
     font-size: 14px;
     padding: 16px;
     color: #666; }
-  .platform-android .action-sheet .button.active,
-  .platform-android .action-sheet .button.activated {
+  .platform-android .action-sheet .button.active, .platform-android .action-sheet .active.primary-btn,
+  .platform-android .action-sheet .button.activated,
+  .platform-android .action-sheet .activated.primary-btn {
     background: #e8e8e8; }
 
 .platform-android .action-sheet-group {
@@ -4130,7 +4172,7 @@ a.subdued {
 .platform-android .action-sheet-cancel {
   display: none; }
 
-.platform-android .action-sheet-has-icons .button {
+.platform-android .action-sheet-has-icons .button, .platform-android .action-sheet-has-icons .primary-btn {
   padding-left: 56px; }
 
 .backdrop {
@@ -4196,7 +4238,7 @@ a.subdued {
     border: none;
     background: none;
     color: #fff; }
-    .bar.bar-clear .button {
+    .bar.bar-clear .button, .bar.bar-clear .primary-btn {
       color: #fff; }
     .bar.bar-clear .title {
       color: #fff; }
@@ -4310,7 +4352,7 @@ a.subdued {
       text-align: right; }
   .bar .title a {
     color: inherit; }
-  .bar .button {
+  .bar .button, .bar .primary-btn {
     z-index: 1;
     padding: 0 8px;
     min-width: initial;
@@ -4318,40 +4360,43 @@ a.subdued {
     font-weight: 400;
     font-size: 13px;
     line-height: 32px; }
-    .bar .button.button-icon:before,
-    .bar .button .icon:before, .bar .button.icon:before, .bar .button.icon-left:before, .bar .button.icon-right:before {
+    .bar .button.button-icon:before, .bar .button-icon.primary-btn:before,
+    .bar .button .icon:before,
+    .bar .primary-btn .icon:before, .bar .button.icon:before, .bar .icon.primary-btn:before, .bar .button.icon-left:before, .bar .icon-left.primary-btn:before, .bar .button.icon-right:before, .bar .icon-right.primary-btn:before {
       padding-right: 2px;
       padding-left: 2px;
       font-size: 20px;
       line-height: 32px; }
-    .bar .button.button-icon {
+    .bar .button.button-icon, .bar .button-icon.primary-btn {
       font-size: 17px; }
-      .bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before {
+      .bar .button.button-icon .icon:before, .bar .button-icon.primary-btn .icon:before, .bar .button.button-icon:before, .bar .button-icon.primary-btn:before, .bar .button.button-icon.icon-left:before, .bar .button-icon.icon-left.primary-btn:before, .bar .button.button-icon.icon-right:before, .bar .button-icon.icon-right.primary-btn:before {
         vertical-align: top;
         font-size: 32px;
         line-height: 32px; }
-    .bar .button.button-clear {
+    .bar .button.button-clear, .bar .button-clear.primary-btn {
       padding-right: 2px;
       padding-left: 2px;
       font-weight: 300;
       font-size: 17px; }
-      .bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before {
+      .bar .button.button-clear .icon:before, .bar .button-clear.primary-btn .icon:before, .bar .button.button-clear.icon:before, .bar .button-clear.icon.primary-btn:before, .bar .button.button-clear.icon-left:before, .bar .button-clear.icon-left.primary-btn:before, .bar .button.button-clear.icon-right:before, .bar .button-clear.icon-right.primary-btn:before {
         font-size: 32px;
         line-height: 32px; }
-    .bar .button.back-button {
+    .bar .button.back-button, .bar .back-button.primary-btn {
       display: block;
       margin-right: 5px;
       padding: 0;
       white-space: nowrap;
       font-weight: 400; }
-    .bar .button.back-button.active, .bar .button.back-button.activated {
+    .bar .button.back-button.active, .bar .back-button.active.primary-btn, .bar .button.back-button.activated, .bar .back-button.activated.primary-btn {
       opacity: 0.2; }
-  .bar .button-bar > .button,
-  .bar .buttons > .button {
+  .bar .button-bar > .button, .bar .button-bar > .primary-btn,
+  .bar .buttons > .button,
+  .bar .buttons > .primary-btn {
     min-height: 31px;
     line-height: 32px; }
-  .bar .button-bar + .button,
-  .bar .button + .button-bar {
+  .bar .button-bar + .button, .bar .button-bar + .primary-btn,
+  .bar .button + .button-bar,
+  .bar .primary-btn + .button-bar {
     margin-left: 5px; }
   .bar .buttons,
   .bar .buttons.primary-buttons,
@@ -4365,9 +4410,13 @@ a.subdued {
   .bar .buttons-right span {
     margin-left: 5px;
     display: inherit; }
-  .bar .title + .button:last-child,
+  .bar .title + .button:last-child, .bar .title + .primary-btn:last-child,
   .bar > .button + .button:last-child,
+  .bar > .primary-btn + .button:last-child,
+  .bar > .button + .primary-btn:last-child,
+  .bar > .primary-btn + .primary-btn:last-child,
   .bar > .button.pull-right,
+  .bar > .pull-right.primary-btn,
   .bar .buttons.pull-right,
   .bar .title + .buttons {
     position: absolute;
@@ -4385,192 +4434,192 @@ a.subdued {
   font-size: 19px;
   line-height: 44px; }
 
-.bar-light .button {
+.bar-light .button, .bar-light .primary-btn {
   border-color: #ddd;
   background-color: white;
   color: #444; }
-  .bar-light .button:hover {
+  .bar-light .button:hover, .bar-light .primary-btn:hover {
     color: #444;
     text-decoration: none; }
-  .bar-light .button.active, .bar-light .button.activated {
+  .bar-light .button.active, .bar-light .active.primary-btn, .bar-light .button.activated, .bar-light .activated.primary-btn {
     border-color: #ccc;
     background-color: #fafafa;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-  .bar-light .button.button-clear {
+  .bar-light .button.button-clear, .bar-light .button-clear.primary-btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #444;
     font-size: 17px; }
-  .bar-light .button.button-icon {
+  .bar-light .button.button-icon, .bar-light .button-icon.primary-btn {
     border-color: transparent;
     background: none; }
 
-.bar-stable .button {
+.bar-stable .button, .bar-stable .primary-btn {
   border-color: #b2b2b2;
   background-color: #cccccc;
   color: #444; }
-  .bar-stable .button:hover {
+  .bar-stable .button:hover, .bar-stable .primary-btn:hover {
     color: #444;
     text-decoration: none; }
-  .bar-stable .button.active, .bar-stable .button.activated {
+  .bar-stable .button.active, .bar-stable .active.primary-btn, .bar-stable .button.activated, .bar-stable .activated.primary-btn {
     border-color: #a2a2a2;
     background-color: #e5e5e5;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-  .bar-stable .button.button-clear {
+  .bar-stable .button.button-clear, .bar-stable .button-clear.primary-btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #444;
     font-size: 17px; }
-  .bar-stable .button.button-icon {
+  .bar-stable .button.button-icon, .bar-stable .button-icon.primary-btn {
     border-color: transparent;
     background: none; }
 
-.bar-positive .button {
+.bar-positive .button, .bar-positive .primary-btn {
   border-color: #c31727;
   background-color: #e62739;
   color: #fff; }
-  .bar-positive .button:hover {
+  .bar-positive .button:hover, .bar-positive .primary-btn:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-positive .button.active, .bar-positive .button.activated {
+  .bar-positive .button.active, .bar-positive .active.primary-btn, .bar-positive .button.activated, .bar-positive .activated.primary-btn {
     border-color: #c31727;
     background-color: #c31727;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-  .bar-positive .button.button-clear {
+  .bar-positive .button.button-clear, .bar-positive .button-clear.primary-btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-positive .button.button-icon {
+  .bar-positive .button.button-icon, .bar-positive .button-icon.primary-btn {
     border-color: transparent;
     background: none; }
 
-.bar-calm .button {
+.bar-calm .button, .bar-calm .primary-btn {
   border-color: #0a9dc7;
   background-color: #11c1f3;
   color: #fff; }
-  .bar-calm .button:hover {
+  .bar-calm .button:hover, .bar-calm .primary-btn:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-calm .button.active, .bar-calm .button.activated {
+  .bar-calm .button.active, .bar-calm .active.primary-btn, .bar-calm .button.activated, .bar-calm .activated.primary-btn {
     border-color: #0a9dc7;
     background-color: #0a9dc7;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-  .bar-calm .button.button-clear {
+  .bar-calm .button.button-clear, .bar-calm .button-clear.primary-btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-calm .button.button-icon {
+  .bar-calm .button.button-icon, .bar-calm .button-icon.primary-btn {
     border-color: transparent;
     background: none; }
 
-.bar-assertive .button {
+.bar-assertive .button, .bar-assertive .primary-btn {
   border-color: #e42112;
   background-color: #ef473a;
   color: #fff; }
-  .bar-assertive .button:hover {
+  .bar-assertive .button:hover, .bar-assertive .primary-btn:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-assertive .button.active, .bar-assertive .button.activated {
+  .bar-assertive .button.active, .bar-assertive .active.primary-btn, .bar-assertive .button.activated, .bar-assertive .activated.primary-btn {
     border-color: #e42112;
     background-color: #e42112;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-  .bar-assertive .button.button-clear {
+  .bar-assertive .button.button-clear, .bar-assertive .button-clear.primary-btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-assertive .button.button-icon {
+  .bar-assertive .button.button-icon, .bar-assertive .button-icon.primary-btn {
     border-color: transparent;
     background: none; }
 
-.bar-balanced .button {
+.bar-balanced .button, .bar-balanced .primary-btn {
   border-color: #28a54c;
   background-color: #33cd5f;
   color: #fff; }
-  .bar-balanced .button:hover {
+  .bar-balanced .button:hover, .bar-balanced .primary-btn:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-balanced .button.active, .bar-balanced .button.activated {
+  .bar-balanced .button.active, .bar-balanced .active.primary-btn, .bar-balanced .button.activated, .bar-balanced .activated.primary-btn {
     border-color: #28a54c;
     background-color: #28a54c;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-  .bar-balanced .button.button-clear {
+  .bar-balanced .button.button-clear, .bar-balanced .button-clear.primary-btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-balanced .button.button-icon {
+  .bar-balanced .button.button-icon, .bar-balanced .button-icon.primary-btn {
     border-color: transparent;
     background: none; }
 
-.bar-energized .button {
+.bar-energized .button, .bar-energized .primary-btn {
   border-color: #e6b500;
   background-color: #ffc900;
   color: #fff; }
-  .bar-energized .button:hover {
+  .bar-energized .button:hover, .bar-energized .primary-btn:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-energized .button.active, .bar-energized .button.activated {
+  .bar-energized .button.active, .bar-energized .active.primary-btn, .bar-energized .button.activated, .bar-energized .activated.primary-btn {
     border-color: #e6b500;
     background-color: #e6b500;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-  .bar-energized .button.button-clear {
+  .bar-energized .button.button-clear, .bar-energized .button-clear.primary-btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-energized .button.button-icon {
+  .bar-energized .button.button-icon, .bar-energized .button-icon.primary-btn {
     border-color: transparent;
     background: none; }
 
-.bar-royal .button {
+.bar-royal .button, .bar-royal .primary-btn {
   border-color: #6b46e5;
   background-color: #886aea;
   color: #fff; }
-  .bar-royal .button:hover {
+  .bar-royal .button:hover, .bar-royal .primary-btn:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-royal .button.active, .bar-royal .button.activated {
+  .bar-royal .button.active, .bar-royal .active.primary-btn, .bar-royal .button.activated, .bar-royal .activated.primary-btn {
     border-color: #6b46e5;
     background-color: #6b46e5;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-  .bar-royal .button.button-clear {
+  .bar-royal .button.button-clear, .bar-royal .button-clear.primary-btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-royal .button.button-icon {
+  .bar-royal .button.button-icon, .bar-royal .button-icon.primary-btn {
     border-color: transparent;
     background: none; }
 
-.bar-dark .button {
+.bar-dark .button, .bar-dark .primary-btn {
   border-color: #111;
   background-color: #444444;
   color: #fff; }
-  .bar-dark .button:hover {
+  .bar-dark .button:hover, .bar-dark .primary-btn:hover {
     color: #fff;
     text-decoration: none; }
-  .bar-dark .button.active, .bar-dark .button.activated {
+  .bar-dark .button.active, .bar-dark .active.primary-btn, .bar-dark .button.activated, .bar-dark .activated.primary-btn {
     border-color: #000;
     background-color: #262626;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-  .bar-dark .button.button-clear {
+  .bar-dark .button.button-clear, .bar-dark .button-clear.primary-btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #fff;
     font-size: 17px; }
-  .bar-dark .button.button-icon {
+  .bar-dark .button.button-icon, .bar-dark .button-icon.primary-btn {
     border-color: transparent;
     background: none; }
 
@@ -5375,7 +5424,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   white-space: nowrap;
   font-weight: 400;
   font-size: 14px;
-  font-family: "Lato", "Nunito", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "Lato", "Nunito", "Roboto Slab", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   opacity: 0.7; }
   .tab-item:hover {
     cursor: pointer; }
@@ -5870,7 +5919,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   flex-direction: row;
   padding: 10px;
   min-height: 65px; }
-  .popup-buttons .button {
+  .popup-buttons .button, .popup-buttons .primary-btn {
     -webkit-box-flex: 1;
     -webkit-flex: 1;
     -moz-box-flex: 1;
@@ -5882,7 +5931,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
     border-radius: 2px;
     line-height: 20px;
     margin-right: 5px; }
-    .popup-buttons .button:last-child {
+    .popup-buttons .button:last-child, .popup-buttons .primary-btn:last-child {
       margin-right: 0px; }
 
 .popup-open {
@@ -6357,8 +6406,9 @@ a.item-content {
 .item-button-left {
   padding-left: 72px; }
 
-.item-button-left > .button,
-.item-button-left .item-content > .button {
+.item-button-left > .button, .item-button-left > .primary-btn,
+.item-button-left .item-content > .button,
+.item-button-left .item-content > .primary-btn {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -6377,14 +6427,18 @@ a.item-content {
   min-height: 32px;
   font-size: 18px;
   line-height: 32px; }
-  .item-button-left > .button .icon:before,
-  .item-button-left .item-content > .button .icon:before {
+  .item-button-left > .button .icon:before, .item-button-left > .primary-btn .icon:before,
+  .item-button-left .item-content > .button .icon:before,
+  .item-button-left .item-content > .primary-btn .icon:before {
     position: relative;
     left: auto;
     width: auto;
     line-height: 31px; }
-  .item-button-left > .button > .button,
-  .item-button-left .item-content > .button > .button {
+  .item-button-left > .button > .button, .item-button-left > .primary-btn > .button, .item-button-left > .button > .primary-btn, .item-button-left > .primary-btn > .primary-btn,
+  .item-button-left .item-content > .button > .button,
+  .item-button-left .item-content > .primary-btn > .button,
+  .item-button-left .item-content > .button > .primary-btn,
+  .item-button-left .item-content > .primary-btn > .primary-btn {
     margin: 0px 2px;
     min-height: 32px;
     font-size: 18px;
@@ -6395,8 +6449,9 @@ a.item.item-button-right,
 button.item.item-button-right {
   padding-right: 80px; }
 
-.item-button-right > .button,
+.item-button-right > .button, .item-button-right > .primary-btn,
 .item-button-right .item-content > .button,
+.item-button-right .item-content > .primary-btn,
 .item-button-right > .buttons,
 .item-button-right .item-content > .buttons {
   display: -webkit-box;
@@ -6417,18 +6472,24 @@ button.item.item-button-right {
   min-height: 32px;
   font-size: 18px;
   line-height: 32px; }
-  .item-button-right > .button .icon:before,
+  .item-button-right > .button .icon:before, .item-button-right > .primary-btn .icon:before,
   .item-button-right .item-content > .button .icon:before,
+  .item-button-right .item-content > .primary-btn .icon:before,
   .item-button-right > .buttons .icon:before,
   .item-button-right .item-content > .buttons .icon:before {
     position: relative;
     left: auto;
     width: auto;
     line-height: 31px; }
-  .item-button-right > .button > .button,
+  .item-button-right > .button > .button, .item-button-right > .primary-btn > .button, .item-button-right > .button > .primary-btn, .item-button-right > .primary-btn > .primary-btn,
   .item-button-right .item-content > .button > .button,
+  .item-button-right .item-content > .primary-btn > .button,
+  .item-button-right .item-content > .button > .primary-btn,
+  .item-button-right .item-content > .primary-btn > .primary-btn,
   .item-button-right > .buttons > .button,
-  .item-button-right .item-content > .buttons > .button {
+  .item-button-right > .buttons > .primary-btn,
+  .item-button-right .item-content > .buttons > .button,
+  .item-button-right .item-content > .buttons > .primary-btn {
     margin: 0px 2px;
     min-width: 32px;
     min-height: 32px;
@@ -6622,9 +6683,9 @@ button.item.item-button-right {
   opacity: 0;
   -webkit-transform: translate3d(-21px, 0, 0);
   transform: translate3d(-21px, 0, 0); }
-  .item-left-edit .button {
+  .item-left-edit .button, .item-left-edit .primary-btn {
     height: 100%; }
-    .item-left-edit .button.icon {
+    .item-left-edit .button.icon, .item-left-edit .icon.primary-btn {
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
@@ -6650,10 +6711,10 @@ button.item.item-button-right {
   -webkit-transition-delay: 125ms;
   transition-delay: 125ms; }
 
-.item-delete .button.icon {
+.item-delete .button.icon, .item-delete .icon.primary-btn {
   color: #ef473a;
   font-size: 24px; }
-  .item-delete .button.icon:hover {
+  .item-delete .button.icon:hover, .item-delete .icon.primary-btn:hover {
     opacity: .7; }
 
 .item-right-edit {
@@ -6671,10 +6732,10 @@ button.item.item-button-right {
   opacity: 0;
   -webkit-transform: translate3d(75px, 0, 0);
   transform: translate3d(75px, 0, 0); }
-  .item-right-edit .button {
+  .item-right-edit .button, .item-right-edit .primary-btn {
     min-width: 50px;
     height: 100%; }
-    .item-right-edit .button.icon {
+    .item-right-edit .button.icon, .item-right-edit .icon.primary-btn {
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-box;
@@ -6697,7 +6758,7 @@ button.item.item-button-right {
       -webkit-transform: translate3d(0, 0, 0);
       transform: translate3d(0, 0, 0); }
 
-.item-reorder .button.icon {
+.item-reorder .button.icon, .item-reorder .icon.primary-btn {
   color: #444;
   font-size: 32px; }
 
@@ -6724,7 +6785,7 @@ button.item.item-button-right {
   right: 0;
   z-index: 1;
   height: 100%; }
-  .item-options .button {
+  .item-options .button, .item-options .primary-btn {
     height: 100%;
     border: none;
     border-radius: 0;
@@ -6738,7 +6799,7 @@ button.item.item-button-right {
     -webkit-align-items: center;
     -moz-align-items: center;
     align-items: center; }
-    .item-options .button:before {
+    .item-options .button:before, .item-options .primary-btn:before {
       margin: 0 auto; }
 
 /**
@@ -6910,7 +6971,7 @@ button.item.item-button-right {
   background-color: #444;
   color: #fff; }
 
-.button .badge {
+.button .badge, .primary-btn .badge {
   position: relative;
   top: -1px; }
 
@@ -7184,7 +7245,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "Lato", "Nunito", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif; }
+  font-family: "Lato", "Nunito", "Roboto Slab", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif; }
 
 .item-input {
   display: -webkit-box;
@@ -7216,7 +7277,7 @@ textarea {
     margin: 0;
     padding-right: 24px;
     background-color: transparent; }
-  .item-input .button .icon {
+  .item-input .button .icon, .item-input .primary-btn .icon {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 24px;
     -moz-box-flex: 0;
@@ -7292,7 +7353,7 @@ textarea {
   background: transparent;
   line-height: 18px; }
 
-.item-input-wrapper ~ .button {
+.item-input-wrapper ~ .button, .item-input-wrapper ~ .primary-btn {
   margin-left: 10.66667px; }
 
 .input-label {
@@ -8188,7 +8249,7 @@ progress {
  * Buttons
  * --------------------------------------------------
  */
-.button {
+.button, .primary-btn {
   border-color: #b2b2b2;
   background-color: #ccc;
   color: #444;
@@ -8207,281 +8268,281 @@ progress {
   font-size: 16px;
   line-height: 43px;
   cursor: pointer; }
-  .button:hover {
+  .button:hover, .primary-btn:hover {
     color: #444;
     text-decoration: none; }
-  .button.active, .button.activated {
+  .button.active, .active.primary-btn, .button.activated, .activated.primary-btn {
     border-color: #a2a2a2;
     background-color: #e5e5e5;
     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-  .button:after {
+  .button:after, .primary-btn:after {
     position: absolute;
     top: -6px;
     right: -6px;
     bottom: -6px;
     left: -6px;
     content: ' '; }
-  .button .icon {
+  .button .icon, .primary-btn .icon {
     vertical-align: top;
     pointer-events: none; }
-  .button .icon:before, .button.icon:before, .button.icon-left:before, .button.icon-right:before {
+  .button .icon:before, .primary-btn .icon:before, .button.icon:before, .icon.primary-btn:before, .button.icon-left:before, .icon-left.primary-btn:before, .button.icon-right:before, .icon-right.primary-btn:before {
     display: inline-block;
     padding: 0 0 0px 0;
     vertical-align: inherit;
     font-size: 24px;
     line-height: 42px;
     pointer-events: none; }
-  .button.icon-left:before {
+  .button.icon-left:before, .icon-left.primary-btn:before {
     float: left;
     padding-right: .2em;
     padding-left: 0; }
-  .button.icon-right:before {
+  .button.icon-right:before, .icon-right.primary-btn:before {
     float: right;
     padding-right: 0;
     padding-left: .2em; }
-  .button.button-block, .button.button-full {
+  .button.button-block, .button-block.primary-btn, .button.button-full, .button-full.primary-btn {
     margin-top: 10px;
     margin-bottom: 10px; }
-  .button.button-light {
+  .button.button-light, .button-light.primary-btn {
     border-color: #ddd;
     background-color: #ffffff;
     color: #444; }
-    .button.button-light:hover {
+    .button.button-light:hover, .button-light.primary-btn:hover {
       color: #444;
       text-decoration: none; }
-    .button.button-light.active, .button.button-light.activated {
+    .button.button-light.active, .button-light.active.primary-btn, .button.button-light.activated, .button-light.activated.primary-btn {
       border-color: #ccc;
       background-color: #fafafa;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-    .button.button-light.button-clear {
+    .button.button-light.button-clear, .button-light.button-clear.primary-btn {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #ddd; }
-    .button.button-light.button-icon {
+    .button.button-light.button-icon, .button-light.button-icon.primary-btn {
       border-color: transparent;
       background: none; }
-    .button.button-light.button-outline {
+    .button.button-light.button-outline, .button-light.button-outline.primary-btn {
       border-color: #ddd;
       background: transparent;
       color: #ddd; }
-      .button.button-light.button-outline.active, .button.button-light.button-outline.activated {
+      .button.button-light.button-outline.active, .button-light.button-outline.active.primary-btn, .button.button-light.button-outline.activated, .button-light.button-outline.activated.primary-btn {
         background-color: #ddd;
         box-shadow: none;
         color: #fff; }
-  .button.button-stable {
+  .button.button-stable, .button-stable.primary-btn {
     border-color: #b2b2b2;
     background-color: #ccc;
     color: #444; }
-    .button.button-stable:hover {
+    .button.button-stable:hover, .button-stable.primary-btn:hover {
       color: #444;
       text-decoration: none; }
-    .button.button-stable.active, .button.button-stable.activated {
+    .button.button-stable.active, .button-stable.active.primary-btn, .button.button-stable.activated, .button-stable.activated.primary-btn {
       border-color: #a2a2a2;
       background-color: #e5e5e5;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-    .button.button-stable.button-clear {
+    .button.button-stable.button-clear, .button-stable.button-clear.primary-btn {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #b2b2b2; }
-    .button.button-stable.button-icon {
+    .button.button-stable.button-icon, .button-stable.button-icon.primary-btn {
       border-color: transparent;
       background: none; }
-    .button.button-stable.button-outline {
+    .button.button-stable.button-outline, .button-stable.button-outline.primary-btn {
       border-color: #b2b2b2;
       background: transparent;
       color: #b2b2b2; }
-      .button.button-stable.button-outline.active, .button.button-stable.button-outline.activated {
+      .button.button-stable.button-outline.active, .button-stable.button-outline.active.primary-btn, .button.button-stable.button-outline.activated, .button-stable.button-outline.activated.primary-btn {
         background-color: #b2b2b2;
         box-shadow: none;
         color: #fff; }
-  .button.button-positive {
+  .button.button-positive, .button-positive.primary-btn {
     border-color: #c31727;
     background-color: #e62739;
     color: #fff; }
-    .button.button-positive:hover {
+    .button.button-positive:hover, .button-positive.primary-btn:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-positive.active, .button.button-positive.activated {
+    .button.button-positive.active, .button-positive.active.primary-btn, .button.button-positive.activated, .button-positive.activated.primary-btn {
       border-color: #c31727;
       background-color: #c31727;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-    .button.button-positive.button-clear {
+    .button.button-positive.button-clear, .button-positive.button-clear.primary-btn {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #e62739; }
-    .button.button-positive.button-icon {
+    .button.button-positive.button-icon, .button-positive.button-icon.primary-btn {
       border-color: transparent;
       background: none; }
-    .button.button-positive.button-outline {
+    .button.button-positive.button-outline, .button-positive.button-outline.primary-btn {
       border-color: #e62739;
       background: transparent;
       color: #e62739; }
-      .button.button-positive.button-outline.active, .button.button-positive.button-outline.activated {
+      .button.button-positive.button-outline.active, .button-positive.button-outline.active.primary-btn, .button.button-positive.button-outline.activated, .button-positive.button-outline.activated.primary-btn {
         background-color: #e62739;
         box-shadow: none;
         color: #fff; }
-  .button.button-calm {
+  .button.button-calm, .button-calm.primary-btn {
     border-color: #0a9dc7;
     background-color: #11c1f3;
     color: #fff; }
-    .button.button-calm:hover {
+    .button.button-calm:hover, .button-calm.primary-btn:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-calm.active, .button.button-calm.activated {
+    .button.button-calm.active, .button-calm.active.primary-btn, .button.button-calm.activated, .button-calm.activated.primary-btn {
       border-color: #0a9dc7;
       background-color: #0a9dc7;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-    .button.button-calm.button-clear {
+    .button.button-calm.button-clear, .button-calm.button-clear.primary-btn {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #11c1f3; }
-    .button.button-calm.button-icon {
+    .button.button-calm.button-icon, .button-calm.button-icon.primary-btn {
       border-color: transparent;
       background: none; }
-    .button.button-calm.button-outline {
+    .button.button-calm.button-outline, .button-calm.button-outline.primary-btn {
       border-color: #11c1f3;
       background: transparent;
       color: #11c1f3; }
-      .button.button-calm.button-outline.active, .button.button-calm.button-outline.activated {
+      .button.button-calm.button-outline.active, .button-calm.button-outline.active.primary-btn, .button.button-calm.button-outline.activated, .button-calm.button-outline.activated.primary-btn {
         background-color: #11c1f3;
         box-shadow: none;
         color: #fff; }
-  .button.button-assertive {
+  .button.button-assertive, .button-assertive.primary-btn {
     border-color: #e42112;
     background-color: #ef473a;
     color: #fff; }
-    .button.button-assertive:hover {
+    .button.button-assertive:hover, .button-assertive.primary-btn:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-assertive.active, .button.button-assertive.activated {
+    .button.button-assertive.active, .button-assertive.active.primary-btn, .button.button-assertive.activated, .button-assertive.activated.primary-btn {
       border-color: #e42112;
       background-color: #e42112;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-    .button.button-assertive.button-clear {
+    .button.button-assertive.button-clear, .button-assertive.button-clear.primary-btn {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #ef473a; }
-    .button.button-assertive.button-icon {
+    .button.button-assertive.button-icon, .button-assertive.button-icon.primary-btn {
       border-color: transparent;
       background: none; }
-    .button.button-assertive.button-outline {
+    .button.button-assertive.button-outline, .button-assertive.button-outline.primary-btn {
       border-color: #ef473a;
       background: transparent;
       color: #ef473a; }
-      .button.button-assertive.button-outline.active, .button.button-assertive.button-outline.activated {
+      .button.button-assertive.button-outline.active, .button-assertive.button-outline.active.primary-btn, .button.button-assertive.button-outline.activated, .button-assertive.button-outline.activated.primary-btn {
         background-color: #ef473a;
         box-shadow: none;
         color: #fff; }
-  .button.button-balanced {
+  .button.button-balanced, .button-balanced.primary-btn {
     border-color: #28a54c;
     background-color: #33cd5f;
     color: #fff; }
-    .button.button-balanced:hover {
+    .button.button-balanced:hover, .button-balanced.primary-btn:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-balanced.active, .button.button-balanced.activated {
+    .button.button-balanced.active, .button-balanced.active.primary-btn, .button.button-balanced.activated, .button-balanced.activated.primary-btn {
       border-color: #28a54c;
       background-color: #28a54c;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-    .button.button-balanced.button-clear {
+    .button.button-balanced.button-clear, .button-balanced.button-clear.primary-btn {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #33cd5f; }
-    .button.button-balanced.button-icon {
+    .button.button-balanced.button-icon, .button-balanced.button-icon.primary-btn {
       border-color: transparent;
       background: none; }
-    .button.button-balanced.button-outline {
+    .button.button-balanced.button-outline, .button-balanced.button-outline.primary-btn {
       border-color: #33cd5f;
       background: transparent;
       color: #33cd5f; }
-      .button.button-balanced.button-outline.active, .button.button-balanced.button-outline.activated {
+      .button.button-balanced.button-outline.active, .button-balanced.button-outline.active.primary-btn, .button.button-balanced.button-outline.activated, .button-balanced.button-outline.activated.primary-btn {
         background-color: #33cd5f;
         box-shadow: none;
         color: #fff; }
-  .button.button-energized {
+  .button.button-energized, .button-energized.primary-btn {
     border-color: #e6b500;
     background-color: #ffc900;
     color: #fff; }
-    .button.button-energized:hover {
+    .button.button-energized:hover, .button-energized.primary-btn:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-energized.active, .button.button-energized.activated {
+    .button.button-energized.active, .button-energized.active.primary-btn, .button.button-energized.activated, .button-energized.activated.primary-btn {
       border-color: #e6b500;
       background-color: #e6b500;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-    .button.button-energized.button-clear {
+    .button.button-energized.button-clear, .button-energized.button-clear.primary-btn {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #ffc900; }
-    .button.button-energized.button-icon {
+    .button.button-energized.button-icon, .button-energized.button-icon.primary-btn {
       border-color: transparent;
       background: none; }
-    .button.button-energized.button-outline {
+    .button.button-energized.button-outline, .button-energized.button-outline.primary-btn {
       border-color: #ffc900;
       background: transparent;
       color: #ffc900; }
-      .button.button-energized.button-outline.active, .button.button-energized.button-outline.activated {
+      .button.button-energized.button-outline.active, .button-energized.button-outline.active.primary-btn, .button.button-energized.button-outline.activated, .button-energized.button-outline.activated.primary-btn {
         background-color: #ffc900;
         box-shadow: none;
         color: #fff; }
-  .button.button-royal {
+  .button.button-royal, .button-royal.primary-btn {
     border-color: #6b46e5;
     background-color: #886aea;
     color: #fff; }
-    .button.button-royal:hover {
+    .button.button-royal:hover, .button-royal.primary-btn:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-royal.active, .button.button-royal.activated {
+    .button.button-royal.active, .button-royal.active.primary-btn, .button.button-royal.activated, .button-royal.activated.primary-btn {
       border-color: #6b46e5;
       background-color: #6b46e5;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-    .button.button-royal.button-clear {
+    .button.button-royal.button-clear, .button-royal.button-clear.primary-btn {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #886aea; }
-    .button.button-royal.button-icon {
+    .button.button-royal.button-icon, .button-royal.button-icon.primary-btn {
       border-color: transparent;
       background: none; }
-    .button.button-royal.button-outline {
+    .button.button-royal.button-outline, .button-royal.button-outline.primary-btn {
       border-color: #886aea;
       background: transparent;
       color: #886aea; }
-      .button.button-royal.button-outline.active, .button.button-royal.button-outline.activated {
+      .button.button-royal.button-outline.active, .button-royal.button-outline.active.primary-btn, .button.button-royal.button-outline.activated, .button-royal.button-outline.activated.primary-btn {
         background-color: #886aea;
         box-shadow: none;
         color: #fff; }
-  .button.button-dark {
+  .button.button-dark, .button-dark.primary-btn {
     border-color: #111;
     background-color: #444;
     color: #fff; }
-    .button.button-dark:hover {
+    .button.button-dark:hover, .button-dark.primary-btn:hover {
       color: #fff;
       text-decoration: none; }
-    .button.button-dark.active, .button.button-dark.activated {
+    .button.button-dark.active, .button-dark.active.primary-btn, .button.button-dark.activated, .button-dark.activated.primary-btn {
       border-color: #000;
       background-color: #262626;
       box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1); }
-    .button.button-dark.button-clear {
+    .button.button-dark.button-clear, .button-dark.button-clear.primary-btn {
       border-color: transparent;
       background: none;
       box-shadow: none;
       color: #444; }
-    .button.button-dark.button-icon {
+    .button.button-dark.button-icon, .button-dark.button-icon.primary-btn {
       border-color: transparent;
       background: none; }
-    .button.button-dark.button-outline {
+    .button.button-dark.button-outline, .button-dark.button-outline.primary-btn {
       border-color: #444;
       background: transparent;
       color: #444; }
-      .button.button-dark.button-outline.active, .button.button-dark.button-outline.activated {
+      .button.button-dark.button-outline.active, .button-dark.button-outline.active.primary-btn, .button.button-dark.button-outline.activated, .button-dark.button-outline.activated.primary-btn {
         background-color: #444;
         box-shadow: none;
         color: #fff; }
@@ -8515,7 +8576,7 @@ progress {
   min-width: initial;
   border-color: transparent;
   background: none; }
-  .button-icon.button.active, .button-icon.button.activated {
+  .button-icon.button.active, .button-icon.active.primary-btn, .button-icon.button.activated, .button-icon.activated.primary-btn {
     border-color: transparent;
     background: none;
     box-shadow: none;
@@ -8556,7 +8617,7 @@ progress {
       box-shadow: none;
       color: #fff; }
 
-.padding > .button.button-block:first-child {
+.padding > .button.button-block:first-child, .padding > .button-block.primary-btn:first-child {
   margin-top: 0; }
 
 .button-block {
@@ -8566,7 +8627,8 @@ progress {
     clear: both; }
 
 .button-full,
-.button-full > .button {
+.button-full > .button,
+.button-full > .primary-btn {
   display: block;
   margin-right: 0;
   margin-left: 0;
@@ -8577,16 +8639,19 @@ progress {
 button.button-block,
 button.button-full,
 .button-full > button.button,
-input.button.button-block {
+.button-full > button.primary-btn,
+input.button.button-block,
+input.button-block.primary-btn {
   width: 100%; }
 
-a.button {
+a.button, a.primary-btn {
   text-decoration: none; }
-  a.button .icon:before, a.button.icon:before, a.button.icon-left:before, a.button.icon-right:before {
+  a.button .icon:before, a.primary-btn .icon:before, a.button.icon:before, a.icon.primary-btn:before, a.button.icon-left:before, a.icon-left.primary-btn:before, a.button.icon-right:before, a.icon-right.primary-btn:before {
     margin-top: 2px; }
 
-.button.disabled,
-.button[disabled] {
+.button.disabled, .disabled.primary-btn,
+.button[disabled],
+[disabled].primary-btn {
   opacity: .4;
   cursor: default !important;
   pointer-events: none; }
@@ -8619,12 +8684,12 @@ a.button {
       line-height: 0; }
     .button-bar.button-bar-inline:after {
       clear: both; }
-    .button-bar.button-bar-inline > .button {
+    .button-bar.button-bar-inline > .button, .button-bar.button-bar-inline > .primary-btn {
       width: auto;
       display: inline-block;
       float: left; }
 
-.button-bar > .button {
+.button-bar > .button, .button-bar > .primary-btn {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -moz-box-flex: 1;
@@ -8640,12 +8705,13 @@ a.button {
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap; }
-  .button-bar > .button:before,
-  .button-bar > .button .icon:before {
+  .button-bar > .button:before, .button-bar > .primary-btn:before,
+  .button-bar > .button .icon:before,
+  .button-bar > .primary-btn .icon:before {
     line-height: 44px; }
-  .button-bar > .button:first-child {
+  .button-bar > .button:first-child, .button-bar > .primary-btn:first-child {
     border-radius: 0px 0px 0px 0px; }
-  .button-bar > .button:last-child {
+  .button-bar > .button:last-child, .button-bar > .primary-btn:last-child {
     border-right-width: 1px;
     border-radius: 0px 0px 0px 0px; }
 

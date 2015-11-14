@@ -26,12 +26,14 @@ $color7:#B0B0B0;
 $color8:#B7b7b7;
 $font-family-sans-serif: "Lato",
 "Nunito",
+"Roboto Slab",
 "Helvetica Neue",
 "Roboto",
 "Segoe UI",
 sans-serif !default;
 $font-family-light-sans-serif: "Lato-light",
 "Nunito",
+"Roboto Slab",
 "HelveticaNeue-Light",
 "Roboto-Light",
 "Segoe UI-Light",
@@ -70,13 +72,19 @@ $transition-time) {
     filter: $properties, webkit moz spec;
 }
 
+@mixin size($width,
+$height: $width) {
+    width: $width;
+    height: $height;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: nunito !important;
+    font-family: Roboto Slab !important;
 }
 
 //***** Font Famliy ********
@@ -132,8 +140,30 @@ a {
 //button
 .button {
     font-weight: $font-weight;
-    min-height: 40px;
-    line-height: 44px;
+    min-height: 40px !important;
+    line-height: 40px !important;
+}
+
+.primary-btn {
+    @extend .button;
+    padding: 0 18px !important;
+    font-size: 15px!important;
+    border-radius: 4px!important;
+}
+
+//slider
+.slider-pager-page {
+    color: $positive !important;
+}
+
+//popup
+.popup-body {
+    padding: 20px !important;
+    overflow: auto;
+}
+
+.popup {
+    height: 175px
 }
 
 //input 
@@ -143,12 +173,13 @@ a {
     font-size: $font-size-base;
     padding-right: 20px !important;
 }
-.tabs-color-light{
-    .tab-item{
-        color:$light !important; 
+
+.tabs-color-light {
+    .tab-item {
+        color: $light !important;
     }
-   
 }
+
 .item {
     font-size: $font-size-base;
 }
@@ -165,8 +196,8 @@ a {
     padding: 0 !important;
 }
 
-marzero {
-    margin: 0;
+.marzero {
+    margin: 0 !important;
 }
 
 .logo {
@@ -262,9 +293,7 @@ marzero {
 }
 
 .user-back {
-    width: 70px;
-    height: 70px;
-    border-radius: 3px;
+    @include size(70px) border-radius: 3px;
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
@@ -304,11 +333,11 @@ marzero {
 }
 
 .h4 {
-    font-family: nunito !important;
+    font-family: roboto slab !important;
     font-size: 17px !important;
     color: $color6 !important;
     text-transform: capitalize;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
 }
 
 .mtop {
@@ -335,9 +364,7 @@ marzero {
 }
 
 .noti-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
+    @include size(50px) border-radius: 100%;
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
@@ -363,7 +390,7 @@ marzero {
         border-width: 0px !important;
         border-color: #f8f8f8;
         border-style: none !important;
-        font-family: nunito;
+        font-family: roboto slab;
     }
 }
 
@@ -371,7 +398,7 @@ marzero {
     font-size: 13px;
     font-weight: 100;
     color: $color8;
-    font-family: nunito;
+    font-family: roboto slab;
     i {
         color: $color8;
         padding-right: 6px;
@@ -431,19 +458,18 @@ marzero {
 
 .bg-layer {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
+    @include size(100%) top: 0;
     left: 0;
 }
 
 .bg-black {
-    background: rgba(0, 0, 0, 0.58);;
+    background: rgba(0, 0, 0, 0.58);
+    ;
 }
 
 .hos-name {
     position: relative;
-    padding: 10px 0px 0px 10px;
+    padding: 16px 0px 0px 16px;
     height: 160px;
     h4 {
         color: $light;
@@ -458,9 +484,47 @@ marzero {
         font-weight: $font-weight;
         margin: 0;
         font-size: 13px;
-  
-        i{
+        i {
             padding-right: 5px;
         }
     }
+}
+
+.pop {
+    .ln-circle-checkmark,
+    .ln-circle-cross {
+        font-size: 40px;
+        color: $positive;
+        padding-top: 28px;
+    }
+    .popup-head {
+        padding: 10px 10px;
+        background: $color3;
+    }
+}
+
+.bord {
+    .list {
+        .item {
+            &:first-child {
+                border-top-left-radius: 4px !important;
+                border-top-right-radius: 4px !important;
+            }
+            &:last-child {
+                border-bottom-left-radius: 4px !important;
+                border-bottom-right-radius: 4px !important;
+            }
+        }
+    }
+}
+
+.m-list {
+    .h-w {
+        @extend .user-back;
+        @include size(45px)
+    }
+}
+
+.m12 {
+    margin-top: 12px;
 }

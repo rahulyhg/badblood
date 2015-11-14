@@ -49,6 +49,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             }
         })  
+        .state('app.family', {
+            url: '/family',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/family.html',
+                    controller: 'FamilyCtrl'
+                }
+            }
+        })  
         .state('app.hospital', {
             url: '/hospital',
             views: {
