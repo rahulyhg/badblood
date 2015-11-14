@@ -1,5 +1,17 @@
 <ion-view view-title="Register">
-    <ion-content>
+       <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+        <div class="tabs">
+            <a class="tab-item {{classa}}" ng-click="tabchange('video',1)">
+                <span>New User</span>
+            </a>
+            <a class="tab-item {{classb}}" ng-click="tabchange('event',2)">
+                <span>Already Member</span>
+            </a>
+   
+        </div>
+    </div>
+    <ion-content class="has-tabs-top">
+<!--
         <div class="pro-back ">
             <div class="user-back post" ng-style="{'background-image':'url(../img/user1.png)'}">
 
@@ -81,5 +93,6 @@
         </div>
             
         </div>
+-->
     </ion-content>
 </ion-view>

@@ -70,6 +70,9 @@ a {
   font-size: 14px;
   padding-right: 20px !important; }
 
+.tabs-color-light .tab-item {
+  color: #ffffff !important; }
+
 .item {
   font-size: 14px; }
 
@@ -248,10 +251,10 @@ marzero {
 .span {
   font-size: 13px;
   font-weight: 100;
-  color: #B7B7B7;
+  color: #B7b7b7;
   font-family: nunito; }
   .span i {
-    color: #B7B7B7;
+    color: #B7b7b7;
     padding-right: 6px;
     vertical-align: baseline; }
 
@@ -311,13 +314,13 @@ marzero {
   padding: 10px 0px 0px 10px;
   height: 160px; }
   .hos-name h4 {
-    color: #fff;
+    color: #ffffff;
     font-weight: 300;
     font-size: 15px;
     margin: 0px;
     padding-bottom: 10px; }
   .hos-name p {
-    color: #fff;
+    color: #ffffff;
     line-height: 150%;
     font-weight: 300;
     margin: 0;
