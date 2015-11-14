@@ -1,0 +1,90 @@
+<ion-view view-title="Activity">
+    <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+        <div class="tabs">
+            <a class="tab-item {{classa}}" ng-click="tabchange('fresh',1)">
+                <span>Fresh Blood</span>
+            </a>
+            <a class="tab-item {{classb}}" ng-click="tabchange('regular',2)">
+                <span>Regular Blood</span>
+            </a>
+
+        </div>
+    </div>
+    <ion-content class="has-tabs-top">
+        <div class="video" ng-show="tab=='fresh'">
+            <div class="text-center m40">
+                <h4 style="color:#E62739">Fill Your Requirements</h4>
+            </div>
+            <div class="login-form padding regi-user">
+                <div class="list login-user custom-border">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Area Name">
+                    </label>
+                    <label class="item item-input">
+                        <input type="text" placeholder="Hospital Name">
+                    </label>
+                    <label class="item item-input">
+                        <input type="number" placeholder="Number Of Bottle">
+                    </label>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Blood Group
+                        </div>
+                        <select>
+                            <option selected>A</option>
+                            <option>B</option>
+                            <option>O</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="text-center m12">
+                    <button class="button primary-btn button-positive">
+                        Request
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="video" ng-show="tab=='regular'">
+            <div class="text-center m40">
+                <h4 style="color:#E62739">Fill Your Requirements</h4>
+            </div>
+            <div class="login-form padding regi-user">
+                <div class="list login-user custom-border">
+                    <label class="item item-input">
+                        <input type="text" placeholder="Area Name">
+                    </label>
+                           <label class="item item-input item-select">
+                        <div class="input-label">
+                            Hospital
+                        </div>
+                        <select>
+                            <option selected>Lilawati Hospital</option>
+                            <option>Sion Hospital</option>
+                            <option>Dadar Hospital</option>
+                        </select>
+                    </label>
+                    <label class="item item-input">
+                        <input type="number" placeholder="Number Of Bottle">
+                    </label>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Blood Group
+                        </div>
+                        <select>
+                            <option selected>A</option>
+                            <option>B</option>
+                            <option>O</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="text-center m12">
+                    <button class="button primary-btn button-positive">
+                        Request
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

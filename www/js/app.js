@@ -40,6 +40,24 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                      controller: 'EmergencyCtrl'
                 }
             }
+        })   
+        .state('app.needblood', {
+            url: '/needblood',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/needblood.html',
+                     controller: 'NeedbloodCtrl'
+                }
+            }
+        })   
+        .state('app.activity', {
+            url: '/activity',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/activity.html',
+                     controller: 'ActivityCtrl'
+                }
+            }
         })  
         .state('app.register', {
             url: '/register',

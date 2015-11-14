@@ -67,7 +67,7 @@ a {
 .primary-btn {
   padding: 0 18px !important;
   font-size: 15px !important;
-  border-radius: 4px !important; }
+  border-radius: 4px; }
 
 .slider-pager-page {
   color: #e62739 !important; }
@@ -166,6 +166,9 @@ a {
       background: #bbbbbb !important; }
     .menus .item .badge {
       font-weight: 300;
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      -ms-border-radius: 2px;
       border-radius: 2px; }
 
 .padd30 {
@@ -174,14 +177,18 @@ a {
 .user-back, .m-list .h-w {
   width: 70px;
   height: 70px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
   border-radius: 3px;
   overflow: hidden;
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  -ms-background-size: cover;
   margin: 0 auto; }
 
 .user-setting {
@@ -237,14 +244,18 @@ a {
 .noti-img {
   width: 50px;
   height: 50px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
   border-radius: 100%;
   overflow: hidden;
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  -ms-background-size: cover;
   position: absolute;
   left: 10px;
   top: 18px; }
@@ -277,7 +288,11 @@ a {
   background: url("../img/background/1.jpg") no-repeat center center;
   position: relative;
   height: 146px;
-  background-size: cover; }
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover; }
 
 .post, .posts {
   position: absolute;
@@ -288,7 +303,7 @@ a {
 .posts {
   position: absolute !important;
   transform: translateX(50%) !important;
-  border-radius: 100% !important;
+  border-radius: 100%;
   font-size: 19px !important;
   padding: 1px 0px 2px 2px !important;
   min-width: 26px !important;
@@ -308,9 +323,16 @@ a {
   @extent .noti-img;
   width: 100%;
   height: 160px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
   border-radius: 0px;
   position: relative;
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%); }
 
@@ -384,6 +406,11 @@ a {
   padding: 0px 20px !important;
   line-height: 16px !important;
   min-height: 30px !important; }
+
+.custom-border .item {
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px; }
 
 /*!
   Ionicons, v2.0.1

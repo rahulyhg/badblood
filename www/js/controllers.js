@@ -14,9 +14,35 @@ angular.module('starter.controllers', [])
     })
     .controller('LoginCtrl', function ($scope) {
 
+    })  
+    .controller('NeedbloodCtrl', function ($scope, $ionicScrollDelegate) {
+//    tab change
+    
+        $scope.tab = 'fresh';
+    $scope.classa = 'active';
+    $scope.classb = '';
+
+    $scope.tabchange = function(tab, a) {
+        //        console.log(tab);
+        $scope.tab = tab;
+        if (a == 1) {
+            $ionicScrollDelegate.scrollTop();
+            $scope.classa = "active";
+            $scope.classb = '';
+        } else {
+            $ionicScrollDelegate.scrollTop();
+            $scope.classa = '';
+        
+            $scope.classb = "active";
+        }
+    };
     })
     .controller('SignupCtrl', function ($scope) {
 
+    })   
+    .controller('ActivityCtrl', function ($scope) {
+
+    
     }) 
     .controller('RegisterCtrl', function ($scope, $ionicScrollDelegate, $ionicPopup, $timeout) {
 

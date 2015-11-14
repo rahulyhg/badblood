@@ -62,7 +62,12 @@ $transition-time) {
     -o-transition: $transition-property $transition-time;
     transition: $transition-property $transition-time;
 }
-
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
 @function grayscale($value) {
     @return #{ "grayscale(" + $value + ")" };
 }
@@ -70,6 +75,15 @@ $transition-time) {
 @mixin filter($properties) {
     // Your vendor prefixing stuff here, I am using Bourbon:
     filter: $properties, webkit moz spec;
+}
+
+@mixin  background-size($size) {
+    // Your vendor prefixing stuff here, I am using Bourbon:
+    background-size: $size;
+    -webkit-background-size: $size;
+    -moz-background-size: $size;
+    -o-background-size: $size;
+    -ms-background-size: $size;
 }
 
 @mixin size($width,
@@ -148,7 +162,8 @@ a {
     @extend .button;
     padding: 0 18px !important;
     font-size: 15px!important;
-    border-radius: 4px!important;
+  border-radius: 4px;
+//    @include border-radius(4px)!important;
 }
 
 //slider
@@ -283,7 +298,7 @@ a {
         }
         .badge {
             font-weight: $font-weight;
-            border-radius: 2px;
+            @include border-radius(2px);
         }
     }
 }
@@ -293,15 +308,13 @@ a {
 }
 
 .user-back {
-    @include size(70px) border-radius: 3px;
+    @include size(70px) 
+        @include border-radius(3px);
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    margin: 0 auto;
+    @include background-size(cover);
+        margin: 0 auto;
 }
 
 .user-setting {
@@ -364,14 +377,12 @@ a {
 }
 
 .noti-img {
-    @include size(50px) border-radius: 100%;
+    @include size(50px) 
+        @include border-radius(100%);
     overflow: hidden;
     background-position: center center;
     background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    @include background-size(cover);
     position: absolute;
     left: 10px;
     top: 18px;
@@ -410,7 +421,7 @@ a {
     background: $pro-bg-image;
     position: relative;
     height: 146px;
-    background-size: cover;
+     @include background-size(cover);
 }
 
 .post {
@@ -424,7 +435,7 @@ a {
     @extend .post;
     position: absolute !important;
     transform: translateX(50%) !important;
-    border-radius: 100% !important;
+    border-radius: 100%;
     font-size: 19px !important;
     padding: 1px 0px 2px 2px !important;
     min-width: 26px !important;
@@ -449,9 +460,9 @@ a {
     @extent .noti-img;
     width: 100%;
     height: 160px;
-    border-radius: 0px;
+     @include border-radius(0px);
     position: relative;
-    background-size: cover;
+    @include background-size(cover);
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
 }
@@ -464,7 +475,7 @@ a {
 
 .bg-black {
     background: rgba(0, 0, 0, 0.58);
-    ;
+   
 }
 
 .hos-name {
@@ -532,20 +543,29 @@ a {
 .f-title {
     margin-bottom: 10px;
 }
-.pclass{
-    h2{
+
+.pclass {
+    h2 {
         margin-bottom: 12px !important;
     }
-    p{
-        color:$color7 !important;
+    p {
+        color: $color7 !important;
         line-height: 150%;
-        i{
+        i {
             padding-right: 8px;
         }
     }
 }
-.sm-btn{
-    padding: 0px 20px !important; 
+
+.sm-btn {
+    padding: 0px 20px !important;
     line-height: 16px !important;
     min-height: 30px !important;
+}
+.custom-border{
+    .item{
+        border-left: 0px;
+        border-right: 0px;
+        border-top: 0px;
+    }
 }
