@@ -182,8 +182,10 @@ angular.module('starter.controllers', [])
     }];
 
     $scope.slider = [{
-        image: "img/slider/1.jpg",
+        image: "img/slider/5.jpg",
 
+    }, {
+        image: "img/slider/1.jpg",
     }, {
         image: "img/slider/3.jpg",
     }, {

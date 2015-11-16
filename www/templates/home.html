@@ -1,6 +1,6 @@
 <ion-view view-title="Home">
     <ion-content>
-        <ion-slide-box on-slide-changed="slideHasChanged($index)">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true">
             <ion-slide ng-repeat="slid in slider">
                 <img ng-src="{{slid.image}}" class="full-image">
             </ion-slide>
