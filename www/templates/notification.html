@@ -1,0 +1,16 @@
+<ion-view view-title="Notification">
+  <ion-content>
+        <div class="noti-list ">
+            <div class="list" ng-repeat="noti in notification">
+
+                <a class="item item-avatar" ui-sref="app.notidetail">
+                    <div class="noti-img" ng-style="{'background-image':'url({{noti.image}})'}"></div>
+                    <h2>{{noti.title}}</h2>
+                    <p>{{noti.desc}}</p>
+                    <span class="span"><i class="ln-clock3"></i>2 Days ago</span>
+                </a>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

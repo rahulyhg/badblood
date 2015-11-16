@@ -58,6 +58,33 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                      controller: 'ActivityCtrl'
                 }
             }
+        })        
+        .state('app.notification', {
+            url: '/notification',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/notification.html',
+                     controller: 'NotificationCtrl'
+                }
+            }
+        })  
+        .state('app.notidetail', {
+            url: '/notidetail',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/notidetail.html',
+                     controller: 'NotidetailCtrl'
+                }
+            }
+        })   
+        .state('app.actdetail', {
+            url: '/actdetail',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/actdetail.html',
+                     controller: 'ActdetailCtrl'
+                }
+            }
         })  
         .state('app.register', {
             url: '/register',

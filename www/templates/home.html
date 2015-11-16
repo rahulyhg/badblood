@@ -17,7 +17,7 @@
         <div class="noti-list">
             <div class="list" ng-repeat="noti in notification">
 
-                <a class="item item-avatar" href="#" >
+                <a class="item item-avatar" ui-sref="app.notidetail" >
                     <div class="noti-img" ng-style="{'background-image':'url({{noti.image}})'}"></div>
                     <h2>{{noti.title}}</h2>
                     <p>{{noti.desc}}</p>
