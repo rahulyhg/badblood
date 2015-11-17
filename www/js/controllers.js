@@ -12,10 +12,29 @@ angular.module('starter.controllers', [])
 
     }];
     })
-    .controller('LoginCtrl', function ($scope) {
+    .controller('LoginCtrl', function ($scope, $ionicPopup, $timeout) {
+        //popup success
+        $scope.showSuccess = function () {
 
+            var alertPopup = $ionicPopup.alert({
+                scope:$scope,
+                templateUrl: 'templates/forgetpassword.html',
+
+            });
+            alertPopup.then(function (res) {
+
+                console.log('Thanks');
+
+            });
+            $scope.closPop = function () {
+                console.log("Close called");
+                alertPopup.close();
+            };
+
+        };
     })
-    .controller('NeedbloodCtrl', function ($scope, $ionicScrollDelegate) {
+
+.controller('NeedbloodCtrl', function ($scope, $ionicScrollDelegate) {
         //    tab change
 
         $scope.tab = 'fresh';
@@ -137,27 +156,50 @@ angular.module('starter.controllers', [])
     })
     .controller('HospitalCtrl', function ($scope) {
 
-    })   
+    })
     .controller('NotidetailCtrl', function ($scope) {
 
-    })  
+    })
     .controller('ActdetailCtrl', function ($scope) {
 
     })
+    .controller('AboutCtrl', function ($scope) {
+
+    })
+    .controller('ContactCtrl', function ($scope, $ionicPopup, $timeout) {
+        //popup success
+        $scope.showSuccess = function () {
+
+            var alertPopup = $ionicPopup.alert({
+                templateUrl: 'templates/successsend.html',
+
+            });
+
+            alertPopup.then(function (res) {
+
+                console.log('Thanks');
+
+            });
+            $timeout(function () {
+                alertPopup.close(); //close the popup after 3 seconds for some reason
+            }, 2000);
+
+        };
+    })
     .controller('NotificationCtrl', function ($scope) {
-    $scope.notification = [{
-        image: "img/slider/3.jpg",
-        title: "Lorem ipsum dolor",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        $scope.notification = [{
+            image: "img/slider/3.jpg",
+            title: "Lorem ipsum dolor",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
 
     }, {
-        image: "img/slider/4.jpg",
-        title: "Lorem ipsum dolor",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            image: "img/slider/4.jpg",
+            title: "Lorem ipsum dolor",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
     }, {
-        image: "img/slider/1.jpg",
-        title: "Lorem ipsum dolor",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            image: "img/slider/1.jpg",
+            title: "Lorem ipsum dolor",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
     }];
     })
     .controller('FamilyCtrl', function ($scope) {

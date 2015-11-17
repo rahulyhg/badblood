@@ -85,6 +85,24 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                      controller: 'ActdetailCtrl'
                 }
             }
+        })    
+        .state('app.about', {
+            url: '/about',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/about.html',
+                     controller: 'AboutCtrl'
+                }
+            }
+        }) 
+        .state('app.contact', {
+            url: '/contact',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/contact.html',
+                     controller: 'ContactCtrl'
+                }
+            }
         })  
         .state('app.register', {
             url: '/register',

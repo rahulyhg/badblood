@@ -164,7 +164,7 @@ a {
     @extend .button;
     padding: 0 18px !important;
     font-size: 15px!important;
-    border-radius: 4px;
+    border-radius: 4px !important;
     //    @include border-radius(4px)!important;
 }
 
@@ -180,7 +180,7 @@ a {
 }
 
 .popup {
-    height: 175px
+    height: 200px
 }
 
 //item
@@ -568,10 +568,15 @@ a {
     }
 }
 
+.w50 {
+    width: 50px;
+}
+
 .sm-btn {
     padding: 0px 20px !important;
     line-height: 16px !important;
     min-height: 30px !important;
+    border-radius: 4px !important;
 }
 
 .custom-border {
@@ -633,7 +638,47 @@ ul {
         }
     }
 }
-.h3{
-        margin: 0px !important;
-    color:$positive !important;
+
+.h3 {
+    margin: 0px !important;
+    color: $positive !important;
+}
+
+.font-chng {
+    font-weight: 400;
+    text-transform: capitalize;
+    color: $color1;
+}
+
+.forms {
+    .item-input {
+        padding: 6px 0 5px 0px !important;
+    }
+    .input-label {
+        font-weight: 100;
+        font-size: 14px;
+        color: $color7;
+        text-transform: uppercase;
+    }
+    textarea {
+        border: 1px solid #ddd;
+        color: $color8;
+    }
+}
+
+.padding20 {
+    padding: 10px 20px;
+}
+
+.bor {
+    input {
+        border: 1px solid #ddd !important;
+        font-size: 13px !important;
+        padding: 0px 0px 0px 8px !important;
+    }
+}
+
+.right {
+    position: absolute;
+    right: 10px;
 }
