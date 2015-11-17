@@ -103,6 +103,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                      controller: 'ContactCtrl'
                 }
             }
+        })    
+        .state('app.profile', {
+            url: '/profile',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/profile.html',
+                     controller: 'ProfileCtrl'
+                }
+            }
         })  
         .state('app.register', {
             url: '/register',

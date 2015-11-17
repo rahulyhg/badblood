@@ -39,6 +39,7 @@ $font-family-light-sans-serif: "Lato-light",
 "Segoe UI-Light",
 sans-serif-light !default;
 $pro-bg-image:url('../img/background/1.jpg') no-repeat center center;
+$pro-bg-images:url('../img/background/4.jpg') no-repeat center center;
 $card-box-shadow: none !default;
 $border-radius-base: 0px !default;
 $border-radius-large: 0px !default;
@@ -677,8 +678,12 @@ ul {
         padding: 0px 0px 0px 8px !important;
     }
 }
-
+ 
 .right {
     position: absolute;
     right: 10px;
+}
+.bkp{
+    @exdend .pro-back;
+    background: $pro-bg-images;
 }

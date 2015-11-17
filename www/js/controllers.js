@@ -165,6 +165,9 @@ angular.module('starter.controllers', [])
     })
     .controller('AboutCtrl', function ($scope) {
 
+    })   
+    .controller('ProfileCtrl', function ($scope) {
+
     })
     .controller('ContactCtrl', function ($scope, $ionicPopup, $timeout) {
         //popup success

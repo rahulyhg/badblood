@@ -488,6 +488,10 @@ ul {
   position: absolute;
   right: 10px; }
 
+.bkp {
+  @exdend .pro-back;
+  background: url("../img/background/4.jpg") no-repeat center center; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
