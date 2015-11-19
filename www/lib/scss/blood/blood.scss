@@ -101,7 +101,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: Roboto Slab !important;
+    font-family: 'Roboto Slab' !important;
 }
 
 //***** Font Famliy ********
@@ -122,7 +122,36 @@ h6 {
     src: url(../fonts/Lato-Regular.ttf);
     font-weight: 400;
 }
-
+@font-face {
+    font-family: 'Nunito';
+    src: url(../fonts/Nunito-Bold.ttf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Nunito';
+    src: url(../fonts/Nunito-Light.ttf);
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Nunito';
+    src: url(../fonts/Nunito-Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url(../fonts/RobotoSlab-Bold.ttf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url(../fonts/RobotoSlab-Light.ttf);
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url(../fonts/RobotoSlab-Regular.ttf);
+    font-weight: 400;
+}
 a {
     text-decoration: none;
 }
@@ -134,7 +163,11 @@ a {
     //        font-weight: $font-weight;
     //    }
 }
+.bar .title {
+    font-size: 16px !important;
 
+    font-family: 'roboto slab';
+}
 // Social Buttons
 .button.button-positive-facebook {
     border-color: $facebook;
@@ -197,7 +230,7 @@ a {
     }
 }
 
-//input 
+//input
 .input-tag {
     color: $base-color !important;
     font-weight: $font-weight;
@@ -584,10 +617,16 @@ a {
     .item {
         border-left: 0px;
         border-right: 0px;
-        border-top: 0px;
+        // border-top: 0px;
+        // border-width: 0px !important;
+        &:first-child{
+          border-top: none;
+        }
     }
 }
-
+.nbtp{
+  border-top: 0px;
+}
 .act-img {
     @extend .noti-img;
     border-radius: 4px;
@@ -678,7 +717,7 @@ ul {
         padding: 0px 0px 0px 8px !important;
     }
 }
- 
+
 .right {
     position: absolute;
     right: 10px;
