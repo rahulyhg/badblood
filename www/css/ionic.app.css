@@ -538,6 +538,9 @@ ion-item.item.item-complex.actives {
   .actives i {
     color: #e62739 !important; }
 
+.m-rg {
+  padding: 0px 16px; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

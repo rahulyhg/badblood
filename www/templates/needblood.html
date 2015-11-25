@@ -1,34 +1,35 @@
 <ion-view view-title="Need Blood">
-    <div class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
-        <div class="tabs">
-            <a class="tab-item {{classa}}" ng-click="tabchange('fresh',1)">
-                <span>Fresh Blood</span>
-            </a>
-            <a class="tab-item {{classb}}" ng-click="tabchange('regular',2)">
-                <span>Regular Blood</span>
-            </a>
-
-        </div>
-    </div>
-    <ion-content class="has-tabs-top">
-        <div class="video" ng-show="tab=='fresh'">
+    <ion-content>
+        <div class="video" >
             <div class="text-center m40">
                 <h4 style="color:#E62739">Fill Your Requirements</h4>
             </div>
             <div class="login-form padding regi-user">
                 <div class="list login-user custom-border">
-                    <label class="item item-input">
-                        <input type="text" placeholder="Donar Id">
-                    </label>
-                    <label class="item item-input" class="nbtp">
-                        <input type="text" placeholder="Area Name">
+                         <label class="item item-input">
+                        <input type="text" placeholder="Patient Name">
                     </label>
                     <label class="item item-input">
+                        <input type="text" placeholder="Relation with Patient">
+                    </label>
+                       <label class="item item-input" class="nbtp">
                         <input type="text" placeholder="Hospital Name">
                     </label>
-                    <label class="item item-input">
-                        <input type="number" placeholder="Number Of Bottle">
+                    <label class="item item-input" class="nbtp">
+                        <input type="text" placeholder="Number of Bottle - Unit">
                     </label>
+                            <label class="item item-input item-select">
+                        <div class="input-label">
+                            Blood Type
+                        </div>
+                        <select>
+                            <option selected>Fresh Blood</option>
+                            <option>Plasma</option>
+                            <option>White Cell</option>
+                        
+                        </select>
+                    </label>
+         
                     <label class="item item-input item-select">
                         <div class="input-label">
                             Blood Group
@@ -44,6 +45,16 @@
                             <option>O -</option>
                         </select>
                     </label>
+                               <label class="item item-input">
+                        <input type="number" placeholder="Donor Id or Family Id or Mobile Number">
+                    </label>
+             <label class="item item-input" style="display: block;border-bottom:none;">
+                            <span class="input-label">Comment</span>
+                 <div class="m-rg">
+                       <textarea rows="6" cols="30" style="    border: 1px solid #ddd;" class="padding"></textarea>
+                 </div>
+                          
+                        </label>
                 </div>
                 <div class="text-center m12">
                     <button class="button primary-btn button-positive">
@@ -53,54 +64,6 @@
 
             </div>
         </div>
-        <div class="video" ng-show="tab=='regular'">
-            <div class="text-center m40">
-                <h4 style="color:#E62739">Fill Your Requirements</h4>
-            </div>
-            <div class="login-form padding regi-user">
-                <div class="list login-user custom-border">
-                    <label class="item item-input">
-                        <input type="text" placeholder="Donar Id">
-                    </label>
-                    <label class="item item-input">
-                        <input type="text" placeholder="Area Name">
-                    </label>
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                            Hospital
-                        </div>
-                        <select>
-                            <option selected>Lilawati Hospital</option>
-                            <option>Sion Hospital</option>
-                            <option>Dadar Hospital</option>
-                        </select>
-                    </label>
-                    <label class="item item-input">
-                        <input type="number" placeholder="Number Of Bottle">
-                    </label>
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                            Blood Group
-                        </div>
-                        <select>
-                            <option selected>A +</option>
-                            <option>A -</option>
-                            <option>B +</option>
-                            <option>B -</option>
-                            <option>AB +</option>
-                            <option>AB -</option>
-                            <option>O +</option>
-                            <option>O -</option>
-                        </select>
-                    </label>
-                </div>
-                <div class="text-center m12">
-                    <button class="button primary-btn button-positive">
-                        Request
-                    </button>
-                </div>
 
-            </div>
-        </div>
     </ion-content>
 </ion-view>
