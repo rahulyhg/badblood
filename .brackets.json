@@ -1,0 +1,6 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/debug/www/cordova.js",
+        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/debug/www/cordova_plugins.js"
+    ]
+}

@@ -156,6 +156,9 @@ angular.module('starter.controllers', [])
     })
     .controller('HospitalCtrl', function ($scope) {
 
+    })   
+    .controller('DonatenowCtrl', function ($scope) {
+
     })
     .controller('NotidetailCtrl', function ($scope) {
 

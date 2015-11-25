@@ -101,7 +101,7 @@ a {
 .primary-btn {
   padding: 0 18px !important;
   font-size: 15px !important;
-  border-radius: 4px !important; }
+  border-radius: 2px !important; }
 
 .slider-pager-page {
   color: #e62739 !important; }
@@ -529,6 +529,14 @@ ul {
 .bkp {
   @exdend .pro-back;
   background: url("../img/background/4.jpg") no-repeat center center; }
+
+ion-item.item.item-complex.actives {
+  border-left: 3px solid #e62739; }
+
+.actives {
+  color: #e62739 !important; }
+  .actives i {
+    color: #e62739 !important; }
 
 /*!
   Ionicons, v2.0.1

@@ -130,6 +130,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     controller: 'FamilyCtrl'
                 }
             }
+        })       
+        .state('app.donatenow', {
+            url: '/donatenow',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/donatenow.html',
+                    controller: 'DonatenowCtrl'
+                }
+            }
         })  
         .state('app.hospital', {
             url: '/hospital',
