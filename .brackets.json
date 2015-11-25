@@ -1,6 +1,8 @@
 {
     "jscodehints.detectedExclusions": [
         "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/debug/www/cordova.js",
-        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/debug/www/cordova_plugins.js"
+        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/debug/www/cordova_plugins.js",
+        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/x86/debug/www/cordova-js-src/android/nativeapiprovider.js",
+        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/x86/debug/www/cordova-js-src/android/promptbasednativeapi.js"
     ]
 }

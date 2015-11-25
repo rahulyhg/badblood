@@ -149,6 +149,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             }
         })
+            .state('app.request', {
+            url: '/request',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/request.html',
+                    controller: 'RequestCtrl'
+                }
+            }
+        })
         .state('login', {
             url: "/login",
             templateUrl: "templates/login.html",

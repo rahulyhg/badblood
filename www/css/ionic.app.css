@@ -435,8 +435,12 @@ a {
 .f-title {
   margin-bottom: 10px; }
 
-.pclass h2 {
-  margin-bottom: 12px !important; }
+.wht {
+  white-space: initial !important; }
+
+.pclass .h2 {
+  margin-bottom: 12px !important;
+  margin-top: 0px; }
 
 .pclass p {
   color: #B0B0B0 !important;

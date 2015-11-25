@@ -41,6 +41,14 @@ angular.module('starter.controllers', [])
     .controller('SignupCtrl', function ($scope) {
 
     })
+    .controller('RequestCtrl', function ($scope) {
+        $scope.notification = [{
+            image: "img/slider/3.jpg",
+            title: "Lorem ipsum dolor",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+
+    }];
+    })
     .controller('ActivityCtrl', function ($scope) {
         $scope.notification = [{
             image: "img/slider/3.jpg",

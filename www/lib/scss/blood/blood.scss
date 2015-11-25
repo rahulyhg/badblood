@@ -527,9 +527,13 @@ a {
 .f-title {
     margin-bottom: 10px;
 }
+.wht{
+    white-space: initial !important;
+}
 .pclass {
-    h2 {
+    .h2 {
         margin-bottom: 12px !important;
+            margin-top: 0px;
     }
     p {
         color: $color7 !important;

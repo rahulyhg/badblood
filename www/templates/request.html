@@ -1,0 +1,21 @@
+<ion-view view-title="Request">
+    <ion-content>
+        <div class="noti-list pclass">
+            <div class="list" ng-repeat="noti in notification">
+
+                <a class="item item-avatar" href="#">
+                    <div class="noti-img" ng-style="{'background-image':'url({{noti.image}})'}"></div>
+                    <h2 class="marzero">{{noti.title}}</h2>
+                    <p class="wht h2">{{noti.desc}}</p>
+                 <p><i class="ln-first-aid"></i>Lilawati hospital</p>
+                 <p><i class="ln-map-marker"></i>M.G Road, Ghatkoper(E)</p>
+                 <p><i class="ln-iphone"></i>+91 980-023-2222</p>
+      
+                 
+                </a>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
