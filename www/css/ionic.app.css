@@ -439,8 +439,7 @@ a {
   white-space: initial !important; }
 
 .scroll-content {
-  z-index: 11;
-  background-color: white; }
+  z-index: 11; }
 
 .pclass .h2 {
   margin-bottom: 12px !important;
