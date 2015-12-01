@@ -1,15 +1,16 @@
 <ion-view view-title="Home">
-    <ion-content>
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true">
+    <ion-content delegate-handle="contentScroll" on-scroll="onContentScroll()" header-shrink scroll-event-interval="5" class="par">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" class="map">
             <ion-slide ng-repeat="slid in slider">
                 <img ng-src="{{slid.image}}" class="full-image">
             </ion-slide>
 
         </ion-slide-box>
-        <div class="padding mtop text-center">
+       
+        <div class="noti">
+             <div class="padding text-center">
             <h4 class="h4" ng-repeat="q in head">" {{q.qoute}} "</h4>
         </div>
-        <div class="noti">
             <div class="item item-divider">
                 Monday, feb 8, 2001
             </div>

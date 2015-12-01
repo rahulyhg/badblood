@@ -212,7 +212,13 @@ angular.module('starter.controllers', [])
 
     })
 
-.controller('HomeCtrl', function ($scope, $stateParams) {
+.controller('HomeCtrl', function ($scope, $stateParams,  $ionicScrollDelegate) {
+    
+      $scope.onContentScroll = function(){
+    var scrollDelegate = $ionicScrollDelegate.$getByHandle('contentScroll');
+    var scrollView = scrollDelegate.getScrollView();
+    $scope.$broadcast('contentScroll.scroll', scrollView);
+  };
 
     $scope.head = [{
         qoute: "Blood Donation will cost you nothing but it will save a life !!!"

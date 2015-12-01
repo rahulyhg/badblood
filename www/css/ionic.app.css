@@ -251,7 +251,7 @@ a {
 .p {
   margin: 0;
   padding: 0;
-  color: #3B97D3; }
+  color: #e62739; }
   .p i {
     color: #7a7a7a;
     vertical-align: text-top;
@@ -438,6 +438,10 @@ a {
 .wht {
   white-space: initial !important; }
 
+.scroll-content {
+  z-index: 11;
+  background-color: white; }
+
 .pclass .h2 {
   margin-bottom: 12px !important;
   margin-top: 0px; }
@@ -472,6 +476,12 @@ a {
 
 .pads .item {
   padding: 5px 0px 12px 72px; }
+
+.par .slider {
+  z-index: -99; }
+
+.par .noti {
+  background-color: #fff; }
 
 .color {
   color: #B0B0B0; }

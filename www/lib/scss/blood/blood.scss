@@ -342,7 +342,7 @@ a {
 .p {
     margin: 0;
     padding: 0;
-    color: #3B97D3;
+    color: $positive;
     i {
         color: $icon-color;
         vertical-align: text-top;
@@ -527,13 +527,17 @@ a {
 .f-title {
     margin-bottom: 10px;
 }
-.wht{
+.wht {
     white-space: initial !important;
+}
+.scroll-content {
+    z-index: 11;
+    background-color: white;
 }
 .pclass {
     .h2 {
         margin-bottom: 12px !important;
-            margin-top: 0px;
+        margin-top: 0px;
     }
     p {
         color: $color7 !important;
@@ -574,6 +578,14 @@ a {
 .pads {
     .item {
         padding: 5px 0px 12px 72px;
+    }
+}
+.par {
+    .slider {
+        z-index: -99;
+    }
+    .noti {
+        background-color: #fff;
     }
 }
 .color {
@@ -663,6 +675,6 @@ ion-item.item.item-complex.actives {
         color: $positive !important;
     }
 }
-.m-rg{
-        padding: 0px 16px;
+.m-rg {
+    padding: 0px 16px;
 }
