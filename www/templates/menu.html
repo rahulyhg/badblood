@@ -10,10 +10,12 @@
     <ion-footer-bar>
       <ion-slide-box>
         <ion-slide>
-          <img ng-src="img/slider/4.jpg" class="full-image">
+          <img onclick="window.open('http://wohlig.com/#/wohlig/home', '_system', 'location=yes'); return false;" ng-src="img/slider/1.jpg" class="full-image">
+      
         </ion-slide>
         <ion-slide>
-          <img ng-src="img/slider/3.jpg" class="full-image">
+          <img  onclick="window.open('http://teamoneindia.com/', '_system', 'location=yes'); return false;" ng-src="img/slider/3.jpg" class="full-image">
+      
         </ion-slide>
       </ion-slide-box>
     </ion-footer-bar>
@@ -78,6 +80,9 @@
         </ion-item>
         <ion-item menu-close ui-sref-active="actives" ui-sref="app.contact">
           <i class="icon ln-contacts side-menu-i"></i>Contact
+        </ion-item>  
+          <ion-item menu-close ui-sref-active="actives" ui-sref="app.login">
+          <i class="icon ln-arrow-right4 side-menu-i"></i>Logout
         </ion-item>
       </ion-list>
     </ion-content>

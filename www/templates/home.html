@@ -1,5 +1,5 @@
 <ion-view view-title="Home">
-    <ion-content delegate-handle="contentScroll" on-scroll="onContentScroll()" header-shrink scroll-event-interval="5" class="par">
+    <ion-content delegate-handle="contentScroll" on-scroll="onContentScroll()" header-shrink scroll-event-interval="5" class="par has-footer">
         <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" class="map">
             <ion-slide ng-repeat="slid in slider">
                 <img ng-src="{{slid.image}}" class="full-image">
