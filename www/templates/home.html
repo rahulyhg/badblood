@@ -1,6 +1,6 @@
 <ion-view view-title="Home">
     <ion-content class="par has-footer">
-        <ion-slides on-slide-changed="slideHasChanged($index)" option="autoHeight:true">
+        <ion-slides on-slide-changed="slideHasChanged($index)" >
             <ion-slide-page ng-repeat="slid in slider">
                 <img ng-src="{{slid.image}}" >
             </ion-slide-page>
