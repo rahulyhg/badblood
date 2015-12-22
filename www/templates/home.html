@@ -1,11 +1,11 @@
 <ion-view view-title="Home">
     <ion-content class="par has-footer">
-        <ion-slides on-slide-changed="slideHasChanged($index)" >
-            <ion-slide-page ng-repeat="slid in slider">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" >
+            <ion-slide ng-repeat="slid in slider">
                 <img ng-src="{{slid.image}}" >
-            </ion-slide-page>
+            </ion-slide>
 
-        </ion-slides>
+        </ion-slide-box>
        
         <div class="noti">
              <div class="padding text-center">
