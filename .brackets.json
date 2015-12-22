@@ -12,6 +12,9 @@
         "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/x86/debug/www/lib/ionic/js/angular/angular-animate.js",
         "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/x86/debug/www/lib/ionic/js/angular/angular-animate.min.js",
         "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/x86/debug/www/lib/ionic/js/angular/angular.js",
-        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/x86/debug/www/lib/ionic/js/angular/angular.min.js"
+        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/x86/debug/www/lib/ionic/js/angular/angular.min.js",
+        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/x86/debug/www/lib/ionic/js/angular-ui/angular-ui-router.js",
+        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/x86/debug/www/lib/ionic/js/angular-ui/angular-ui-router.min.js",
+        "C:/xampp/htdocs/badblood/platforms/android/build/intermediates/assets/x86/debug/www/lib/ionic/js/ionic-angular.js"
     ]
 }
