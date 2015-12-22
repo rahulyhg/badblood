@@ -1,11 +1,11 @@
 <ion-view view-title="Home">
-    <ion-content delegate-handle="contentScroll" on-scroll="onContentScroll()" header-shrink scroll-event-interval="5" class="par has-footer">
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" class="map">
-            <ion-slide ng-repeat="slid in slider">
-                <img ng-src="{{slid.image}}" class="full-image">
-            </ion-slide>
+    <ion-content class="par has-footer">
+        <ion-slides on-slide-changed="slideHasChanged($index)" option="autoHeight:true">
+            <ion-slide-page ng-repeat="slid in slider">
+                <img ng-src="{{slid.image}}" >
+            </ion-slide-page>
 
-        </ion-slide-box>
+        </ion-slides>
        
         <div class="noti">
              <div class="padding text-center">

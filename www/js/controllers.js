@@ -1,7 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
-
+.controller('AppCtrl', function ($scope, $ionicModal, $timeout, $stateParams,  $ionicScrollDelegate) {
+  $timeout(function(){
+    $scope.slides = ['1','2'];
+    $ionicSlideBoxDelegate.update();
+  },900);
 })
 
 .controller('EmergencyCtrl', function ($scope) {

@@ -295,6 +295,7 @@ a {
         font-size: 13px;
         color: $menu-color;
         background-color: $color5;
+            font-weight: 600;
         .item-content {
             padding: 16px 0px 16px 26px;
             background-color: $color5;
@@ -347,7 +348,7 @@ a {
         color: $icon-color;
         vertical-align: text-top;
         padding-right: 5px;
-        font-size: 16px;
+        font-size: 20px;
     }
 }
 .h4 {
@@ -624,8 +625,13 @@ ul {
     }
 }
 .h3 {
-    margin: 0px !important;
-    color: $positive !important;
+     margin: 5px auto!important;
+    color: #FFFFFF !important;
+    background: #e62739;
+    border-radius: 4px;
+    font-size: 19px !important;
+    width: 46px;
+    padding: 1px 0px;
 }
 .font-chng {
     font-weight: 400;
@@ -677,4 +683,10 @@ ion-item.item.item-complex.actives {
 }
 .m-rg {
     padding: 0px 16px;
+}
+.h45{
+        height: 54px !important;
+    .slider-pager .slider-pager-page{
+        display: none;
+    }
 }
