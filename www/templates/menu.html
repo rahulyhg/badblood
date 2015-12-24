@@ -7,14 +7,14 @@
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
-        <ion-footer-bar ng-controller="AppCtrl">
-            <ion-slide-box does-continue="true">
+        <ion-footer-bar class="pad5">
+            <ion-slide-box does-continue="true" auto-play="true" slide-interval="2000">
                 <ion-slide>
-                    <img ng-src="img/slider/1.jpg" class="full-image" onclick="window.open('http://wohlig.com/#/wohlig/home', '_system', 'location=yes'); return false;">
+                    <img ng-src="img/partner1.png" class="full-image" onclick="window.open('http://wohlig.com/#/wohlig/home', '_system', 'location=yes'); return false;">
 
                 </ion-slide>
                 <ion-slide>
-                    <img ng-src="img/slider/3.jpg" class="full-image" onclick="window.open('http://teamoneindia.com/', '_system', 'location=yes'); return false;">
+                    <img ng-src="img/partner2.png" class="full-image" onclick="window.open('http://teamoneindia.com/', '_system', 'location=yes'); return false;">
 
                 </ion-slide>
             </ion-slide-box>

@@ -565,6 +565,11 @@ ion-item.item.item-complex.actives {
   .h45 .slider-pager .slider-pager-page {
     display: none; }
 
+.pad5 {
+  padding: 0px 5px !important; }
+  .pad5 .slider-pager {
+    display: none; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
