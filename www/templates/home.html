@@ -1,34 +1,29 @@
 <ion-view view-title="Home">
-    <ion-content class="par has-footer">
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" >
-            <ion-slide ng-repeat="slid in slider">
-                <img ng-src="{{slid.image}}" >
+   <ion-content class="par has-footer">
+      <div class="" ng-if="slides.length>0">
+         <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" slide-interval="2000">
+            <ion-slide ng-repeat="slid in slides">
+               <img ng-src="{{slid|uploadpath}}">
             </ion-slide>
-
-        </ion-slide-box>
-       
-        <div class="noti">
-             <div class="padding text-center">
+         </ion-slide-box>
+      </div>
+      <div class="noti">
+         <div class="padding text-center">
             <h4 class="h4" ng-repeat="q in head">" {{q.qoute}} "</h4>
-        </div>
-            <div class="item item-divider">
-                Monday, feb 8, 2001
-            </div>
-        </div>
-        <div class="noti-list">
-            <div class="list" ng-repeat="noti in notification">
-
-                <a class="item item-avatar" ui-sref="app.notidetail" >
-                    <div class="noti-img" ng-style="{'background-image':'url({{noti.image}})'}"></div>
-                    <h2>{{noti.title}}</h2>
-                    <p>{{noti.desc}}</p>
-                    <span class="span"><i class="ln-clock3"></i>2 Days ago</span>
-                </a>
-
-            </div>
-        </div>
-
-
-    </ion-content>
-
+         </div>
+         <div class="item item-divider">
+            Monday, feb 8, 2001
+         </div>
+      </div>
+      <div class="noti-list">
+         <div class="list" ng-repeat="noti in notification">
+            <a class="item item-avatar" ui-sref="app.notidetail">
+               <div class="noti-img" ng-style="{'background-image':'url({{noti.image}})'}"></div>
+               <h2>{{noti.title}}</h2>
+               <p>{{noti.desc}}</p>
+               <span class="span"><i class="ln-clock3"></i>2 Days ago</span>
+            </a>
+         </div>
+      </div>
+   </ion-content>
 </ion-view>

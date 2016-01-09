@@ -1,44 +1,47 @@
 <ion-view>
-
-    <ion-content>
-        <div class="logo">
-            <div class="text-center">
-                <img src="img/logo.png" class="w50">
-            </div>
-        </div>
-
-        <div class="login-form">
-            <div class="list login-user">
-                <label class=" item-input">
-                    <i class="icon ln-user"></i>
-                    <input type="text" placeholder="Username">
-                </label>
-                <label class="item-input">
-                    <i class="icon ln-lock"></i>
-                    <input type="password" placeholder="Password">
-                </label>
-                <p class="login-forget pull-right" ng-click="showSuccess()">Forgot Password ?</p>
-            </div>
-        </div>
-        <div class="login-footer text-center ">
-            <button class="button button-block button-positive" ui-sref="app.home">
-                Login
-            </button>
-            <div class="text-center">
-                <p>- OR -</p>
-            </div>
+   <ion-content>
+      <div class="logo">
+         <div class="text-center">
+            <img src="img/logo.png" class="w50">
+         </div>
+      </div>
+      <div class="login-form">
+         <div class="list login-user">
+            <label class=" item-input">
+               <i class="icon ln-user"></i>
+               <input type="text" placeholder="Username">
+            </label>
+            <label class="item-input">
+               <i class="icon ln-lock"></i>
+               <input type="password" placeholder="Password">
+            </label>
+            <p class="login-forget pull-right" ng-click="showSuccess()">Forgot Password ?</p>
+         </div>
+      </div>
+      <div class="login-footer text-center ">
+         <button class="button button-block button-positive" ui-sref="app.home">
+            Login
+         </button>
+         <div class="text-center">
+            <p>- OR -</p>
+         </div>
+         <!-- <button class="button button-block button-positive-facebook" ng-click="socialLogin('loginf')">
+            Facebook
+         </button> -->
+         <a href="http://vignesh.com:81/user/loginf">
             <button class="button button-block button-positive-facebook">
-                Facebook
+               Facebook
             </button>
-            <button class="button button-block button-positive-twitter">
-                Twitter
-            </button>
-            <button class="button button-block button-positive-google">
-                Google
-            </button>
-        </div>
-        <div class="sign text-center">
-            <span>Don’t have an account?<a ui-sref="signup">Sign Up</a></span>
-        </div>
-    </ion-content>
+         </a>
+         <button class="button button-block button-positive-twitter" ng-click="socialLogin('logint')">
+            Twitter
+         </button>
+         <button class="button button-block button-positive-google" ng-click="socialLogin('loging')">
+            Google
+         </button>
+      </div>
+      <div class="sign text-center">
+         <span>Don’t have an account?<a ui-sref="signup">Sign Up</a></span>
+      </div>
+   </ion-content>
 </ion-view>

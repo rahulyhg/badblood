@@ -1,39 +1,48 @@
 <ion-view>
+   <ion-content>
+      <div class="logo">
+         <div class="text-center">
+            <img src="img/logo.png" class="w50">
+         </div>
+      </div>
+      <form name="myForm" novalidate>
+         <div class="login-form">
+            <div class="list regi-user">
+               <label class=" item-input">
+                  <i class="icon ln-user"></i>
+                  <input type="text" name="name" placeholder="Name" ng-model="signup.name" required>
+               </label>
+               <p class="colpad" ng-show="myForm.name.$error.required && myForm.name.$dirty">Name is required</p>
 
-    <ion-content>
-        <div class="logo">
-            <div class="text-center">
-                <img src="img/logo.png" class="w50">
+               <label class=" item-input">
+                  <i class="icon ln-envelope"></i>
+                  <input type="email" name="email" placeholder="Email" ng-model="signup.email" required>
+               </label>
+               <p class="colpad" ng-show="myForm.email.$error.required && myForm.email.$dirty">Email is required</p>
+               <p class="colpad" ng-show="myForm.email.$invalid && !myForm.email.$pristine">Invalid email address</p>
+
+               <label class=" item-input">
+                  <i class="icon ln-lock"></i>
+                  <input type="password" name="password" placeholder="Password" ng-model="signup.password" ng-minlength="6" required>
+               </label>
+               <p class="colpad" ng-show="myForm.password.$error.required && myForm.password.$dirty">Password is required</p>
+               <p class="colpad" ng-show="myForm.password.$error.minlength">Password must be longer than 6 characters</p>
+
+               <label class=" item-input">
+                  <i class="icon ln-gift"></i>
+                  <input type="text" name="dob" onfocus="(this.type='date')" placeholder="Birth Date" ng-model="signup.dob" required>
+               </label>
+               <p class="colpad" ng-show="myForm.dob.$error.required && myForm.dob.$dirty">Birth Date is required</p>
             </div>
-        </div>
-
-        <div class="login-form">
-                 <div class="list regi-user">
-                    <label class=" item-input">
-                        <i class="icon ln-user"></i>
-                        <input type="text" placeholder="Name">
-                    </label>
-                    <label class=" item-input">
-                        <i class="icon ln-envelope"></i>
-                        <input type="email" placeholder="Email">
-                    </label>
-                    <label class=" item-input">
-                        <i class="icon ln-lock"></i>
-                        <input type="password" placeholder="Password">
-                    </label>
-                    <label class=" item-input">
-                        <i class="icon ln-gift"></i>
-                        <input type="text" onfocus="(this.type='date')" placeholder="Birth Date">
-                    </label>
-                </div>
-        </div>
-        <div class="login-footer m100">
-            <button class="button button-block button-positive">
-                Create
-            </button>
-        </div>
-        <div class="sign text-center">
-            <span>Don’t have an account?<a ui-sref="login">Sign In</a></span>
-        </div>
-    </ion-content>
+            <div class="login-footer m100">
+               <button type="button" class="button button-block button-positive" ng-disabled="myForm.$invalid" ng-click="doSignUp();">
+                  Create
+               </button>
+            </div>
+         </div>
+      </form>
+      <div class="sign text-center">
+         <span>Don’t have an account?<a ui-sref="login">Sign In</a></span>
+      </div>
+   </ion-content>
 </ion-view>

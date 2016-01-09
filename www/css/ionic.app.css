@@ -25,7 +25,7 @@ h6 {
 
 @font-face {
   font-family: 'Lato';
-  src: url("../fonts/Lato-Bold.ttf");
+  src: url(../fonts/Lato-Bold.ttf);
   font-weight: 700; }
 
 @font-face {
@@ -154,12 +154,12 @@ a {
 
 .login-user .item-input, .regi-user .item-input {
   border-bottom: 1px solid #ddd;
-  padding: 6px 0 8px 0px; }
+  padding: 6px 0 8px; }
 
 .login-user i, .regi-user i {
   font-size: 22px;
   color: #7a7a7a;
-  margin: 0px 15px 0px 12px; }
+  margin: 0 15px 0 12px; }
 
 .login-forget {
   color: #909090;
@@ -193,13 +193,13 @@ a {
 .menus {
   background-color: #f5f5f5; }
   .menus .item {
-    border-width: 0px;
+    border-width: 0;
     font-size: 13px;
     color: #8A8A8A;
     background-color: #f5f5f5;
     font-weight: 600; }
     .menus .item .item-content {
-      padding: 16px 0px 16px 26px;
+      padding: 16px 0 16px 26px;
       background-color: #f5f5f5; }
     .menus .item i {
       font-size: 22px;
@@ -216,7 +216,7 @@ a {
       border-radius: 2px; }
 
 .padd30 {
-  padding: 0px 30px 0px 30px; }
+  padding: 0 30px; }
 
 .user-back, .m-list .h-w {
   width: 70px;
@@ -246,7 +246,7 @@ a {
   text-transform: capitalize;
   font-size: 15px !important;
   color: grey !important;
-  margin: 0px 0px 2px 0px !important;
+  margin: 0 0 2px !important;
   font-weight: 300 !important; }
 
 .p {
@@ -270,11 +270,11 @@ a {
   margin: 15px auto; }
 
 .noti-list .item {
-  padding: 15px 0px 15px 72px;
+  padding: 15px 0 15px 72px;
   border-top: none; }
 
 .noti-list p {
-  padding: 0px 10px 0px 0px;
+  padding: 0 10px 0 0;
   font-weight: 100;
   font-size: 14px !important; }
 
@@ -282,7 +282,7 @@ a {
   font-size: 13px !important; }
 
 .noti-list .list {
-  margin-bottom: 0px; }
+  margin-bottom: 0; }
 
 .noti-img, .act-img {
   width: 50px;
@@ -305,14 +305,14 @@ a {
 
 .noti .item-divider {
   padding-top: 15px !important;
-  padding-bottom: 15px !important;
+  padding-bottom: 15px;
   min-height: 30px;
   background-color: #f8f8f8 !important;
   color: #bbb !important;
   font-weight: 100 !important;
   text-transform: uppercase;
   font-size: 14px !important;
-  border-width: 0px !important;
+  border-width: 0 !important;
   border-color: #f8f8f8;
   border-style: none !important;
   font-family: roboto slab; }
@@ -328,7 +328,7 @@ a {
     vertical-align: baseline; }
 
 .pro-back {
-  background: url("../img/background/1.jpg") no-repeat center center;
+  background: url(../img/background/1.jpg) no-repeat center center;
   position: relative;
   height: 146px;
   background-size: cover;
@@ -348,7 +348,7 @@ a {
   transform: translateX(50%) !important;
   border-radius: 100% !important;
   font-size: 19px !important;
-  padding: 1px 0px 2px 0px !important;
+  padding: 1px 0 2px !important;
   min-width: 26px !important;
   min-height: 26px !important;
   line-height: 17px !important; }
@@ -391,13 +391,13 @@ a {
 
 .hos-name {
   position: relative;
-  padding: 16px 0px 0px 16px;
+  padding: 16px 0 0 16px;
   height: 160px; }
   .hos-name h4 {
     color: #ffffff;
     font-weight: 300;
     font-size: 15px;
-    margin: 0px;
+    margin: 0;
     padding-bottom: 10px; }
   .hos-name p {
     color: #ffffff;
@@ -415,7 +415,7 @@ a {
   padding-top: 28px; }
 
 .pop .popup-head {
-  padding: 10px 10px;
+  padding: 10px;
   background: #dedfe1; }
 
 .bord .list .item:first-child {
@@ -444,7 +444,7 @@ a {
 
 .pclass .h2 {
   margin-bottom: 12px !important;
-  margin-top: 0px; }
+  margin-top: 0; }
 
 .pclass p {
   color: #B0B0B0 !important;
@@ -456,26 +456,26 @@ a {
   width: 60px; }
 
 .sm-btn {
-  padding: 0px 20px !important;
+  padding: 0 20px !important;
   line-height: 16px !important;
   min-height: 30px !important;
   border-radius: 4px !important; }
 
 .custom-border .item {
-  border-left: 0px;
-  border-right: 0px; }
+  border-left: 0;
+  border-right: 0; }
   .custom-border .item:first-child {
     border-top: none; }
 
 .nbtp {
-  border-top: 0px; }
+  border-top: 0; }
 
 .act-img {
   border-radius: 4px;
   top: 10px; }
 
 .pads .item {
-  padding: 5px 0px 12px 72px; }
+  padding: 5px 0 12px 72px; }
 
 .par .slider {
   z-index: -99; }
@@ -501,7 +501,7 @@ ul {
 
 .lis ul li {
   font-size: 15px;
-  padding: 0px 10px; }
+  padding: 0 10px; }
   .lis ul li span i {
     font-size: 22px;
     vertical-align: middle; }
@@ -513,7 +513,7 @@ ul {
   border-radius: 4px;
   font-size: 19px !important;
   width: 46px;
-  padding: 1px 0px; }
+  padding: 1px 0; }
 
 .font-chng {
   font-weight: 400;
@@ -521,7 +521,7 @@ ul {
   color: #909090; }
 
 .forms .item-input {
-  padding: 6px 0 5px 0px !important; }
+  padding: 6px 0 5px !important; }
 
 .forms .input-label {
   font-weight: 100;
@@ -539,7 +539,7 @@ ul {
 .bor input {
   border: 1px solid #ddd !important;
   font-size: 13px !important;
-  padding: 0px 0px 0px 8px !important; }
+  padding: 0 0 0 8px !important; }
 
 .right {
   position: absolute;
@@ -547,7 +547,7 @@ ul {
 
 .bkp {
   @exdend .pro-back;
-  background: url("../img/background/4.jpg") no-repeat center center; }
+  background: url(../img/background/4.jpg) no-repeat center center; }
 
 ion-item.item.item-complex.actives {
   border-left: 3px solid #e62739; }
@@ -558,7 +558,7 @@ ion-item.item.item-complex.actives {
     color: #e62739 !important; }
 
 .m-rg {
-  padding: 0px 16px; }
+  padding: 0 16px; }
 
 .h45 {
   height: 54px !important; }
@@ -566,9 +566,13 @@ ion-item.item.item-complex.actives {
     display: none; }
 
 .pad5 {
-  padding: 0px 5px !important; }
+  padding: 0 5px !important; }
   .pad5 .slider-pager {
     display: none; }
+
+.colpad {
+  color: #E62739;
+  padding: 10px; }
 
 /*!
   Ionicons, v2.0.1
@@ -7154,7 +7158,7 @@ button.item.item-button-right {
 .list-inset {
   overflow: hidden;
   margin: 20px 10px;
-  border-radius: 0px;
+  border-radius: 0;
   background-color: #fff; }
 
 .card {
@@ -7176,24 +7180,24 @@ button.item.item-button-right {
 .card .item:first-child,
 .list-inset .item:first-child,
 .padding > .list .item:first-child {
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px; }
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; }
   .card .item:first-child .item-content,
   .list-inset .item:first-child .item-content,
   .padding > .list .item:first-child .item-content {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px; }
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
 
 .card .item:last-child,
 .list-inset .item:last-child,
 .padding > .list .item:last-child {
-  border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 0px; }
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
   .card .item:last-child .item-content,
   .list-inset .item:last-child .item-content,
   .padding > .list .item:last-child .item-content {
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px; }
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; }
 
 .card .item:last-child,
 .list-inset .item:last-child {
@@ -9092,9 +9096,9 @@ progress {
   padding: 0 12px;
   min-width: 52px;
   min-height: 47px;
-  border-width: 0px;
+  border-width: 0;
   border-style: solid;
-  border-radius: 0px;
+  border-radius: 0;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
@@ -9118,7 +9122,7 @@ progress {
     pointer-events: none; }
   .button .icon:before, .primary-btn .icon:before, .button.icon:before, .icon.primary-btn:before, .button.icon-left:before, .icon-left.primary-btn:before, .button.icon-right:before, .icon-right.primary-btn:before {
     display: inline-block;
-    padding: 0 0 0px 0;
+    padding: 0 0 0 0;
     vertical-align: inherit;
     font-size: 24px;
     line-height: 42px;
@@ -9378,7 +9382,7 @@ progress {
   font-size: 20px;
   line-height: 54px; }
   .button-large .icon:before, .button-large.icon:before, .button-large.icon-left:before, .button-large.icon-right:before {
-    padding-bottom: 0px;
+    padding-bottom: 0;
     font-size: 32px;
     line-height: 53px; }
 
@@ -9523,12 +9527,12 @@ a.button, a.primary-btn {
   .button-bar > .primary-btn .icon:before {
     line-height: 44px; }
   .button-bar > .button:first-child, .button-bar > .primary-btn:first-child {
-    border-radius: 0px 0px 0px 0px; }
+    border-radius: 0 0px 0px 0; }
   .button-bar > .button:last-child, .button-bar > .primary-btn:last-child {
     border-right-width: 1px;
-    border-radius: 0px 0px 0px 0px; }
+    border-radius: 0px 0 0 0px; }
   .button-bar > .button:only-child, .button-bar > .primary-btn:only-child {
-    border-radius: 0px; }
+    border-radius: 0; }
 
 .button-bar > .button-small:before,
 .button-bar > .button-small .icon:before {
@@ -9967,7 +9971,7 @@ a.button, a.primary-btn {
  * --------------------------------------------------
  */
 .rounded {
-  border-radius: 0px; }
+  border-radius: 0; }
 
 /**
  * Utility Colors
