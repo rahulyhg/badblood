@@ -1,4 +1,12 @@
-<ion-view view-title="Home">
+<ion-view hide-nav-bar="true">
+  <ion-header-bar class="bar-positive" align-title="center">
+      <div class="buttons button-left" style="position:absolute">
+          <button class="button button-icon ion-navicon no-hide" menu-toggle="left">
+          </button>
+      </div>
+    <img src="img/menu.png" style="height:35px;margin:0 auto;">
+
+  </ion-header-bar>
    <ion-content class="par has-footer">
       <div class="" ng-if="slides.length>0">
          <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" slide-interval="2000">
