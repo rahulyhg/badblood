@@ -111,13 +111,12 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('EmergencyCtrl', function ($scope) {
+.controller('EmergencyCtrl', function ($scope, $ionicPopup, $timeout, MyServices, $state) {
 
-	$scope.notification = [{
-		image: "img/slider/3.jpg",
-		title: "Lorem ipsum dolor",
-		desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-  }];
+
+})
+
+.controller('GalleryCtrl', function ($scope) {
 
 })
 
