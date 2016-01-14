@@ -580,6 +580,20 @@ ion-item.item.item-complex.actives {
   color: #E62739;
   padding: 10px; }
 
+.c-tab {
+  top: 44px;
+  z-index: 999; }
+
+.tabs-striped.tabs-color-light .tab-item.active {
+  margin-top: 1px !important;
+  border-bottom-width: 2px !important;
+  border-top-width: 0px !important; }
+
+.tabs-striped.tabs-color-light .tab-item.activated {
+  margin-top: 1px !important;
+  border-bottom-width: 2px !important;
+  border-top-width: 0px !important; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

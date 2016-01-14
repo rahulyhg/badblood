@@ -1,6 +1,6 @@
 <ion-side-menus enable-menu-with-back-views="false" ng-controller="AppCtrl">
     <ion-side-menu-content>
-        <ion-nav-bar class="bar-positive has-tabs-top">
+        <ion-nav-bar class="bar-positive">
             <ion-nav-back-button></ion-nav-back-button>
             <ion-nav-buttons side="left">
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
@@ -25,7 +25,7 @@
         <ion-header-bar class="bar-side bg-xb">
             <div class="side-image">
                 <div class="user-setting text-center">
-                    <div class="user-back" ng-style="{'background-image':'url(img/user1.png)'}"></div>
+                    <div class="user-back" ng-style="{'background-image':'url(img/user1.png)'}" menu-close ui-sref="app.profile"></div>
                     <h3 class="h3">23</h3>
                     <h5 class="h5">Dhaval Gala</h5>
                     <p class="p">
