@@ -281,6 +281,9 @@ background-position: top center !important;
   height: 166px !important;
   background-size: 100% 100%;
 }
+.m16{
+      margin-top: 16px;
+}
 .menus {
   background-color: $color5;
   .item {
@@ -722,4 +725,9 @@ padding: 15px;
               display: list-item;
     }
   }
+}
+.pad-ltp{
+  text-align: left;
+  padding-top: 0px;
+  font-size: 17px;
 }

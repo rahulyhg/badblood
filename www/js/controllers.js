@@ -214,6 +214,22 @@ angular.module('starter.controllers', ['ngCordova'])
 			alertPopup.close(); //close the popup after 3 seconds for some reason
 		}, 2000);
 	};
+	$scope.showOtp = function () {
+		var alertPopup = $ionicPopup.alert({
+			templateUrl: 'templates/otp.html',
+		});
+
+		alertPopup.then(function (res) {
+			console.log('Thanks');
+		});
+	// 	$scope.closeOTP = function() {
+	// alertPopup.close();
+	// };
+	$timeout(function () {
+		alertPopup.close(); //close the popup after 3 seconds for some reason
+	}, 2000);
+	};
+
 	//popup success
 	$scope.showSuccess = function () {
 		var alertPopup = $ionicPopup.alert({

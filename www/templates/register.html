@@ -101,13 +101,43 @@
             <div class="login-form padding regi-user">
                <div class="list login-user">
                   <label class="item item-input">
-                     <input type="text" placeholder="Donor Id">
+                     <input type="text" placeholder="First Name">
+                  </label>
+               </div>
+               <div class="list login-user">
+                  <label class="item item-input">
+                     <input type="text" placeholder="Middle Name">
+                  </label>
+               </div>
+               <div class="list login-user">
+                  <label class="item item-input">
+                     <input type="text" placeholder="Last Name">
+                  </label>
+               </div>
+               <div class="list login-user">
+                  <label class="item item-input">
+                     <input type="text" placeholder="Donar ID">
                   </label>
                </div>
             </div>
             <button class="button primary-btn button-positive m12" ng-click="showFailed()">
                Submit
             </button>
+<div class="text-center m40">
+  <h4>Your Search Result</h4>
+</div>
+
+            <div class="noti-list f-title">
+                <div class="list">
+
+                    <a class="item item-avatar" ng-click="showOtp()" style="padding: 15px 0 30px 72px;">
+                        <div class="noti-img" ng-style="{'background-image':'url(img/user1.png)'}"></div>
+                        <h1 class="pad-ltp">Sohan Honakeri</h1>
+
+                    </a>
+
+                </div>
+            </div>
          </div>
       </div>
    </ion-content>
