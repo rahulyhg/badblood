@@ -11,7 +11,7 @@
       <div class="" ng-if="slides.length>0">
          <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" slide-interval="2000">
             <ion-slide ng-repeat="slid in slides">
-               <img ng-src="{{slid|uploadpath}}">
+               <img ng-src="{{slid|uploadpath}}" class="full-image">
             </ion-slide>
          </ion-slide-box>
       </div>
@@ -20,16 +20,16 @@
             <h4 class="h4" ng-repeat="q in head">" {{q.qoute}} "</h4>
          </div>
          <div class="item item-divider">
-            Monday, feb 8, 2001
+            {{currentDate|date:"fullDate"}}
          </div>
       </div>
       <div class="noti-list">
          <div class="list" ng-repeat="noti in notification">
-            <a class="item item-avatar" ui-sref="app.notidetail">
-               <div class="noti-img" ng-style="{'background-image':'url({{noti.image}})'}"></div>
+            <a class="item item-avatar" ui-sref="app.notidetail({id:noti._id})">
+               <div class="noti-img" ng-style="{'background-image':'url({{noti.image|uploadpath}})'}"></div>
                <h2>{{noti.title}}</h2>
-               <p>{{noti.desc}}</p>
-               <span class="span"><i class="ln-clock3"></i>2 Days ago</span>
+               <p>{{noti.content}}</p>
+               <span class="span"><i class="ln-clock3"></i>{{noti.timestamp|timeago}}</span>
             </a>
          </div>
       </div>
