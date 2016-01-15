@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.badblood767922" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.thetmm" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>TMM</name>
     <description>
-        An Ionic Framework and Cordova project.
+      We are an NGO established on October 2, 1968, working for a better tomorrow.
     </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+    <author email="info@tmm.com" href="http://thetmm.org">
+    Wohlig Technology
     </author>
     <content src="index.html" />
     <access origin="*" />
