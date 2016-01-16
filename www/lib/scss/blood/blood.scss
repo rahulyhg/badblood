@@ -258,7 +258,7 @@ background-position: top center !important;
 }
 .login-form:-webkit-placeholder {
   color: $base-color !important;
-  font-weight: $font-weight;
+  font-weight: 500;
   font-size: $font-size-base;
 }
 .sign {
@@ -331,7 +331,7 @@ background-position: top center !important;
 }
 .h5 {
   text-transform: capitalize;
-  font-size: 15px !important;
+  font-size: 17px !important;
   color: #E62739 !important;
   margin: 0 0 2px !important;
   font-weight: 600 !important;
@@ -736,4 +736,8 @@ padding: 15px;
 }
 .mt30{
       margin-top: 30px;
+}
+.list {
+
+    margin-bottom: 8px !important;
 }
