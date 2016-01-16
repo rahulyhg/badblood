@@ -90,7 +90,8 @@ angular.module('starter.controllers', ['ngCordova'])
 
     MyServices.getNotification($scope.pagedata, function(data) {
         console.log(data);
-        $scope.notification = data;
+        if (data.value != false)
+            $scope.notification = data;
     })
 
     MyServices.getSlider(function(data) {
@@ -276,7 +277,7 @@ angular.module('starter.controllers', ['ngCordova'])
                 text: '<b>Submit</b>',
                 type: 'button-positive',
                 onTap: function(e) {
-                    if (!$scope.data.wifi) {
+                    if ($scope.valid.otp) {
                         //don't allow the user to close unless he enters wifi password
                         e.preventDefault();
                     } else {
@@ -431,7 +432,8 @@ angular.module('starter.controllers', ['ngCordova'])
 
     MyServices.getNotification($scope.pagedata, function(data) {
         console.log(data);
-        $scope.notification = data;
+        if (data.value != false)
+            $scope.notification = data;
     })
 
     // $scope.notification = [{
