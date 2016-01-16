@@ -1,5 +1,6 @@
 // var adminurl = "http://localhost:1337/";
-var adminurl = "http://192.168.0.122:82/";
+// var adminurl = "http://192.168.0.122:82/";
+var adminurl = "http://192.168.0.127:1337/";
 // var adminurl = "http://104.197.50.51/";
 var imgpath = adminurl + "uploadfile/resize?file=";
 

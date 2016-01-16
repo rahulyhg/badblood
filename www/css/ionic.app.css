@@ -630,6 +630,9 @@ ion-item.item.item-complex.actives {
 .regi-user input {
   font-weight: 500; }
 
+.nopad {
+  padding: 0; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

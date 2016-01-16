@@ -230,71 +230,17 @@ angular.module('starter.controllers', ['ngCordova'])
 
         alertPopup.then(function(res) {
             console.log('Thanks');
-            $scope.showOtp();
         });
     };
 
-    $scope.showConfirmBox = function() {
-        var myPopup = $ionicPopup.show({
-            template: '<input type="password" ng-model="data.wifi">',
-            title: 'Enter Wi-Fi Password',
-            subTitle: 'Please use normal things',
-            scope: $scope,
-            buttons: [{
-                text: 'Cancel'
-            }, {
-                text: '<b>Save</b>',
-                type: 'button-positive',
-                onTap: function(e) {
-                    if (!$scope.data.wifi) {
-                        //don't allow the user to close unless he enters wifi password
-                        e.preventDefault();
-                    } else {
-                        return $scope.data.wifi;
-                    }
-                }
-            }]
+    $scope.showOtp = function(mob) {
+        console.log(mob);
+        $scope.mob = mob;
+        var alertPopup = $ionicPopup.alert({
+            templateUrl: 'templates/otp.html',
+            controller: "RegisterCtrl",
+            scope: $scope
         });
-
-        myPopup.then(function(res) {
-            console.log('Tapped!', res);
-        });
-    };
-
-    $scope.showOtp = function() {
-
-        var myPopup = $ionicPopup.show({
-            template: '<input type="password" ng-model="data.wifi">',
-            title: 'Enter Wi-Fi Password',
-            subTitle: 'Please use normal things',
-            scope: $scope,
-            buttons: [{
-                text: 'Cancel'
-            }, {
-                text: '<b>Save</b>',
-                type: 'button-positive',
-                onTap: function(e) {
-                    if (!$scope.data.wifi) {
-                        //don't allow the user to close unless he enters wifi password
-                        e.preventDefault();
-                    } else {
-                        return $scope.data.wifi;
-                    }
-                }
-            }]
-        });
-
-        myPopup.then(function(res) {
-            console.log('Tapped!', res);
-        });
-
-        // var alertPopup = $ionicPopup.alert({
-        //     templateUrl: 'templates/otp.html',
-        // });
-        //
-        // alertPopup.then(function(res) {
-        //     console.log('Thanks');
-        // });
     };
 
     //popup success
