@@ -46,8 +46,8 @@ gulp.task('build', function() {
     .pipe(create())
     .pipe(android({
       release: true,
-      storeFile: 'bherpo.keystore',
-      keyAlias: 'bherpo'
+      storeFile: 'wohlig.keystore',
+      keyAlias: 'wohlig'
     }))
     .pipe(gulp.dest('apk'));
 });

@@ -138,6 +138,10 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('EmergencyCtrl', function($scope, $ionicPopup, $timeout, MyServices, $state) {
 
+  $scope.notification = [{
+      image: "img/slider/3.jpg",
+      title: "Ankeet Lapasia"
+  }];
 
 })
 
