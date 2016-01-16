@@ -273,7 +273,7 @@ a {
   font-size: 15px !important;
   color: #B0B0B0 !important;
   text-transform: capitalize;
-  font-weight: 300 !important; }
+  font-weight: 500 !important; }
 
 .mtop {
   margin: 15px auto; }
@@ -318,7 +318,7 @@ a {
   min-height: 30px;
   background-color: #f8f8f8 !important;
   color: #bbb !important;
-  font-weight: 100 !important;
+  font-weight: 500 !important;
   text-transform: uppercase;
   font-size: 14px !important;
   border-width: 0 !important;
@@ -614,6 +614,12 @@ ion-item.item.item-complex.actives {
   text-align: left;
   padding-top: 0px;
   font-size: 17px; }
+
+.con p {
+  line-height: 100%; }
+
+.mt30 {
+  margin-top: 30px; }
 
 /*!
   Ionicons, v2.0.1
