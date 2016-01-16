@@ -386,7 +386,8 @@ a {
   -o-background-size: cover;
   -ms-background-size: cover;
   -webkit-filter: grayscale(100%);
-  filter: grayscale(100%); }
+  filter: grayscale(100%);
+  margin-bottom: 2px; }
 
 .bg-layer {
   position: absolute;
@@ -396,7 +397,7 @@ a {
   left: 0; }
 
 .bg-black {
-  background: rgba(0, 0, 0, 0.58); }
+  background: #B2B1B1; }
 
 .hos-name {
   position: relative;

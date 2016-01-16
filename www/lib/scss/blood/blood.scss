@@ -455,15 +455,18 @@ background-position: top center !important;
   @include background-size(cover);
   -webkit-filter: grayscale(100%);
   filter:grayscale(100%);
+  margin-bottom: 2px;
 }
 .bg-layer {
   position: absolute;
   @include size(100%) top: 0;
   left: 0;
 }
-.bg-black {
-  background: rgba(0, 0, 0, 0.58);
+
+  .bg-black {
+    background: #B2B1B1;
 }
+
 .hos-name {
   position: relative;
   padding: 16px 0 0 16px;
