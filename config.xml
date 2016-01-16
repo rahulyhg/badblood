@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="org.thetmm" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="org.thetmm" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>TMM</name>
-  <description>&#xD;&#xD;&#xD;
-      We are an NGO established on October 2, 1968, working for a better tomorrow.&#xD;&#xD;&#xD;
+  <description>
+      We are an NGO established on October 2, 1968, working for a better tomorrow.
     </description>
-  <author email="info@tmm.com" href="http://thetmm.org">&#xD;&#xD;&#xD;
-    Wohlig Technology&#xD;&#xD;&#xD;
+  <author email="info@tmm.com" href="http://thetmm.org">
+    Wohlig Technology
     </author>
   <content src="index.html"/>
   <access origin="*"/>
