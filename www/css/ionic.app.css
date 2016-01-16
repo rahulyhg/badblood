@@ -624,6 +624,12 @@ ion-item.item.item-complex.actives {
 .list {
   margin-bottom: 8px !important; }
 
+.color-primary {
+  color: #e62739 !important; }
+
+.regi-user input {
+  font-weight: 500; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
