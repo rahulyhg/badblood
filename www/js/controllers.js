@@ -94,13 +94,13 @@ angular.module('starter.controllers', ['ngCordova'])
             $scope.notification = data;
     })
 
-    MyServices.getSlider(function(data) {
-        console.log(data);
-        if (data.value != false) {
-            $scope.slides = data[0].image;
-            $ionicSlideBoxDelegate.update();
-        }
-    })
+    // MyServices.getSlider(function(data) {
+    //     console.log(data);
+    //     if (data.value != false) {
+    //         $scope.slides = data[0].image;
+    //         $ionicSlideBoxDelegate.update();
+    //     }
+    // })
 
 
 
@@ -109,13 +109,15 @@ angular.module('starter.controllers', ['ngCordova'])
     }];
 
     $scope.slider = [{
-        image: "img/slider/5.jpg",
+        image: "img/slider/s1.jpg",
     }, {
-        image: "img/slider/1.jpg",
+        image: "img/slider/s2.jpg",
     }, {
-        image: "img/slider/3.jpg",
+        image: "img/slider/s3.jpg",
     }, {
-        image: "img/slider/4.jpg",
+        image: "img/slider/s4.jpg",
+    },{
+        image: "img/slider/s5.jpg",
     }];
 
     // $scope.notification = [{

@@ -10,8 +10,8 @@
    <ion-content class="par has-footer">
       <div class="" ng-if="slides.length>0">
          <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true" does-continue="true" slide-interval="5000">
-            <ion-slide ng-repeat="slid in slides">
-               <img ng-src="{{slid|uploadpath}}" class="full-image">
+            <ion-slide ng-repeat="slid in slider">
+               <img ng-src="{{slid.image}}" class="full-image">
             </ion-slide>
          </ion-slide-box>
       </div>
