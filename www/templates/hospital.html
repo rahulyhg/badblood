@@ -1,7 +1,7 @@
 <ion-view view-title="Hospital">
    <ion-content class="has-footer">
       <div class="hospital">
-         <div class="hoback" ng-repeat="hospital in hospitals">
+         <div class="hoback" ng-repeat="hospital in hospitals|orderBy:'name'">
             <div class="bg-layer bg-black"></div>
             <div class="hos-name">
                <h4>{{hospital.name}}</h4>
@@ -37,8 +37,8 @@
       </div>
       <ion-infinite-scroll on-infinite="addMoreItems()" distance="25%" style="height:0px" ng-if="keepscrolling">
       </ion-infinite-scroll>
-      <div class="center" ng-show="shownodata">
+      <!-- <div class="center" ng-show="shownodata">
           <p>No Data Found</p>
-      </div>
+      </div> -->
    </ion-content>
 </ion-view>
