@@ -234,14 +234,62 @@ angular.module('starter.controllers', ['ngCordova'])
     };
 
     $scope.showOtp = function(mob) {
-        console.log(mob);
-        $scope.mob = mob;
-        var alertPopup = $ionicPopup.alert({
-            templateUrl: 'templates/otp.html',
-            controller: "RegisterCtrl",
-            scope: $scope
-        });
+        if (mob && mob != "" && mob.toString().length == 10) {
+            var fmobile = mob.toString().substr(mob.toString().length - 4);
+            var mobile = "XXXXXX" + fmobile;
+            var myPopup = $ionicPopup.show({
+                template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad"><h4 style="margin-bottom:5px;">Confirm !</h4><p>OTP will be sent to ' + mobile + '</p></div></div>',
+                scope: $scope,
+                buttons: [{
+                    text: 'Cancel',
+                    onTap: function(e) {
+                        return false;
+                    }
+                }, {
+                    text: '<b>OK</b>',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        return true;
+                    }
+                }]
+            });
+
+            myPopup.then(function(res) {
+                console.log('Tapped!', res);
+                if (res == true)
+                    $scope.enterOtp(mob);
+            });
+        }
     };
+
+    $scope.enterOtp = function(mob) {
+        //call service to send otp
+        $scope.valid = {};
+        var myPopup = $ionicPopup.show({
+            template: '<input type="text" ng-model="valid.otp">',
+            title: 'Enter OTP',
+            subTitle: 'Please enter the otp sent to your mobile number.',
+            scope: $scope,
+            buttons: [{
+                text: 'Cancel'
+            }, {
+                text: '<b>Submit</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    if (!$scope.data.wifi) {
+                        //don't allow the user to close unless he enters wifi password
+                        e.preventDefault();
+                    } else {
+                        return $scope.data.wifi;
+                    }
+                }
+            }]
+        });
+
+        myPopup.then(function(res) {
+            console.log('Tapped!', res);
+        });
+    }
 
     //popup success
     $scope.showSuccess = function() {
