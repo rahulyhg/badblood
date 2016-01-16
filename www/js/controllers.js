@@ -230,26 +230,71 @@ angular.module('starter.controllers', ['ngCordova'])
 
         alertPopup.then(function(res) {
             console.log('Thanks');
+            $scope.showOtp();
         });
-
-        $timeout(function() {
-            alertPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2000);
     };
-    $scope.showOtp = function() {
-        var alertPopup = $ionicPopup.alert({
-            templateUrl: 'templates/otp.html',
+
+    $scope.showConfirmBox = function() {
+        var myPopup = $ionicPopup.show({
+            template: '<input type="password" ng-model="data.wifi">',
+            title: 'Enter Wi-Fi Password',
+            subTitle: 'Please use normal things',
+            scope: $scope,
+            buttons: [{
+                text: 'Cancel'
+            }, {
+                text: '<b>Save</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    if (!$scope.data.wifi) {
+                        //don't allow the user to close unless he enters wifi password
+                        e.preventDefault();
+                    } else {
+                        return $scope.data.wifi;
+                    }
+                }
+            }]
         });
 
-        alertPopup.then(function(res) {
-            console.log('Thanks');
+        myPopup.then(function(res) {
+            console.log('Tapped!', res);
         });
-        // 	$scope.closeOTP = function() {
-        // alertPopup.close();
-        // };
-        $timeout(function() {
-            alertPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2000);
+    };
+
+    $scope.showOtp = function() {
+
+        var myPopup = $ionicPopup.show({
+            template: '<input type="password" ng-model="data.wifi">',
+            title: 'Enter Wi-Fi Password',
+            subTitle: 'Please use normal things',
+            scope: $scope,
+            buttons: [{
+                text: 'Cancel'
+            }, {
+                text: '<b>Save</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    if (!$scope.data.wifi) {
+                        //don't allow the user to close unless he enters wifi password
+                        e.preventDefault();
+                    } else {
+                        return $scope.data.wifi;
+                    }
+                }
+            }]
+        });
+
+        myPopup.then(function(res) {
+            console.log('Tapped!', res);
+        });
+
+        // var alertPopup = $ionicPopup.alert({
+        //     templateUrl: 'templates/otp.html',
+        // });
+        //
+        // alertPopup.then(function(res) {
+        //     console.log('Thanks');
+        // });
     };
 
     //popup success
