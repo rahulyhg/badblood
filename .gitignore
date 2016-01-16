@@ -7,3 +7,5 @@ plugins/
 node_modules/
 platforms/
 plugins/
+apk/
+*.apk
