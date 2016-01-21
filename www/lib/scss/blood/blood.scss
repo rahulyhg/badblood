@@ -755,3 +755,51 @@ padding: 15px;
 .nopad{
   padding: 0;
 }
+.folder-inner {
+		    overflow: hidden;
+		    border: 2px solid white;
+		    position: relative;
+		    height: 110px;
+		    width: 130px;
+		    img {
+		        position: absolute;
+		        top: -9999px;
+		        bottom: -9999px;
+		        left: -9999px;
+		        right: -9999px;
+		        margin: auto;
+		    }
+		    .folder-text {
+		        position: absolute;
+		        bottom: -2px;
+		        width: 100%;
+		        padding-top: 4px;
+		        background-color: rgba(6, 6, 6, 0.30);
+		        p {
+		            color: #ffffff;
+		            padding-left: 0px;
+		            text-transform: capitalize;
+		            font-size: 13px;
+		            text-align: center;
+		        }
+		    }
+		}
+
+    .photos {
+		    margin-top: 0px;
+		    .head {
+		        .item {
+		            background-color: $calm !important;
+		            border: transparent !important;
+		            margin: 0px !important;
+		            color: #fff !important;
+		            padding: 10px 0px 45px 0px !important;
+		        }
+		        h2 {
+		            color: $light;
+		        }
+		        p {
+		            color: $light;
+		        }
+		    }
+		}

@@ -634,6 +634,45 @@ ion-item.item.item-complex.actives {
 .nopad {
   padding: 0; }
 
+.folder-inner {
+  overflow: hidden;
+  border: 2px solid white;
+  position: relative;
+  height: 110px;
+  width: 130px; }
+  .folder-inner img {
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto; }
+  .folder-inner .folder-text {
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    padding-top: 4px;
+    background-color: rgba(6, 6, 6, 0.3); }
+    .folder-inner .folder-text p {
+      color: #ffffff;
+      padding-left: 0px;
+      text-transform: capitalize;
+      font-size: 13px;
+      text-align: center; }
+
+.photos {
+  margin-top: 0px; }
+  .photos .head .item {
+    background-color: #11c1f3 !important;
+    border: transparent !important;
+    margin: 0px !important;
+    color: #fff !important;
+    padding: 10px 0px 45px 0px !important; }
+  .photos .head h2 {
+    color: #ffffff; }
+  .photos .head p {
+    color: #ffffff; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

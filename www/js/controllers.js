@@ -1,5 +1,5 @@
 var allfunction = {};
-angular.module('starter.controllers', ['ngCordova'])
+angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $stateParams, $ionicScrollDelegate, $ionicSlideBoxDelegate, $ionicPopup, $ionicLoading, MyServices, $state) {
 
@@ -116,7 +116,7 @@ angular.module('starter.controllers', ['ngCordova'])
         image: "img/slider/s3.jpg",
     }, {
         image: "img/slider/s4.jpg",
-    },{
+    }, {
         image: "img/slider/s5.jpg",
     }];
 
@@ -138,10 +138,6 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('EmergencyCtrl', function($scope, $ionicPopup, $timeout, MyServices, $state) {
 
-
-})
-
-.controller('GalleryCtrl', function($scope) {
 
 })
 
@@ -464,5 +460,90 @@ angular.module('starter.controllers', ['ngCordova'])
     }, {
         image: "img/user1.png",
     }];
+
+})
+
+.controller('GalleryCtrl', function($scope, $ionicModal, $timeout, $ionicScrollDelegate, $location, MyServices, $ionicLoading) {
+
+    $scope.folders = [];
+    $scope.msg = "";
+    $scope.pageno = 1;
+    $scope.keepscrolling = true;
+
+    allfunction.loading();
+    $scope.loadFolder = function(pageno) {
+        MyServices.getFolder(pageno, function(data) {
+
+            if (data.value == false) {
+                $scope.keepscrolling = false;
+            } else {
+                _.each(data.data, function(n) {
+                    $scope.folders.push(n);
+                })
+                $scope.folders = _.chunk($scope.folders, 2);
+                console.log($scope.folders);
+            }
+            $ionicLoading.hide();
+        });
+        $timeout(function() {
+            if ($scope.folders == "") {
+                $scope.msg = "No Folders.";
+            } else {
+                $scope.msg = "";
+            }
+        }, 2000);
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+        $scope.$broadcast('scroll.refreshComplete');
+    }
+    $scope.loadFolder($scope.pageno);
+
+    $scope.loadMoreFolders = function() {
+        $scope.loadFolder(++$scope.pageno);
+    }
+
+    $scope.openFolder = function(folder) {
+        $location.url("/app/innergallery/" + folder._id);
+    }
+
+})
+
+.controller('InnerGalleryCtrl', function($scope, $ionicModal, $timeout, $ionicScrollDelegate, $stateParams, MyServices, $filter, $ionicLoading) {
+
+    $scope.gallery = [];
+    $scope.msg = "";
+    allfunction.loading();
+    MyServices.getFolderImages($stateParams.id, function(data) {
+        if (data.value == false || !data.image || data.image == '') {
+            $scope.msg = "No Galleries";
+        }
+        _.each(data.image, function(n) {
+            $scope.gallery.push({
+                "src": $filter("uploadpath")(n)
+            });
+        });
+        $ionicLoading.hide();
+    });
+
+
+    $ionicModal.fromTemplateUrl('templates/modal-gallery.html', function($ionicModal) {
+        $scope.omodal = $ionicModal;
+    }, {
+        // Use our scope for the scope of the modal to keep it simple
+        scope: $scope,
+        // The animation we want to use for the modal entrance
+        animation: 'slide-in-up'
+    });
+
+    $scope.opengallery = function() {
+        $scope.omodal.show();
+    };
+
+    $scope.closegallery = function() {
+        $scope.omodal.hide();
+    };
+
+    $scope.openFolder = function(num) {
+        $scope.opengallery();
+    }
 
 });

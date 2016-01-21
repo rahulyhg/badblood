@@ -1,7 +1,7 @@
 // var adminurl = "http://localhost:1337/";
 // var adminurl = "http://192.168.0.122:82/";
-var adminurl = "http://192.168.0.127:1337/";
-var adminurl = "http://104.197.50.51/";
+var adminurl = "http://192.168.0.109:1337/";
+// var adminurl = "http://104.197.50.51/";
 var imgpath = adminurl + "uploadfile/resize?file=";
 
 angular.module('starter.services', [])
@@ -73,6 +73,25 @@ angular.module('starter.services', [])
                 url: adminurl + 'notification/save',
                 method: 'POST',
                 data: obj
+            }).success(callback);
+        },
+        getFolder: function(pageno, callback) {
+            $http({
+                url: adminurl + 'folder/findlimited',
+                method: 'POST',
+                data: {
+                    pagenumber: pageno,
+                    pagesize: 20
+                }
+            }).success(callback);
+        },
+        getFolderImages: function(id, callback) {
+            $http({
+                url: adminurl + 'folder/findone',
+                method: 'POST',
+                data: {
+                    _id: id
+                }
             }).success(callback);
         },
         setNotify: function(data) {

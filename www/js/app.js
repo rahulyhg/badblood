@@ -100,6 +100,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 }
             }
         })
+        .state('app.innergallery', {
+            url: '/innergallery/:id',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/innergallery.html',
+                    controller: 'InnerGalleryCtrl'
+                }
+            }
+        })
         .state('app.activity', {
             url: '/activity',
             views: {
