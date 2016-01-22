@@ -19,7 +19,7 @@
                 </button>
             </div>
             <div class="login-form m40">
-                <form name="myForm" novalidate>
+                <!-- <form name="myForm" novalidate> -->
                     <div class="list regi-user">
                         <label class="item item-input">
                             <input type="text" placeholder="First Name*" name="fname" ng-model="register.firstname" required>
@@ -101,11 +101,11 @@
                         <p class="colpad" ng-if="myForm.mobile.$error.minlength || myForm.mobile.$error.maxlength">Please enter valid mobile no.</p>
                     </div>
                     <div class="login-footer m40 text-center">
-                        <button class="button primary-btn button-positive" ng-disabled="myForm.$invalid" ng-click="showRegi()">
+                        <button class="button primary-btn button-positive" ng-click="showOtp()">
                             Submit
                         </button>
                     </div>
-                </form>
+                <!-- </form> -->
                 <!-- <button class="button primary-btn button-positive" ng-click="showOtp('9029145077')">
                     Submit
                 </button> -->

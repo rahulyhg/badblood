@@ -201,12 +201,13 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 })
 
-.controller('RegisterCtrl', function($scope, $ionicScrollDelegate, $ionicPopup, $timeout) {
+.controller('RegisterCtrl', function($scope, $ionicScrollDelegate, $ionicPopup, $timeout, MyServices, $ionicLoading) {
 
     //    tab change
     $scope.tab = 'new';
     $scope.classa = 'active';
     $scope.classb = '';
+    $scope.register = {};
 
     $scope.tabchange = function(tab, a) {
         //        console.log(tab);
@@ -232,12 +233,12 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
         });
     };
 
-    $scope.showOtp = function(mob) {
-        if (mob && mob != "" && mob.toString().length == 10) {
-            var fmobile = mob.toString().substr(mob.toString().length - 4);
+    $scope.showOtp = function() {
+        if ($scope.register.mobile && $scope.register.mobile != "" && $scope.register.mobile.toString().length == 10) {
+            var fmobile = $scope.register.mobile.toString().substr($scope.register.mobile.toString().length - 4);
             var mobile = "XXXXXX" + fmobile;
             var myPopup = $ionicPopup.show({
-                template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad"><h4 style="margin-bottom:5px;">Confirm !</h4><p>OTP will be sent to ' + mobile + '</p></div></div>',
+                template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad" style="padding:0 !important"><h4 style="margin-bottom:5px;">Confirm !</h4><p>OTP will be sent to ' + mobile + '</p></div></div>',
                 scope: $scope,
                 buttons: [{
                     text: 'Cancel',
@@ -254,40 +255,79 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
             });
 
             myPopup.then(function(res) {
-                console.log('Tapped!', res);
-                if (res == true)
-                    $scope.enterOtp(mob);
+                // console.log('Tapped!', res);
+                if (res == true) {
+                    allfunction.loading();
+                    MyServices.sendSMS($scope.register.mobile, function(data) {
+                        $ionicLoading.hide();
+                        console.log(data);
+                        if (data.value != false) {
+                            $scope.enterOtp(data.otp);
+                        }
+                    })
+                }
             });
         }
     };
 
-    $scope.enterOtp = function(mob) {
-        //call service to send otp
+    $scope.enterOtp = function(otpreceived) {
+        console.log(otpreceived);
         $scope.valid = {};
+        smsplugin.startReception(function(result) {
+            console.log(result);
+            $scope.valid.otp = result.substr(result.length - 6);
+            $scope.$apply();
+            smsplugin.stopReception(function(stopresult) {
+                console.log(stopresult);
+            }, function(stoperror) {
+                if (stoperror) {
+                    console.log(stoperror);
+                }
+            });
+        }, function(error) {
+            if (error) {
+                console.log(error);
+            }
+        });
         var myPopup = $ionicPopup.show({
             template: '<input type="text" ng-model="valid.otp">',
             title: 'Enter OTP',
             subTitle: 'Please enter the otp sent to your mobile number.',
             scope: $scope,
             buttons: [{
-                text: 'Cancel'
+                text: 'Cancel',
+                onTap: function(e) {
+                    return false;
+                }
             }, {
                 text: '<b>Submit</b>',
                 type: 'button-positive',
                 onTap: function(e) {
                     if ($scope.valid.otp) {
-                        //don't allow the user to close unless he enters wifi password
-                        e.preventDefault();
-                    } else {
-                        return $scope.data.wifi;
+                        return $scope.valid.otp;
                     }
                 }
             }]
         });
 
         myPopup.then(function(res) {
-            console.log('Tapped!', res);
+            console.log(res);
+            if (res != false) {
+                if (otpreceived === parseInt(res)) {
+                    console.log("valid OTP");
+                    // saveDonor();
+                }
+            }
         });
+    }
+
+    function saveDonor() {
+        MyServices.saveForApp($scope.register, function(data) {
+          console.log(data);
+            if (data.value != false) {
+              // redirect to home
+            }
+        })
     }
 
     //popup success
