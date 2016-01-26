@@ -69,9 +69,9 @@
                   </label>
                   <p class="colpad" ng-if="myForm.birthdate.$error.required && myForm.birthdate.$touched">BIrthdate is required</p>
                   <label class="item item-input">
-                     <input type="number" placeholder="Age*" name="age" ng-model="register.age" required readonly>
+                     <input type="number" placeholder="Age*" name="age" ng-model="register.age" ng-min="18" ng-max="70" required readonly>
                   </label>
-                  <p class="colpad" ng-if="myForm.age.$error.required && myForm.age.$touched">Age is required</p>
+                  <p class="colpad" ng-if="myForm.age.$invalid">Age should be between 18 and 70</p>
                   <label class="item item-input">
                      <input type="text" placeholder="Village" ng-model="register.village">
                   </label>
