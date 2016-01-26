@@ -1,6 +1,6 @@
 // var adminurl = "http://localhost:1337/";
 // var adminurl = "http://192.168.0.122:82/";
-var adminurl = "http://192.168.0.121:1337/";
+var adminurl = "http://192.168.0.122:1337/";
 // var adminurl = "http://104.197.50.51/";
 var imgpath = adminurl + "uploadfile/resize?file=";
 
@@ -69,6 +69,7 @@ angular.module('starter.services', [])
             }).success(callback);
         },
         saveNotification: function(obj, callback) {
+            obj.read = true;
             $http({
                 url: adminurl + 'notification/save',
                 method: 'POST',
@@ -101,6 +102,43 @@ angular.module('starter.services', [])
                 data: {
                     mobile: mobile
                 }
+            }).success(callback);
+        },
+        saveApp: function(userData, callback) {
+            $http({
+                url: adminurl + 'user/saveApp',
+                method: 'POST',
+                data: userData
+            }).success(callback);
+        },
+        getOneDonor: function(userid, callback) {
+            $http({
+                url: adminurl + 'donor/findone',
+                method: 'POST',
+                data: {
+                    "_id": userid
+                }
+            }).success(callback);
+        },
+        findForApp: function(search, callback) {
+            $http({
+                url: adminurl + 'donor/findforapp',
+                method: 'POST',
+                data: search
+            }).success(callback);
+        },
+        updateForApp: function(userData, callback) {
+            $http({
+                url: adminurl + 'user/updateforapp',
+                method: 'POST',
+                data: userData
+            }).success(callback);
+        },
+        requestBlood: function(request, callback) {
+            $http({
+                url: adminurl + 'request/save',
+                method: 'POST',
+                data: request
             }).success(callback);
         },
         setNotify: function(data) {

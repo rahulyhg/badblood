@@ -51,7 +51,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             });
 
             push.on('error', function(e) {
-                conosle.log("ERROR");
+                console.log("ERROR");
                 console.log(e);
             });
         } catch (e) {
@@ -224,7 +224,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         })
         .state('signup', {
             url: "/signup",
-
             templateUrl: "templates/signup.html",
             controller: 'SignupCtrl'
 

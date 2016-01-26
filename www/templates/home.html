@@ -24,7 +24,7 @@
          </div>
       </div>
       <div class="noti-list">
-         <div class="list" ng-repeat="noti in notification">
+         <div class="list" ng-repeat="noti in notification" ng-if="$index<3">
             <a class="item item-avatar" ui-sref="app.notidetail({id:noti._id})">
                <div class="noti-img" ng-style="{'background-image':'url({{noti.image|uploadpath}})'}"></div>
                <h2>{{noti.title}}</h2>

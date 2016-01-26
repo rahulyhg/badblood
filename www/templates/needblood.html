@@ -1,77 +1,83 @@
 <ion-view view-title="Need Blood">
-    <ion-content class="has-footer">
-        <div class="video">
-            <div class="text-center m40">
-                <h4 style="color:#E62739">Fill Your Requirements</h4>
-            </div>
-            <div class="login-form padding regi-user">
-                <div class="list login-user custom-border">
-                    <label class="item item-input">
-                        <input type="text" placeholder="Patient Name">
-                    </label>
-                    <label class="item item-input">
-                        <input type="text" placeholder="Relation with Patient">
-                    </label>
-                    <label class="item item-input" class="nbtp">
-                        <input type="text" placeholder="Hospital Name">
-                    </label>
-                    <label class="item item-input" class="nbtp">
-                        <input type="text" placeholder="Area">
-                    </label>
-                    <label class="item item-input" class="nbtp">
-                        <input type="number" placeholder="Number of Bottle - Unit">
-                    </label>
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                            Blood Type
-                        </div>
-                        <select>
-                            <option selected>Fresh Blood</option>
-                            <option selected>Whole Blood</option>
-                            <option>Plasma (FFP)</option>
-                            <option>RDP</option>
-                            <option>SDP</option>
-                            <option>Packed Cells</option>
-                            <option>Semi Packed Cells</option>
-                            <option>White Cell</option>
-
-                        </select>
-                    </label>
-
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                            Blood Group
-                        </div>
-                        <select>
-                            <option selected>A +</option>
-                            <option>A -</option>
-                            <option>B +</option>
-                            <option>B -</option>
-                            <option>AB +</option>
-                            <option>AB -</option>
-                            <option>O +</option>
-                            <option>O -</option>
-                        </select>
-                    </label>
-                    <label class="item item-input">
-                        <input type="number" placeholder="Donor Id or Family Id or Mobile Number">
-                    </label>
-                    <label class="item item-input" style="display: block;border-bottom:none;">
-                        <span class="input-label">Comment</span>
-                        <div class="m-rg">
-                            <textarea rows="6" cols="30" style="    border: 1px solid #ddd;" class="padding"></textarea>
-                        </div>
-
-                    </label>
-                </div>
-                <div class="text-center m12">
-                    <button class="button primary-btn button-positive">
-                        Request
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
-    </ion-content>
+   <ion-content class="has-footer">
+      <div class="video">
+         <div class="text-center m40">
+            <h4 style="color:#E62739">Fill Your Requirements</h4>
+         </div>
+         <div class="login-form padding regi-user">
+            <form name="myForm" novalidate>
+               <div class="list login-user custom-border">
+                  <label class="item item-input">
+                     <input type="text" placeholder="Patient Name*" name="pname" ng-model="need.pname" required>
+                  </label>
+                  <p class="colpad" ng-if="myForm.pname.$error.required && myForm.pname.$touched">Patient name is required</p>
+                  <label class="item item-input">
+                     <input type="text" placeholder="Relation with Patient" name="rwp" ng-model="need.rwp" required>
+                  </label>
+                  <p class="colpad" ng-if="myForm.rwp.$error.required && myForm.rwp.$touched">Relation with Patient is required</p>
+                  <label class="item item-input" class="nbtp">
+                     <input type="text" placeholder="Hospital Name" name="hospname" ng-model="need.hospname" required>
+                  </label>
+                  <p class="colpad" ng-if="myForm.hospname.$error.required && myForm.hospname.$touched">Hospital Name is required</p>
+                  <label class="item item-input" class="nbtp">
+                     <input type="text" placeholder="Area" ng-model="need.area">
+                  </label>
+                  <label class="item item-input" class="nbtp">
+                     <input type="tel" placeholder="Number of Bottle - Unit" name="nob" ng-model="need.nob" required only-digits>
+                  </label>
+                  <p class="colpad" ng-if="myForm.nob.$error.required && myForm.nob.$touched">Number of Bottle is required</p>
+                  <label class="item item-input item-select">
+                     <div class="input-label">
+                        Blood Type
+                     </div>
+                     <select name="btype" ng-model="need.bloodtype" required>
+                        <option value="">Please Select</option>
+                        <option value="Fresh Blood">Fresh Blood</option>
+                        <option value="Whole Blood">Whole Blood</option>
+                        <option value="Plasma (FFP)">Plasma (FFP)</option>
+                        <option value="RDP">RDP</option>
+                        <option value="SDP">SDP</option>
+                        <option value="Packed Cells">Packed Cells</option>
+                        <option value="Semi Packed Cells">Semi Packed Cells</option>
+                        <option value="White Cell">White Cell</option>
+                     </select>
+                  </label>
+                  <p class="colpad" ng-if="myForm.btype.$error.required && myForm.btype.$touched">Blood Type is required</p>
+                  <label class="item item-input item-select">
+                     <div class="input-label">
+                        Blood Group
+                     </div>
+                     <select name="bloodgrp" ng-model="need.bloodgroup" required>
+                        <option value="">Please Select</option>
+                        <option value="A+">A +</option>
+                        <option value="A-">A -</option>
+                        <option value="B+">B +</option>
+                        <option value="B-">B -</option>
+                        <option value="AB+">AB +</option>
+                        <option value="AB-">AB -</option>
+                        <option value="O+">O +</option>
+                        <option value="O-">O -</option>
+                     </select>
+                  </label>
+                  <p class="colpad" ng-if="myForm.bloodgrp.$error.required && myForm.bloodgrp.$touched">Blood Group is required</p>
+                  <label class="item item-input">
+                     <input type="text" placeholder="Donor Id" name="donorid" ng-model="need.donorid" required>
+                  </label>
+                  <p class="colpad" ng-if="myForm.donorid.$error.required && myForm.donorid.$touched">Donor Id is required</p>
+                  <label class="item item-input" style="display: block;border-bottom:none;">
+                     <span class="input-label">Comment</span>
+                     <div class="m-rg">
+                        <textarea rows="6" cols="30" style="border: 1px solid #ddd;" class="padding" ng-model="need.comment"></textarea>
+                     </div>
+                  </label>
+               </div>
+               <div class="text-center m12">
+                  <button class="button primary-btn button-positive" ng-click="requestBlood();" ng-disabled="myForm.$invalid">
+                     Request
+                  </button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </ion-content>
 </ion-view>
