@@ -363,7 +363,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
             }
         });
         var myPopup = $ionicPopup.show({
-            template: '<input type="text" ng-model="valid.otp">',
+            template: '<input type="tel" ng-model="valid.otp">',
             title: 'Enter OTP',
             subTitle: 'Please enter the otp sent to your mobile number.',
             scope: $scope,
@@ -681,7 +681,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
             }
         });
         var myPopup = $ionicPopup.show({
-            template: '<input type="text" ng-model="valid.otp">',
+            template: '<input type="tel" ng-model="valid.otp">',
             title: 'Enter OTP',
             subTitle: 'Please enter the otp sent to your mobile number.',
             scope: $scope,

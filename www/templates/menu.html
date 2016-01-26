@@ -21,14 +21,14 @@
    <ion-side-menu side="left">
       <ion-header-bar class="bar-side bg-xb">
          <div class="side-image">
-            <div class="user-setting text-center" ng-if="userData">
-               <div class="user-back" ng-style="{'background-image':'url(img/user1.png)'}" menu-close ui-sref="app.profile" ng-if="!userData.image"></div>
+            <div class="user-setting text-center" ng-if="userData" ui-sref="app.profile">
+               <div class="user-back" ng-style="{'background-image':'url(img/user1.png)'}" menu-close ng-if="!userData.image"></div>
                <div class="user-back" ng-style="{'background-image':'url({{userData.image|uploadpath}})'}" menu-close ui-sref="app.profile" ng-if="userData.image"></div>
                <h3 class="h3">{{userData.donationcount}}</h3>
                <h5 class="h5">{{userData.firstname}} {{userData.lastname}}</h5>
                <p class="p">
                   <!-- <i class="ln-map-marker"></i>Mumbai, Maharashtra -->
-                  <i class="ln-gear2 right" menu-close ui-sref="app.profile"></i>
+                  <!-- <i class="ln-gear2 right" menu-close ui-sref="app.profile"></i> -->
                </p>
             </div>
          </div>
