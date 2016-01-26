@@ -65,6 +65,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 .controller('HomeCtrl', function($scope, $stateParams, $ionicScrollDelegate, MyServices, $ionicSlideBoxDelegate, $cordovaDevice, $ionicLoading, $timeout) {
 
     allfunction.countNotify();
+    allfunction.getUserData();
     $scope.pagedata = {};
     $scope.pagedata.pagenumber = 1;
     $scope.pagedata.pagesize = 20;
