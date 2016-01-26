@@ -673,6 +673,9 @@ ion-item.item.item-complex.actives {
   .photos .head p {
     color: #ffffff; }
 
+.custom-hide {
+  display: block !important; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
