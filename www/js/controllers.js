@@ -47,15 +47,18 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
         })
     }
 
-    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
-        MyServices.getOneDonor($.jStorage.get("deviceObj").donorid, function(data) {
-            console.log(data);
-            if (data.value != false) {
-                $scope.userData = data;
-                $scope.hideRegister = true;
-            }
-        })
+    allfunction.getUserData = function() {
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            MyServices.getOneDonor($.jStorage.get("deviceObj").donorid, function(data) {
+                console.log(data);
+                if (data.value != false) {
+                    $scope.userData = data;
+                    $scope.hideRegister = true;
+                }
+            })
+        }
     }
+    allfunction.getUserData();
 
 })
 
@@ -609,7 +612,6 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
     }
 
     $scope.showOtp = function(mobileno, fullData) {
-
         if (OGMobile != mobileno) {
             if (mobileno && mobileno != "" && mobileno.toString().length == 10) {
                 var fmobile = mobileno.toString().substr(mobileno.toString().length - 4);
@@ -716,6 +718,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
             console.log(data);
             $ionicLoading.hide();
             if (data.value != false) {
+                allfunction.getUserData();
                 var mySuccessPopup = $ionicPopup.show({
                     template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad" style="padding:0 !important"><h4 style="margin-bottom:5px;">Updated !</h4><p>Your changes have been updated</p></div></div>',
                     scope: $scope
