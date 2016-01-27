@@ -23,6 +23,11 @@
                      <input type="text" placeholder="Area" ng-model="need.area">
                   </label>
                   <label class="item item-input" class="nbtp">
+                     <input type="tel" placeholder="Pincode" name="pincode" ng-model="need.pincode" required ng-minlength="6" ng-maxlength="6" maxlength="6" only-digits ng-trim="false">
+                  </label>
+                  <p class="colpad" ng-if="myForm.pincode.$error.required && myForm.pincode.$touched">Pincode is required</p>
+                  <p class="colpad" ng-if="(myForm.pincode.$error.minlength || myForm.pincode.$error.maxlength) && myForm.pincode.$touched">Please enter valid pincode</p>
+                  <label class="item item-input" class="nbtp">
                      <input type="tel" placeholder="Number of Bottle - Unit" name="nob" ng-model="need.nob" required only-digits>
                   </label>
                   <p class="colpad" ng-if="myForm.nob.$error.required && myForm.nob.$touched">Number of Bottle is required</p>
