@@ -207,6 +207,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
     $scope.requestBlood = function() {
         allfunction.loading();
+        $scope.need.status = "Pending";
         MyServices.requestBlood($scope.need, function(data) {
             $ionicLoading.hide();
             if (data.value != false) {
@@ -536,6 +537,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
                 $scope.shownodata = true;
             }
             $ionicLoading.hide();
+            $scope.$broadcast('scroll.infiniteScrollComplete');
         });
     }
     $scope.addMoreItems();
