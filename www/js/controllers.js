@@ -48,6 +48,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
     }
 
     allfunction.getUserData = function() {
+        $scope.userData = {};
         if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
             MyServices.getOneDonor($.jStorage.get("deviceObj").donorid, function(data) {
                 console.log(data);
@@ -595,22 +596,27 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
     };
 
     var OGMobile = '';
-    allfunction.loading();
-    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
-        MyServices.getOneDonor($.jStorage.get("deviceObj").donorid, function(data) {
-            $ionicLoading.hide();
-            console.log(data);
-            if (data.value != false) {
-                $scope.register = data;
-                if ($scope.register.mobile) {
-                    OGMobile = $scope.register.mobile;
+
+    function getUserData() {
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            allfunction.loading();
+            MyServices.getOneDonor($.jStorage.get("deviceObj").donorid, function(data) {
+                $ionicLoading.hide();
+                console.log(data);
+                if (data.value != false) {
+                    $scope.register = data;
+                    if ($scope.register.mobile) {
+                        OGMobile = $scope.register.mobile;
+                    }
+                    if ($scope.register.birthdate) {
+                        $scope.register.birthdate = $filter('date')($scope.register.birthdate, 'MM/dd/yyyy');
+                    }
                 }
-                if ($scope.register.birthdate) {
-                    $scope.register.birthdate = $filter('date')($scope.register.birthdate, 'MM/dd/yyyy');
-                }
-            }
-        })
+            })
+        }
     }
+
+    getUserData();
 
     $scope.showOtp = function(mobileno, fullData) {
         if (OGMobile != mobileno) {
@@ -719,6 +725,9 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
             console.log(data);
             $ionicLoading.hide();
             if (data.value != false) {
+                $scope.register = {};
+                console.log($scope.register);
+                getUserData();
                 allfunction.getUserData();
                 var mySuccessPopup = $ionicPopup.show({
                     template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad" style="padding:0 !important"><h4 style="margin-bottom:5px;">Updated !</h4><p>Your changes have been updated</p></div></div>',
@@ -753,6 +762,8 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
     $scope.uploadPhoto = function(serverpath, callback) {
         console.log("function called");
+        $scope.register.image = null;
+        console.log($scope.register);
         $cordovaFileTransfer.upload(serverpath, $scope.imagetobeup, options)
             .then(function(result) {
                 console.log(result);
