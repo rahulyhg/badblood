@@ -713,7 +713,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
                         OGMobile = $scope.register.mobile;
                     }
                     if ($scope.register.birthdate) {
-                        $scope.register.birthdate = $filter('date')($scope.register.birthdate, 'MM/dd/yyyy');
+                        $scope.register.birthdate = $filter('date')($scope.register.birthdate, 'dd/MM/yyyy');
                     }
                 }
             })

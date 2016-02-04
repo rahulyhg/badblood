@@ -18,27 +18,31 @@
                +
             </button>
          </div>
-         <div class="login-form m40">
+         <div class="login-form m40 padding-horizontal">
             <form name="myForm" novalidate>
                <div class="list regi-user">
-                  <label class="item item-input">
+                  <span>Donor ID</span>
+                  <label class="item item-input marbfive">
                      <input type="text" placeholder="Donor Id" ng-model="register.donorid" readonly>
                   </label>
-                  <label class="item item-input">
+                  <span>First Name</span>
+                  <label class="item item-input marbfive">
                      <input type="text" placeholder="First Name*" name="fname" ng-model="register.firstname" required readonly>
                   </label>
                   <p class="colpad" ng-if="myForm.fname.$error.required && myForm.fname.$touched">Firstname is required</p>
-                  <label class="item item-input">
+                  <span>Middle Name</span>
+                  <label class="item item-input marbfive">
                      <input type="text" placeholder="Middle Name" ng-model="register.middlename" readonly>
                   </label>
-                  <label class="item item-input">
+                  <span>Last Name</span>
+                  <label class="item item-input marbfive">
                      <input type="text" placeholder="Last Name*" name="lname" ng-model="register.lastname" required readonly>
                   </label>
                   <p class="colpad" ng-if="myForm.lname.$error.required && myForm.lname.$touched">Lastname is required</p>
                   <!-- <label class="item item-input">
                      <input type="text" placeholder="Family id" ng-model="register.familyid">
                   </label> -->
-                  <label class="item item-input item-select">
+                  <label class="item item-input item-select marbfive">
                      <div class="input-label">
                         Gender*
                      </div>
@@ -49,7 +53,7 @@
                      </select>
                   </label>
                   <p class="colpad" ng-if="myForm.gender.$error.required && myForm.gender.$touched">Gender is required</p>
-                  <label class="item item-input item-select">
+                  <label class="item item-input item-select marbfive">
                      <div class="input-label">
                         Blood Group*
                      </div>
@@ -66,45 +70,54 @@
                      </select>
                   </label>
                   <p class="colpad" ng-if="myForm.bloodgrp.$error.required && myForm.bloodgrp.$touched">Blood Group is required</p>
-                  <label class="item item-input">
+                  <span>Birth Date</span>
+                  <label class="item item-input marbfive">
                      <input type="text" onfocus="(this.type='date')" placeholder="Birth Date*" name="birthdate" ng-model="register.birthdate" required ng-change="calcAge();" readonly>
                   </label>
                   <p class="colpad" ng-if="myForm.birthdate.$error.required && myForm.birthdate.$touched">BIrthdate is required</p>
-                  <label class="item item-input">
+                  <span>Age</span>
+                  <label class="item item-input marbfive">
                      <input type="number" placeholder="Age*" name="age" ng-model="register.age" required readonly>
                   </label>
                   <p class="colpad" ng-if="myForm.age.$error.required && myForm.age.$touched">Age is required</p>
-                  <label class="item item-input">
-                     <input list="villages" name="village" placeholder="Village" ng-model="register.village" style="border: none;">
-                     <!-- <input list="browsers" name="browser"> -->
+                  <span>Village</span>
+                  <label class="item item-input marbfive">
+                     <!-- <input list="villages" name="village" placeholder="Village" ng-model="register.village" style="border: none;">
                      <datalist id="villages">
                         <option value="Internet Explorer">
                            <option value="Firefox">
                               <option value="Chrome">
                                  <option value="Opera">
                                     <option value="Safari">
-                     </datalist>
+                     </datalist> -->
+                     <input type="text" placeholder="Village" ng-model="register.village">
                   </label>
-                  <label class="item item-input">
+                  <span>Address 1</span>
+                  <label class="item item-input marbfive">
                      <input type="text" placeholder="Address 1*" name="add1" ng-model="register.address1" required>
                   </label>
                   <p class="colpad" ng-if="myForm.add1.$error.required && myForm.add1.$touched">Address 1 is required</p>
-                  <label class="item item-input">
+                  <span>Address 2</span>
+                  <label class="item item-input marbfive">
                      <input type="text" placeholder="Address 2" ng-model="register.address2">
                   </label>
-                  <label class="item item-input">
+                  <span>Area</span>
+                  <label class="item item-input marbfive">
                      <input type="text" placeholder="Area" ng-model="register.area">
                   </label>
-                  <label class="item item-input">
+                  <span>City</span>
+                  <label class="item item-input marbfive">
                      <input type="text" placeholder="City*" name="city" ng-model="register.city" required>
                   </label>
                   <p class="colpad" ng-if="myForm.city.$error.required && myForm.city.$touched">City is required</p>
-                  <label class="item item-input">
+                  <span>Pincode</span>
+                  <label class="item item-input marbfive">
                      <input type="tel" placeholder="Pincode*" name="pincode" ng-model="register.pincode" required ng-minlength="6" ng-maxlength="6" maxlength="6" only-digits ng-trim="false">
                   </label>
                   <p class="colpad" ng-if="myForm.pincode.$error.required && myForm.pincode.$touched">Pincode is required</p>
                   <p class="colpad" ng-if="myForm.pincode.$error.minlength || myForm.pincode.$error.maxlength">Please enter valid pincode</p>
-                  <label class="item item-input">
+                  <span>Mobile No.</span>
+                  <label class="item item-input marbfive">
                      <input type="tel" placeholder="Mobile Number*" name="mobile" ng-model="register.mobile" required ng-minlength="10" ng-maxlength="10" maxlength="10" only-digits ng-trim="false">
                   </label>
                   <p class="colpad" ng-if="myForm.mobile.$error.required && myForm.mobile.$touched">Mobile no. is required</p>
@@ -112,7 +125,7 @@
                </div>
                <div class="login-footer m40 text-center">
                   <button class="button primary-btn button-positive" ng-disabled="myForm.$invalid" ng-click="showOtp(register.mobile,register)">
-                     Edit
+                     Update
                   </button>
                </div>
             </form>

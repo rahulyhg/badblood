@@ -806,3 +806,11 @@ padding: 15px;
     .custom-hide{
       display: block !important;
     }
+
+    input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.cloned-text-input), textarea[readonly]:not(.cloned-text-input), select[readonly] {
+        background-color: #FFF !important;
+        cursor: not-allowed !important;
+    }
+    .marbfive{
+      margin-bottom: 5px !important;
+    }
