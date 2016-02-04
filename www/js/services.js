@@ -1,7 +1,7 @@
 // var adminurl = "http://localhost:1337/";
 // var adminurl = "http://192.168.0.122:82/";
-var adminurl = "http://192.168.0.122:1337/";
-// var adminurl = "http://104.154.50.117/";
+// var adminurl = "http://192.168.0.122:1337/";
+var adminurl = "http://104.154.50.117/";
 var imgpath = adminurl + "uploadfile/resize?file=";
 
 angular.module('starter.services', [])
@@ -50,9 +50,16 @@ angular.module('starter.services', [])
                 data: data
             }).success(callback);
         },
-        countNotify: function(userid, callback) {
+        countNotify: function(obj, callback) {
             $http({
                 url: adminurl + 'user/countnotify',
+                method: 'POST',
+                data: obj
+            }).success(callback);
+        },
+        countEmergency: function(userid, callback) {
+            $http({
+                url: adminurl + 'emergency/count',
                 method: 'POST',
                 data: {
                     "_id": userid
@@ -139,6 +146,49 @@ angular.module('starter.services', [])
                 url: adminurl + 'request/save',
                 method: 'POST',
                 data: request
+            }).success(callback);
+        },
+        getEmergencyReq: function(userid, callback) {
+            $http({
+                url: adminurl + 'emergency/findByUser',
+                method: 'POST',
+                data: {
+                    "user": userid
+                }
+            }).success(callback);
+        },
+        rejectEmergencyRequest: function(emergencyid, callback) {
+            $http({
+                url: adminurl + 'emergency/delete',
+                method: 'POST',
+                data: {
+                    "_id": emergencyid
+                }
+            }).success(callback);
+        },
+        acceptEmergencyRequest: function(obj, callback) {
+            $http({
+                url: adminurl + 'emergency/save',
+                method: 'POST',
+                data: obj
+            }).success(callback);
+        },
+        getOneRequest: function(reqid, callback) {
+            $http({
+                url: adminurl + 'request/findone',
+                method: 'POST',
+                data: {
+                    "_id": reqid
+                }
+            }).success(callback);
+        },
+        getMyNeedBloodReq: function(getid, callback) {
+            $http({
+                url: adminurl + 'request/findById',
+                method: 'POST',
+                data: {
+                    "getid": getid
+                }
             }).success(callback);
         },
         setNotify: function(data) {

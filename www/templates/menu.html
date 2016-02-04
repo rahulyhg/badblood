@@ -21,7 +21,7 @@
    <ion-side-menu side="left">
       <ion-header-bar class="bar-side bg-xb">
          <div class="side-image">
-            <div class="user-setting text-center" ng-if="userData && userData.firstname" ui-sref="app.profile">
+            <div class="user-setting text-center" ui-sref="app.profile">
                <div class="user-back" ng-style="{'background-image':'url(img/user1.png)'}" menu-close ng-if="!userData.image"></div>
                <div class="user-back" ng-style="{'background-image':'url({{userData.image|uploadpath}})'}" menu-close ui-sref="app.profile" ng-if="userData.image"></div>
                <h3 class="h3">{{userData.donationcount}}</h3>
@@ -52,7 +52,7 @@
             </ion-item>
             <ion-item menu-close ui-sref-active="actives" ui-sref="app.emergency">
                <i class="icon ln-bus side-menu-i"></i>Emergency Request
-               <!-- <span class="badge badge-positive">1</span> -->
+               <span class="badge badge-positive" ng-if="emergencyBadge>0">{{emergencyBadge}}</span>
             </ion-item>
             <ion-item menu-close ui-sref-active="actives" ui-sref="app.needblood">
                <i class="icon ln-bottle side-menu-i"></i>Need Blood
@@ -66,12 +66,11 @@
             </ion-item>
             <ion-item menu-close ui-sref-active="actives" ui-sref="app.notification">
                <i class="icon ln-bell side-menu-i"></i>Notification
-               <span class="badge badge-positive">{{notiBadge}}</span>
+               <span class="badge badge-positive" ng-if="notiBadge>0">{{notiBadge}}</span>
             </ion-item>
-            <!-- <ion-item menu-close ui-sref-active="actives" ui-sref="app.request">
-                    <i class="icon ln-clipboard-check side-menu-i"></i>Request
-                    <span class="badge badge-positive">3</span>
-                </ion-item> -->
+            <ion-item menu-close ui-sref-active="actives" ui-sref="app.request">
+               <i class="icon ln-clipboard-check side-menu-i"></i>Request
+            </ion-item>
             <ion-item menu-close ui-sref-active="actives" ui-sref="app.donatenow">
                <i class="icon ln-cash side-menu-i"></i>Online Donation
             </ion-item>

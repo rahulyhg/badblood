@@ -1,4 +1,5 @@
 var allfunction = {};
+var userImage = '';
 angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $stateParams, $ionicScrollDelegate, $ionicSlideBoxDelegate, $ionicPopup, $ionicLoading, MyServices, $state) {
@@ -31,9 +32,23 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
     };
 
     allfunction.countNotify = function() {
-        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").id) {
-            MyServices.countNotify($.jStorage.get("deviceObj").id, function(data) {
+        var obj = {};
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").id && !$.jStorage.get("deviceObj").donorid) {
+            obj.user = true;
+            obj._id = $.jStorage.get("deviceObj").id;
+            MyServices.countNotify(obj, function(data) {
                 $scope.notiBadge = data;
+            })
+        } else if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            obj.donor = true;
+            obj._id = $.jStorage.get("deviceObj").donorid;
+            MyServices.countNotify(obj, function(data) {
+                $scope.notiBadge = data;
+            })
+        }
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            MyServices.countEmergency($.jStorage.get("deviceObj").donorid, function(data) {
+                $scope.emergencyBadge = data;
             })
         }
     }
@@ -54,6 +69,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
                 console.log(data);
                 if (data.value != false) {
                     $scope.userData = data;
+                    userImage = data.image;
                     $scope.hideRegister = true;
                 }
             })
@@ -176,7 +192,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 })
 
-.controller('EmergencyCtrl', function($scope, $ionicPopup, $timeout, MyServices, $state) {
+.controller('EmergencyCtrl', function($scope, $ionicPopup, $timeout, MyServices, $state, $ionicLoading) {
 
     $scope.notification = [{
         image: "img/slider/3.jpg",
@@ -191,6 +207,58 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
         title: "Lorem ipsum dolor",
         desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
     }];
+
+    function getAllRequests() {
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            allfunction.loading();
+            MyServices.getEmergencyReq($.jStorage.get("deviceObj").donorid, function(data) {
+                $ionicLoading.hide();
+                if (data.value != false) {
+                    var i = 0;
+                    _.each(data, function(n) {
+                        MyServices.getOneRequest(n.requestid, function(request) {
+                            if (request.value != false) {
+                                n.status = request.status;
+                            }
+                        })
+                    })
+                    $scope.emergencyRequests = data;
+                    console.log($scope.emergencyRequests);
+                } else {
+                    $scope.emergencyRequests = [];
+                }
+            })
+        }
+    }
+
+    getAllRequests();
+
+    $scope.rejectEmergencyRequest = function(emergencyid) {
+        allfunction.loading();
+        MyServices.rejectEmergencyRequest(emergencyid, function(data) {
+            $ionicLoading.hide();
+            console.log(data);
+            if (data.value != false) {
+                getAllRequests();
+            }
+        })
+    }
+
+    $scope.acceptEmergencyRequest = function(emergencyid, reqid) {
+        allfunction.loading();
+        var obj = {};
+        obj._id = emergencyid;
+        obj.requestid = reqid;
+        obj.userid = $.jStorage.get("deviceObj").donorid;
+        obj.accepted = true;
+        MyServices.acceptEmergencyRequest(obj, function(data) {
+            $ionicLoading.hide();
+            console.log(data);
+            if (data.value != false) {
+                getAllRequests();
+            }
+        })
+    }
 
 })
 
@@ -219,16 +287,19 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
     $scope.need = {};
 
     $scope.requestBlood = function() {
-        allfunction.loading();
-        $scope.need.status = "Pending";
-        MyServices.requestBlood($scope.need, function(data) {
-            $ionicLoading.hide();
-            if (data.value != false) {
-                allfunction.msg("Request Submitted Successfully", "Successfull !")
-            } else {
-                allfunction.msg("Invalid Donor Id", "Error !")
-            }
-        })
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            allfunction.loading();
+            $scope.need.status = "Pending";
+            $scope.need.getid = $.jStorage.get("deviceObj").donorid;
+            MyServices.requestBlood($scope.need, function(data) {
+                $ionicLoading.hide();
+                if (data.value != false) {
+                    allfunction.msg("Request Submitted Successfully", "Successfull !")
+                } else {
+                    allfunction.msg("Invalid Donor Id", "Error !")
+                }
+            })
+        }
     }
 
 })
@@ -243,13 +314,23 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 })
 
-.controller('RequestCtrl', function($scope) {
+.controller('RequestCtrl', function($scope, MyServices, $ionicLoading) {
 
-    $scope.notification = [{
-        image: "img/slider/3.jpg",
-        title: "Lorem ipsum dolor",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-    }];
+    allfunction.loading();
+    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+        MyServices.getMyNeedBloodReq($.jStorage.get("deviceObj").donorid, function(data) {
+            $ionicLoading.hide();
+            console.log(data);
+            if (data.value != false) {
+                _.each(data, function(n) {
+                    n.image = userImage;
+                })
+                $scope.myBloodReqs = data;
+            } else {
+                $scope.myBloodReqs = [];
+            }
+        })
+    }
 
 })
 
@@ -564,10 +645,18 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 .controller('NotidetailCtrl', function($scope, $stateParams, MyServices, $ionicLoading) {
     allfunction.loading();
 
-    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").id) {
+    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").id && !$.jStorage.get("deviceObj").donorid) {
         var obj = {};
         obj._id = $stateParams.id;
         obj.user = $.jStorage.get("deviceObj").id;
+        MyServices.saveNotification(obj, function(data) {
+            console.log(data);
+            allfunction.countNotify();
+        });
+    } else if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+        var obj = {};
+        obj._id = $stateParams.id;
+        obj.donor = $.jStorage.get("deviceObj").donorid;
         MyServices.saveNotification(obj, function(data) {
             console.log(data);
             allfunction.countNotify();

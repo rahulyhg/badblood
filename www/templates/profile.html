@@ -21,9 +21,9 @@
          <div class="login-form m40">
             <form name="myForm" novalidate>
                <div class="list regi-user">
-                 <label class="item item-input">
-                    <input type="text" placeholder="Donor Id" ng-model="register.donorid" readonly>
-                 </label>
+                  <label class="item item-input">
+                     <input type="text" placeholder="Donor Id" ng-model="register.donorid" readonly>
+                  </label>
                   <label class="item item-input">
                      <input type="text" placeholder="First Name*" name="fname" ng-model="register.firstname" required readonly>
                   </label>
@@ -75,7 +75,15 @@
                   </label>
                   <p class="colpad" ng-if="myForm.age.$error.required && myForm.age.$touched">Age is required</p>
                   <label class="item item-input">
-                     <input type="text" placeholder="Village" ng-model="register.village">
+                     <input list="villages" name="village" placeholder="Village" ng-model="register.village" style="border: none;">
+                     <!-- <input list="browsers" name="browser"> -->
+                     <datalist id="villages">
+                        <option value="Internet Explorer">
+                           <option value="Firefox">
+                              <option value="Chrome">
+                                 <option value="Opera">
+                                    <option value="Safari">
+                     </datalist>
                   </label>
                   <label class="item item-input">
                      <input type="text" placeholder="Address 1*" name="add1" ng-model="register.address1" required>
