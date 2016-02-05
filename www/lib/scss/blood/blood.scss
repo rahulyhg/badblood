@@ -814,3 +814,41 @@ padding: 15px;
     .marbfive{
       margin-bottom: 5px !important;
     }
+    .gallery-view {
+      .image-container {
+          position: relative;
+          overflow: hidden;
+          border: 2px solid white;
+          height: 80px;
+          width: 80px;
+          img {
+    position: absolute;
+    top: 50% !important;
+     bottom: inherit !important;
+    left: 50% !important;
+right: inherit !important;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+    transform: translate(-50%,-50%);
+    width: auto;
+}
+      }
+    }
+    .imageView .gallery-slide-view {
+    width: auto !important;
+    background-color: transparent;
+    height: 300px;
+    overflow: hidden;
+    border-width: 0px;
+}
+.imageView img{
+  width: auto !important;
+    vertical-align: middle;
+    max-width: 100%;
+    max-height: 100%;
+    border: none;
+}
+.imageView {
+    background-color: rgb(69, 69, 69);
+}
