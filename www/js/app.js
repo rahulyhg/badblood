@@ -271,7 +271,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .filter('uploadpath', function() {
     return function(input) {
-        return adminurl + "uploadfile/resize?file=" + input;
+        if (input)
+            return adminurl + "uploadfile/resize?file=" + input;
     };
 })
 
