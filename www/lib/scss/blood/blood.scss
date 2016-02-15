@@ -315,7 +315,7 @@ background-position: top center !important;
   padding: 0 30px;
 }
 .user-back {
-  @include size(70px) @include border-radius(3px);
+  @include size(90px) @include border-radius(3px);
   overflow: hidden;
   background-position: center center;
   background-repeat: no-repeat;
@@ -419,7 +419,7 @@ background-position: top center !important;
 }
 .post {
   position: absolute;
-  bottom: -30px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
 }
