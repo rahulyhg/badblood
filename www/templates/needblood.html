@@ -69,6 +69,11 @@
                      <input type="text" placeholder="Donor Id" name="donorid" ng-model="need.donorid" required>
                   </label>
                   <p class="colpad" ng-if="myForm.donorid.$error.required && myForm.donorid.$touched">Donor Id is required</p>
+                  <label class="item item-input" class="nbtp">
+                     <input type="tel" placeholder="Mobile Number" name="mobile" ng-model="need.mobile" required ng-minlength="10" ng-maxlength="10" maxlength="10" only-digits ng-trim="false">
+                  </label>
+                  <p class="colpad" ng-if="myForm.mobile.$error.required && myForm.mobile.$touched">Mobile Number is required</p>
+                  <p class="colpad" ng-if="(myForm.mobile.$error.minlength || myForm.mobile.$error.maxlength) && myForm.mobile.$touched">Please enter valid mobile</p>
                   <label class="item item-input" style="display: block;border-bottom:none;">
                      <span class="input-label">Comment</span>
                      <div class="m-rg">

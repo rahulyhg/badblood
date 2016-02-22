@@ -285,6 +285,15 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 .controller('NeedbloodCtrl', function($scope, $ionicScrollDelegate, MyServices, $ionicLoading) {
 
     $scope.need = {};
+    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+        MyServices.getOneDonor($.jStorage.get("deviceObj").donorid, function(data) {
+            console.log(data);
+            $scope.need.donorid = data.donorid;
+            if (data.mobile) {
+                $scope.need.mobile = data.mobile;
+            }
+        })
+    }
 
     $scope.requestBlood = function() {
         if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
@@ -316,8 +325,10 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 .controller('RequestCtrl', function($scope, MyServices, $ionicLoading) {
 
-    allfunction.loading();
+    $scope.showRegMsg = false;
     if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+        $scope.showRegMsg = false;
+        allfunction.loading();
         MyServices.getMyNeedBloodReq($.jStorage.get("deviceObj").donorid, function(data) {
             $ionicLoading.hide();
             console.log(data);
@@ -330,6 +341,8 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
                 $scope.myBloodReqs = [];
             }
         })
+    } else {
+        $scope.showRegMsg = true;
     }
 
 })
