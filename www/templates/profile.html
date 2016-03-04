@@ -21,6 +21,9 @@
          <div class="login-form m40 padding-horizontal">
             <form name="myForm" novalidate>
                <div class="list regi-user">
+                  <div>
+                     <p class="text-center" style="font-size: 16px;" ng-click="openHistory();">Donation Count : {{register.donationcount}}</p>
+                  </div>
                   <span>Donor ID</span>
                   <label class="item item-input marbfive">
                      <input type="text" placeholder="Donor Id" ng-model="register.donorid" readonly>

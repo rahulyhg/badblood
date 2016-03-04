@@ -692,11 +692,29 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 })
 
-.controller('ProfileCtrl', function($scope, $ionicScrollDelegate, $ionicPopup, $timeout, MyServices, $ionicLoading, $state, $cordovaImagePicker, $cordovaFileTransfer, $filter) {
+.controller('ProfileCtrl', function($scope, $ionicScrollDelegate, $ionicPopup, $timeout, MyServices, $ionicLoading, $state, $cordovaImagePicker, $cordovaFileTransfer, $filter, $ionicModal) {
     //    tab change
     $scope.tab = 'new';
     $scope.classa = 'active';
     $scope.classb = '';
+    $scope.modal = '';
+
+    $ionicModal.fromTemplateUrl('templates/historyModal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+        $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+    };
+
+    $scope.openHistory = function() {
+        $scope.openModal();
+    }
 
     $scope.tabchange = function(tab, a) {
         //        console.log(tab);
