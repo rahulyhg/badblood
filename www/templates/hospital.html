@@ -3,6 +3,7 @@
       <div class="hospital">
          <div class="hoback" ng-repeat="hospital in hospitals|orderBy:'name'" ng-style="{'background-image':'url({{hospital.image | uploadpath}})'}">
             <div class="bg-layer bg-black" ng-if="!hospital.image"></div>
+            <div class="overlay"></div>
             <div class="hos-name">
                <h4 ng-if="hospital.name">{{hospital.lname}}</h4>
                <p ng-if="hospital.address">{{hospital.address}}</p>

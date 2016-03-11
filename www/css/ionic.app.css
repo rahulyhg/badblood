@@ -405,14 +405,14 @@ a {
   height: 160px; }
   .hos-name h4 {
     color: #ffffff;
-    font-weight: 300;
+    font-weight: 900;
     font-size: 15px;
     margin: 0;
     padding-bottom: 10px; }
   .hos-name p {
     color: #ffffff;
     line-height: 150%;
-    font-weight: 300;
+    font-weight: 900;
     margin: 0;
     font-size: 13px; }
     .hos-name p i {
@@ -744,6 +744,14 @@ td {
   line-height: 40px;
   font-weight: bold;
   font-size: 17px; }
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%; }
 
 /*!
   Ionicons, v2.0.1

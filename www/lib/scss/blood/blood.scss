@@ -473,7 +473,7 @@ background-position: top center !important;
   height: 160px;
   h4 {
     color: $light;
-    font-weight: $font-weight;
+    font-weight: 900;
     font-size: 15px;
     margin: 0;
     padding-bottom: 10px;
@@ -481,7 +481,7 @@ background-position: top center !important;
   p {
     color: $light;
     line-height: 150%;
-    font-weight: $font-weight;
+    font-weight: 900;
     margin: 0;
     font-size: 13px;
     i {
@@ -878,4 +878,12 @@ td{
     line-height: 40px;
     font-weight: bold;
     font-size: 17px;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
