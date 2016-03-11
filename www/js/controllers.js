@@ -856,6 +856,13 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
     function editDonor() {
         allfunction.loading();
         console.log($scope.register);
+        if ($scope.register.vill) {
+            var foundIndex = _.findIndex($scope.allvillages, function(n) {
+                return n.name == $scope.register.vill;
+            })
+            $scope.register.village = [];
+            $scope.register.village.push($scope.allvillages[foundIndex]);
+        }
         MyServices.updateForApp($scope.register, function(data) {
             console.log(data);
             $ionicLoading.hide();
@@ -914,7 +921,11 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
             });
     };
 
-
+    MyServices.getAllVillages(function(data) {
+        console.log(data);
+        if (data.value != false)
+            $scope.allvillages = data;
+    });
 })
 
 .controller('ContactCtrl', function($scope, $ionicPopup, $timeout) {

@@ -1,6 +1,6 @@
 // var adminurl = "http://localhost:1337/";
 // var adminurl = "http://192.168.0.122:82/";
-// var adminurl = "http://192.168.0.122:1337/";
+// var adminurl = "http://192.168.0.126:1337/";
 var adminurl = "http://api.thetmm.org/";
 var imgpath = adminurl + "uploadfile/resize?file=";
 
@@ -189,6 +189,12 @@ angular.module('starter.services', [])
                 data: {
                     "getid": getid
                 }
+            }).success(callback);
+        },
+        getAllVillages: function(callback) {
+            $http({
+                url: adminurl + 'village/findDrop',
+                method: 'POST'
             }).success(callback);
         },
         setNotify: function(data) {
