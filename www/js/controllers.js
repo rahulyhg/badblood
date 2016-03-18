@@ -662,31 +662,38 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
             $ionicLoading.hide();
             console.log(data);
             if (data.value != false) {
+                if (data.mobile) {
+                    $scope.donateNow.mobile = data.mobile;
+                } else {
+                    $scope.donateNow.mobile = "";
+                }
                 var obj = {
                     merchant_id: "88667",
                     order_id: "" + $scope.donateNow.tid,
                     currency: "INR",
                     amount: $scope.donateNow.amt,
-                    redirect_url: "http://api.thetmm.org/activity/postRes",
-                    cancel_url: "http://api.thetmm.org/activity/postRes",
-                    language: "EN"
+                    redirect_url: "http://api.thetmm.org/order/postRes",
+                    cancel_url: "http://api.thetmm.org/order/postRes",
+                    language: "EN",
+                    merchant_param1: $scope.donateNow.donorid,
+                    merchant_param2: $scope.donateNow.mobile
                 }
                 var stringObj = JSON.stringify(obj);
-                var ref = window.open("http://api.thetmm.org/activity/postReq?data=" + stringObj, '_blank');
-                // var ref = cordova.InAppBrowser.open("http://thetmm.org/activity/postReq?data=" + stringObj, 'target=_system', 'location=no');
+                // var ref = window.open("http://api.thetmm.org/order/postReq?data=" + stringObj, '_blank');
+                var ref = cordova.InAppBrowser.open("http://api.thetmm.org/order/postReq?data=" + stringObj, 'target=_system', 'location=no');
                 ref.addEventListener('loadstop', function(event) {
                     console.log(event.url);
-                    if (event.url == "https://in.yahoo.com/?p=us") {
+                    if (event.url == "http://wohlig.co.in/paisoapk/fail.html") {
                         ref.close();
                         var alertPopup = $ionicPopup.alert({
                             title: 'Donate Now',
-                            template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
+                            template: '<h4 style="text-align:center;">Payment Failed</h4>'
                         });
                         alertPopup.then(function(res) {
                             alertPopup.close();
                             $state.go('app.home');
                         });
-                    } else if (event.url == "https://www.google.co.in/?gfe_rd=cr&ei=RovrVvizKZDK8Aeww70I") {
+                    } else if (event.url == "http://wohlig.co.in/paisoapk/success.html") {
                         ref.close();
                         var alertPopup = $ionicPopup.alert({
                             title: 'Donate Now',
@@ -697,6 +704,14 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
                             $state.go('app.home');
                         });
                     }
+                });
+            } else {
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Donate Now',
+                    template: '<h4 style="text-align:center;">Incorrect Donor Id</h4>'
+                });
+                alertPopup.then(function(res) {
+                    alertPopup.close();
                 });
             }
         });
