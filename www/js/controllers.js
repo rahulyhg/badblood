@@ -651,7 +651,70 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 })
 
-.controller('DonatenowCtrl', function($scope) {
+.controller('DonatenowCtrl', function($scope, $stateParams, MyServices, $ionicLoading, $state, $ionicPopup) {
+
+    $scope.donateNow = {};
+    $scope.donateNow.tid = new Date().getTime();
+
+    $scope.donate = function() {
+        allfunction.loading();
+        MyServices.getForExcel($scope.donateNow.donorid, function(data) {
+            $ionicLoading.hide();
+            console.log(data);
+            if (data.value != false) {
+                var obj = {
+                    merchant_id: "88667",
+                    order_id: "" + $scope.donateNow.tid,
+                    currency: "INR",
+                    amount: $scope.donateNow.amt,
+                    redirect_url: "http://api.thetmm.org/activity/postRes",
+                    cancel_url: "http://api.thetmm.org/activity/postRes",
+                    language: "EN"
+                }
+                var stringObj = JSON.stringify(obj);
+                var ref = window.open("http://api.thetmm.org/activity/postReq?data=" + stringObj, '_blank');
+                // var ref = cordova.InAppBrowser.open("http://thetmm.org/activity/postReq?data=" + stringObj, 'target=_system', 'location=no');
+                ref.addEventListener('loadstop', function(event) {
+                    console.log(event.url);
+                    if (event.url == "https://in.yahoo.com/?p=us") {
+                        ref.close();
+                        var alertPopup = $ionicPopup.alert({
+                            title: 'Donate Now',
+                            template: '<h4 style="text-align:center;">Some Error Occurred. Payment Failed</h4>'
+                        });
+                        alertPopup.then(function(res) {
+                            alertPopup.close();
+                            $state.go('app.home');
+                        });
+                    } else if (event.url == "https://www.google.co.in/?gfe_rd=cr&ei=RovrVvizKZDK8Aeww70I") {
+                        ref.close();
+                        var alertPopup = $ionicPopup.alert({
+                            title: 'Donate Now',
+                            template: '<h4 style="text-align:center;">Payment Successful. Thank You!</h4>'
+                        });
+                        alertPopup.then(function(res) {
+                            alertPopup.close();
+                            $state.go('app.home');
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    // $scope.pay = function() {
+    //     var obj = {
+    //         merchant_id: "88667",
+    //         order_id: "1234",
+    //         currency: "INR",
+    //         amount: 12.00,
+    //         redirect_url: "http://thetmm.org/activity/postRes",
+    //         cancel_url: "http://thetmm.org/activity/postRes",
+    //         language: "EN"
+    //     }
+    //     var stringObj = JSON.stringify(obj);
+    //     var ref = window.open("http://thetmm.org/activity/postReq?data=" + stringObj, '_blank');
+    // }
 
 })
 

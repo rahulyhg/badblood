@@ -1,6 +1,6 @@
 // var adminurl = "http://localhost:1337/";
 // var adminurl = "http://192.168.0.122:82/";
-// var adminurl = "http://192.168.0.126:1337/";
+// var adminurl = "http://192.168.0.126/";
 var adminurl = "http://api.thetmm.org/";
 var imgpath = adminurl + "uploadfile/resize?file=";
 
@@ -124,6 +124,15 @@ angular.module('starter.services', [])
                 method: 'POST',
                 data: {
                     "_id": userid
+                }
+            }).success(callback);
+        },
+        getForExcel: function(donorid, callback) {
+            $http({
+                url: adminurl + 'donor/getforexcel',
+                method: 'POST',
+                data: {
+                    "donorid": donorid
                 }
             }).success(callback);
         },
