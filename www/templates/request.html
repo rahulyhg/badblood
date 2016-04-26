@@ -1,22 +1,29 @@
 <ion-view view-title="Request">
-    <ion-content class="has-footer">
-        <div class="noti-list pclass">
-          <p>Coming Soon</p>
-            <!-- <div class="list" ng-repeat="noti in notification">
-
-                <a class="item item-avatar" href="#">
-                    <div class="noti-img" ng-style="{'background-image':'url({{noti.image}})'}"></div>
-                    <h2 class="marzero">{{noti.title}}</h2>
-                    <p class="wht h2">{{noti.desc}}</p>
-                 <p><i class="ln-first-aid"></i>Lilawati hospital</p>
-                 <p><i class="ln-map-marker"></i>M.G Road, Ghatkoper(E)</p>
-                 <p><i class="ln-iphone"></i>+91 980-023-2222</p>
-
-
-                </a>
-
-            </div> -->
-        </div>
-
-    </ion-content>
+   <ion-content class="has-footer">
+      <div class="noti-list pclass">
+         <div class="list" ng-repeat="req in myBloodReqs">
+            <a class="item item-avatar" href="#">
+               <!-- <div class="noti-img" ng-style="{'background-image':'url({{noti.image}})'}"></div> -->
+               <img class="noti-img" ng-src="{{req.image | uploadpath}}" ng-if="req.image">
+               <img class="noti-img" ng-src="img/user1.png" ng-if="!req.image">
+               <h2 class="marzero">{{req.pname}}</h2>
+               <p class="wht h2" ng-if="req.comment">{{req.comment}}</p>
+               <p><i class="ln-first-aid"></i>{{req.hospname}}</p>
+               <p class="wht h2" ng-if="req.status">Status : {{req.status}}</p>
+               <!-- <p><i class="ln-map-marker"></i>M.G Road, Ghatkoper(E)</p>
+               <p><i class="ln-iphone"></i>+91 980-023-2222</p> -->
+            </a>
+         </div>
+      </div>
+      <ion-list ng-if="myBloodReqs.length==0">
+         <ion-item class="text-center">
+            No Requests Found
+         </ion-item>
+      </ion-list>
+      <ion-list ng-if="showRegMsg==true">
+         <ion-item class="text-center">
+            Please register/login to view your requests.
+         </ion-item>
+      </ion-list>
+   </ion-content>
 </ion-view>

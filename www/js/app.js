@@ -13,18 +13,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             cordova.plugins.Keyboard.disableScroll(true);
-
         }
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.styleDefault();
+            StatusBar.backgroundColorByHexString("#c31727");
         }
 
         try {
             push = PushNotification.init({
                 "android": {
-                    "senderID": "694450719069",
-                    "icon": "img/icon.png"
+                    "senderID": "134127417071",
+                    "icon": "icon",
+                    "vibrate": true
                 },
                 "ios": {
                     "alert": "true",
@@ -51,7 +52,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             });
 
             push.on('error', function(e) {
-                conosle.log("ERROR");
+                console.log("ERROR");
                 console.log(e);
             });
         } catch (e) {
@@ -97,6 +98,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 'menuContent': {
                     templateUrl: 'templates/gallery.html',
                     controller: 'GalleryCtrl'
+                }
+            }
+        })
+        .state('app.innergallery', {
+            url: '/innergallery/:id',
+            views: {
+                'menuContent': {
+                    templateUrl: 'templates/innergallery.html',
+                    controller: 'InnerGalleryCtrl'
                 }
             }
         })
@@ -215,7 +225,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         })
         .state('signup', {
             url: "/signup",
-
             templateUrl: "templates/signup.html",
             controller: 'SignupCtrl'
 
@@ -262,7 +271,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .filter('uploadpath', function() {
     return function(input) {
-        return adminurl + "uploadfile/resize?file=" + input;
+        if (input)
+            return adminurl + "uploadfile/resize?file=" + input;
     };
 })
 

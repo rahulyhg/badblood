@@ -1,7 +1,7 @@
 <ion-view view-title="Detail">
     <ion-content class="has-footer">
         <div class="det-img">
-            <img ng-src="{{notification.image | uploadpath}}" class="full-image">
+            <img ng-src="{{notification.image | uploadpath}}" class="full-image" ng-if="notification.image">
         </div>
         <div class="noti-detail padding-horizontal">
             <h4>{{notification.title}}</h4>

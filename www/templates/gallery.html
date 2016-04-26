@@ -1,13 +1,30 @@
 <ion-view view-title="Gallery">
-    <ion-content class="has-footer">
-        <ion-list>
-          <div class="card">
-  <div class="item item-text-wrap">
-    <div class="text-center">
-      <img src="img/no-image.png" class="full-image">
-    </div>
-  </div>
-</div>
-        </ion-list>
-    </ion-content>
+   <!-- <ion-content class="has-footer">
+      <ion-list>
+         <div class="card">
+            <div class="item item-text-wrap">
+               <div class="text-center">
+                  <img src="img/no-image.png" class="full-image">
+               </div>
+            </div>
+         </div>
+      </ion-list>
+   </ion-content> -->
+   <ion-content class="has-footer">
+      <div class="photos">
+         <div class="row folders" ng-repeat="fold in folders">
+            <div class="col col-50" ng-repeat="folder in fold">
+               <div class="folder-inner" ng-click="openFolder(folder);">
+                  <img ng-src="{{folder.thumb | uploadpath}}" alt="" class="full-image">
+                  <div class="folder-text">
+                     <div class="folder-text">
+                        <p>{{folder.title}}</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <ion-infinite-scroll on-infinite="loadMoreFolders()" ng-if="keepscrolling" distance="25%">
+         </ion-infinite-scroll>
+   </ion-content>
 </ion-view>

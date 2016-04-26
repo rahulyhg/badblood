@@ -1,27 +1,51 @@
 <ion-view view-title="Emergency Donation Requests">
-  <ion-content class="has-footer">
-    <!-- <div class="noti-list pclass">
-            <div class="list" ng-repeat="noti in notification">
-
-                <a class="item item-avatar" href="#">
-                    <div class="noti-img" ng-style="{'background-image':'url({{noti.image}})'}"></div>
-                    <h2>{{noti.title}}</h2>
-                 <p><i class="ln-map-marker"></i>M.G Road, Ghatkoper(E)</p>
-                 <p><i class="ln-clock3"></i>Sun, 13<sup>th</sup> (10:00AM - 4:00PM)</p>
-                 <p><i class="ln-iphone"></i>+91 980-023-2222</p>
-                 <div class="m12">
-                     <button class="button button-small button-assertive sm-btn">Accept</button>
-                 <button class="button button-small button-assertive sm-btn">Reject</button>
-                 </div>
-
-                </a>
-
-            </div>
-        </div> -->
-    <ion-list>
-      <ion-item>
-        Coming Soon...
-      </ion-item>
-    </ion-list>
-  </ion-content>
+   <ion-content class="has-footer">
+      <div class="noti-list pclass" ng-if="emergencyRequests.length>0">
+         <div class="list" ng-repeat="emer in emergencyRequests">
+            <a class="item item-avatar" href="" ng-if="emer.accepted==false && emer.status!='Completed'">
+               <!-- <div class="req-img" ng-style="{'background-image':'url({{req.image | uploadpath}})'}" ng-if="req.image"></div>
+               <div class="req-img" ng-style="{'background-image':'url('img/user1.png')'}" ng-if="!req.image"></div> -->
+               <img class="req-img" ng-src="{{emer.image | uploadpath}}" ng-if="emer.image">
+               <img class="req-img" ng-src="img/user1.png" ng-if="!emer.image">
+               <h2>{{emer.name}}</h2>
+               <p><i class="ln-map-marker"></i>
+                  <span ng-if="emer.address1">{{emer.address1}}</span>
+                  <span ng-if="emer.address2"> , {{emer.address2}}</span>
+               </p>
+               <p><i class="ln-clock3"></i>Sun, 13<sup>th</sup> (10:00AM - 4:00PM)</p>
+               <p ng-if="emer.mobile"><i class="ln-iphone"></i>+91 {{emer.mobile}}</p>
+               <div class="m12">
+                  <button class="button button-small button-assertive sm-btn" ng-click="acceptEmergencyRequest(emer._id,emer.requestid);">Accept</button>
+                  <button class="button button-small button-assertive sm-btn" ng-click="rejectEmergencyRequest(emer._id);">Reject</button>
+               </div>
+            </a>
+            <a class="item item-avatar" href="" ng-if="emer.accepted==false && emer.status=='Completed'">
+               <!-- <div class="req-img" ng-style="{'background-image':'url({{req.image | uploadpath}})'}" ng-if="req.image"></div>
+               <div class="req-img" ng-style="{'background-image':'url('img/user1.png')'}" ng-if="!req.image"></div> -->
+               <img class="req-img" ng-src="{{emer.image | uploadpath}}" ng-if="emer.image">
+               <img class="req-img" ng-src="img/user1.png" ng-if="!emer.image">
+               <h2>{{emer.name}}</h2>
+               <p><i class="ln-map-marker"></i>
+                  <span ng-if="emer.address1">{{emer.address1}}</span>
+                  <span ng-if="emer.address2"> , {{emer.address2}}</span>
+               </p>
+               <p><i class="ln-clock3"></i>Sun, 13<sup>th</sup> (10:00AM - 4:00PM)</p>
+               <p ng-if="emer.mobile"><i class="ln-iphone"></i>+91 {{emer.mobile}}</p>
+               <div class="m12">
+                  <p class="text-center">The request for blood is completed</p>
+               </div>
+            </a>
+         </div>
+      </div>
+      <ion-list ng-if="emergencyRequests.length==1 && emergencyRequests[0].accepted==true && emergencyRequests[0].status=='Completed'">
+         <ion-item class="text-center">
+            No Emergency Requests Found
+         </ion-item>
+      </ion-list>
+      <ion-list ng-if="emergencyRequests.length==0">
+         <ion-item class="text-center">
+            No Emergency Requests Found
+         </ion-item>
+      </ion-list>
+   </ion-content>
 </ion-view>

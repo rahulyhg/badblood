@@ -1,8 +1,10 @@
 var allfunction = {};
-angular.module('starter.controllers', ['ngCordova'])
+var userImage = '';
+angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $stateParams, $ionicScrollDelegate, $ionicSlideBoxDelegate, $ionicPopup, $ionicLoading, MyServices, $state) {
 
+    $scope.hideRegister = false;
     $timeout(function() {
         $scope.slides = ['1', '2'];
         $ionicSlideBoxDelegate.update();
@@ -16,7 +18,7 @@ angular.module('starter.controllers', ['ngCordova'])
         });
         $timeout(function() {
             myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2500);
+        }, 3000);
     };
 
     allfunction.loading = function() {
@@ -26,13 +28,27 @@ angular.module('starter.controllers', ['ngCordova'])
         });
         $timeout(function() {
             $ionicLoading.hide();
-        }, 5000);
+        }, 10000);
     };
 
     allfunction.countNotify = function() {
-        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").id) {
-            MyServices.countNotify($.jStorage.get("deviceObj").id, function(data) {
+        var obj = {};
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").id && !$.jStorage.get("deviceObj").donorid) {
+            obj.user = true;
+            obj._id = $.jStorage.get("deviceObj").id;
+            MyServices.countNotify(obj, function(data) {
                 $scope.notiBadge = data;
+            })
+        } else if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            obj.donor = true;
+            obj._id = $.jStorage.get("deviceObj").donorid;
+            MyServices.countNotify(obj, function(data) {
+                $scope.notiBadge = data;
+            })
+        }
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            MyServices.countEmergency($.jStorage.get("deviceObj").donorid, function(data) {
+                $scope.emergencyBadge = data;
             })
         }
     }
@@ -46,11 +62,27 @@ angular.module('starter.controllers', ['ngCordova'])
         })
     }
 
+    allfunction.getUserData = function() {
+        $scope.userData = {};
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            MyServices.getOneDonor($.jStorage.get("deviceObj").donorid, function(data) {
+                console.log(data);
+                if (data.value != false) {
+                    $scope.userData = data;
+                    userImage = data.image;
+                    $scope.hideRegister = true;
+                }
+            })
+        }
+    }
+    allfunction.getUserData();
+
 })
 
-.controller('HomeCtrl', function($scope, $stateParams, $ionicScrollDelegate, MyServices, $ionicSlideBoxDelegate, $cordovaDevice, $ionicLoading) {
+.controller('HomeCtrl', function($scope, $stateParams, $ionicScrollDelegate, MyServices, $ionicSlideBoxDelegate, $cordovaDevice, $ionicLoading, $timeout) {
 
     allfunction.countNotify();
+    allfunction.getUserData();
     $scope.pagedata = {};
     $scope.pagedata.pagenumber = 1;
     $scope.pagedata.pagesize = 20;
@@ -68,25 +100,51 @@ angular.module('starter.controllers', ['ngCordova'])
         console.log("platform = " + platform);
         var uuid = $cordovaDevice.getUUID();
         console.log("uuid = " + uuid);
-        if ($.jStorage.get('device')) {
+        console.log($.jStorage.get('device'));
+        if ($.jStorage.get('device') && !$.jStorage.get("deviceObj")) {
+            console.log("in if");
             var obj = {};
             obj.uuid = uuid;
             obj.platform = platform;
             obj.deviceid = $.jStorage.get('device');
             $.jStorage.set("deviceObj", obj);
             allfunction.loading();
-            MyServices.saveUser(obj, function(data) {
-                $ionicLoading.hide();
-                console.log(data);
-                if (data.id) {
-                    var deviceObj = $.jStorage.get("deviceObj");
-                    deviceObj.id = data.id;
-                    $.jStorage.set("deviceObj", deviceObj);
+            if ($.jStorage.get("deviceObj") && !$.jStorage.get("deviceObj").donorid) {
+                MyServices.saveUser(obj, function(data) {
+                    $ionicLoading.hide();
+                    console.log(data);
+                    if (data.id) {
+                        var deviceObj = $.jStorage.get("deviceObj");
+                        deviceObj.id = data.id;
+                        $.jStorage.set("deviceObj", deviceObj);
+                    }
+                })
+            }
+        } else {
+            $timeout(function() {
+                if ($.jStorage.get('device') && !$.jStorage.get("deviceObj")) {
+                    console.log("in else");
+                    var obj = {};
+                    obj.uuid = uuid;
+                    obj.platform = platform;
+                    obj.deviceid = $.jStorage.get('device');
+                    $.jStorage.set("deviceObj", obj);
+                    allfunction.loading();
+                    if ($.jStorage.get("deviceObj") && !$.jStorage.get("deviceObj").donorid) {
+                        MyServices.saveUser(obj, function(data) {
+                            $ionicLoading.hide();
+                            console.log(data);
+                            if (data.id) {
+                                var deviceObj = $.jStorage.get("deviceObj");
+                                deviceObj.id = data.id;
+                                $.jStorage.set("deviceObj", deviceObj);
+                            }
+                        })
+                    }
                 }
-            })
+            }, 10000);
         }
     }, false);
-
 
     MyServices.getNotification($scope.pagedata, function(data) {
         console.log(data);
@@ -102,8 +160,6 @@ angular.module('starter.controllers', ['ngCordova'])
     //     }
     // })
 
-
-
     $scope.head = [{
         qoute: "Blood Donation will cost you nothing but it will save a life !!!"
     }];
@@ -116,7 +172,7 @@ angular.module('starter.controllers', ['ngCordova'])
         image: "img/slider/s3.jpg",
     }, {
         image: "img/slider/s4.jpg",
-    },{
+    }, {
         image: "img/slider/s5.jpg",
     }];
 
@@ -136,12 +192,73 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('EmergencyCtrl', function($scope, $ionicPopup, $timeout, MyServices, $state) {
+.controller('EmergencyCtrl', function($scope, $ionicPopup, $timeout, MyServices, $state, $ionicLoading) {
 
+    $scope.notification = [{
+        image: "img/slider/3.jpg",
+        title: "Lorem ipsum dolor",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    }, {
+        image: "img/slider/4.jpg",
+        title: "Lorem ipsum dolor",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    }, {
+        image: "img/slider/1.jpg",
+        title: "Lorem ipsum dolor",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    }];
 
-})
+    function getAllRequests() {
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            allfunction.loading();
+            MyServices.getEmergencyReq($.jStorage.get("deviceObj").donorid, function(data) {
+                $ionicLoading.hide();
+                if (data.value != false) {
+                    var i = 0;
+                    _.each(data, function(n) {
+                        MyServices.getOneRequest(n.requestid, function(request) {
+                            if (request.value != false) {
+                                n.status = request.status;
+                            }
+                        })
+                    })
+                    $scope.emergencyRequests = data;
+                    console.log($scope.emergencyRequests);
+                } else {
+                    $scope.emergencyRequests = [];
+                }
+            })
+        }
+    }
 
-.controller('GalleryCtrl', function($scope) {
+    getAllRequests();
+
+    $scope.rejectEmergencyRequest = function(emergencyid) {
+        allfunction.loading();
+        MyServices.rejectEmergencyRequest(emergencyid, function(data) {
+            $ionicLoading.hide();
+            console.log(data);
+            if (data.value != false) {
+                getAllRequests();
+            }
+        })
+    }
+
+    $scope.acceptEmergencyRequest = function(emergencyid, reqid) {
+        allfunction.loading();
+        var obj = {};
+        obj._id = emergencyid;
+        obj.requestid = reqid;
+        obj.userid = $.jStorage.get("deviceObj").donorid;
+        obj.accepted = true;
+        MyServices.acceptEmergencyRequest(obj, function(data) {
+            $ionicLoading.hide();
+            console.log(data);
+            if (data.value != false) {
+                getAllRequests();
+            }
+        })
+    }
 
 })
 
@@ -165,8 +282,34 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('NeedbloodCtrl', function($scope, $ionicScrollDelegate) {
+.controller('NeedbloodCtrl', function($scope, $ionicScrollDelegate, MyServices, $ionicLoading) {
 
+    $scope.need = {};
+    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+        MyServices.getOneDonor($.jStorage.get("deviceObj").donorid, function(data) {
+            console.log(data);
+            $scope.need.donorid = data.donorid;
+            if (data.mobile) {
+                $scope.need.mobile = data.mobile;
+            }
+        })
+    }
+
+    $scope.requestBlood = function() {
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            allfunction.loading();
+            $scope.need.status = "Pending";
+            $scope.need.getid = $.jStorage.get("deviceObj").donorid;
+            MyServices.requestBlood($scope.need, function(data) {
+                $ionicLoading.hide();
+                if (data.value != false) {
+                    allfunction.msg("Request Submitted Successfully", "Successfull !")
+                } else {
+                    allfunction.msg("Invalid Donor Id", "Error !")
+                }
+            })
+        }
+    }
 
 })
 
@@ -180,13 +323,27 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('RequestCtrl', function($scope) {
+.controller('RequestCtrl', function($scope, MyServices, $ionicLoading) {
 
-    $scope.notification = [{
-        image: "img/slider/3.jpg",
-        title: "Lorem ipsum dolor",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-    }];
+    $scope.showRegMsg = false;
+    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+        $scope.showRegMsg = false;
+        allfunction.loading();
+        MyServices.getMyNeedBloodReq($.jStorage.get("deviceObj").donorid, function(data) {
+            $ionicLoading.hide();
+            console.log(data);
+            if (data.value != false) {
+                _.each(data, function(n) {
+                    n.image = userImage;
+                })
+                $scope.myBloodReqs = data;
+            } else {
+                $scope.myBloodReqs = [];
+            }
+        })
+    } else {
+        $scope.showRegMsg = true;
+    }
 
 })
 
@@ -205,12 +362,18 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('RegisterCtrl', function($scope, $ionicScrollDelegate, $ionicPopup, $timeout) {
+.controller('RegisterCtrl', function($scope, $ionicScrollDelegate, $ionicPopup, $timeout, MyServices, $ionicLoading, $state, $cordovaImagePicker, $cordovaFileTransfer) {
 
     //    tab change
     $scope.tab = 'new';
     $scope.classa = 'active';
     $scope.classb = '';
+    $scope.register = {};
+    $scope.search = {};
+    $scope.search.firstname = '';
+    $scope.search.middlename = '';
+    $scope.search.lastname = '';
+    $scope.search.donorid = '';
 
     $scope.tabchange = function(tab, a) {
         //        console.log(tab);
@@ -225,6 +388,14 @@ angular.module('starter.controllers', ['ngCordova'])
             $scope.classb = "active";
         }
     };
+
+    $scope.calcAge = function() {
+        var birth = new Date($scope.register.birthdate);
+        var curr = new Date();
+        var diff = curr.getTime() - birth.getTime();
+        $scope.register.age = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+    }
+
     //popup registration success
     $scope.showRegi = function() {
         var alertPopup = $ionicPopup.alert({
@@ -236,12 +407,12 @@ angular.module('starter.controllers', ['ngCordova'])
         });
     };
 
-    $scope.showOtp = function(mob) {
-        if (mob && mob != "" && mob.toString().length == 10) {
-            var fmobile = mob.toString().substr(mob.toString().length - 4);
+    $scope.showOtp = function(mobileno, fullData) {
+        if (mobileno && mobileno != "" && mobileno.toString().length == 10) {
+            var fmobile = mobileno.toString().substr(mobileno.toString().length - 4);
             var mobile = "XXXXXX" + fmobile;
             var myPopup = $ionicPopup.show({
-                template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad"><h4 style="margin-bottom:5px;">Confirm !</h4><p>OTP will be sent to ' + mobile + '</p></div></div>',
+                template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad" style="padding:0 !important"><h4 style="margin-bottom:5px;">Confirm !</h4><p>OTP will be sent to ' + mobile + '</p></div></div>',
                 scope: $scope,
                 buttons: [{
                     text: 'Cancel',
@@ -258,40 +429,116 @@ angular.module('starter.controllers', ['ngCordova'])
             });
 
             myPopup.then(function(res) {
-                console.log('Tapped!', res);
-                if (res == true)
-                    $scope.enterOtp(mob);
+                // console.log('Tapped!', res);
+                if (res == true) {
+                    allfunction.loading();
+                    MyServices.sendSMS(mobileno, function(data) {
+                        $ionicLoading.hide();
+                        console.log(data);
+                        if (data.value != false) {
+                            $scope.enterOtp(data.otp, fullData);
+                        }
+                    })
+                }
             });
+        } else {
+            var myErrPopup = $ionicPopup.show({
+                template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad" style="padding:0 !important"><h4 style="margin-bottom:5px;">Error !</h4><p>No/Invalid Mobile Number</p></div></div>',
+                scope: $scope
+            });
+            $timeout(function() {
+                myErrPopup.close();
+            }, 3000);
         }
     };
 
-    $scope.enterOtp = function(mob) {
-        //call service to send otp
+    $scope.enterOtp = function(otpreceived, fullData) {
+        console.log(otpreceived);
         $scope.valid = {};
+        smsplugin.startReception(function(result) {
+            console.log(result);
+            $scope.valid.otp = result.substr(result.length - 6);
+            $scope.$apply();
+            smsplugin.stopReception(function(stopresult) {
+                console.log(stopresult);
+            }, function(stoperror) {
+                if (stoperror) {
+                    console.log(stoperror);
+                }
+            });
+        }, function(error) {
+            if (error) {
+                console.log(error);
+            }
+        });
         var myPopup = $ionicPopup.show({
-            template: '<input type="text" ng-model="valid.otp">',
+            template: '<input type="tel" ng-model="valid.otp">',
             title: 'Enter OTP',
             subTitle: 'Please enter the otp sent to your mobile number.',
             scope: $scope,
             buttons: [{
-                text: 'Cancel'
+                text: 'Cancel',
+                onTap: function(e) {
+                    return false;
+                }
             }, {
                 text: '<b>Submit</b>',
                 type: 'button-positive',
                 onTap: function(e) {
                     if ($scope.valid.otp) {
-                        //don't allow the user to close unless he enters wifi password
-                        e.preventDefault();
-                    } else {
-                        return $scope.data.wifi;
+                        return $scope.valid.otp;
                     }
                 }
             }]
         });
 
         myPopup.then(function(res) {
-            console.log('Tapped!', res);
+            console.log(res);
+            if (res != false) {
+                if (otpreceived === parseInt(res)) {
+                    console.log("valid OTP");
+                    if ($scope.register.firstname && $scope.register.lastname) {
+                        saveDonor();
+                    } else {
+                        getOldDonorDetails(fullData);
+                    }
+                }
+            }
         });
+    }
+
+    function saveDonor() {
+        allfunction.loading();
+        $scope.register._id = $.jStorage.get("deviceObj").id;
+        console.log($scope.register);
+        MyServices.saveApp($scope.register, function(data) {
+            console.log(data);
+            $ionicLoading.hide();
+            if (data.value != false) {
+                var deviceObj = $.jStorage.get("deviceObj");
+                deviceObj.donorid = data.id;
+                $.jStorage.set("deviceObj", deviceObj);
+                $state.go("app.home");
+            }
+        })
+    }
+
+    function getOldDonorDetails(fullData) {
+        allfunction.loading();
+        var obj = {};
+        obj._id = $.jStorage.get("deviceObj").id;
+        obj.donor = fullData._id;
+        console.log(obj);
+        MyServices.saveApp(obj, function(data) {
+            console.log(data);
+            $ionicLoading.hide();
+            if (data.value != false) {
+                var deviceObj = $.jStorage.get("deviceObj");
+                deviceObj.donorid = data.id;
+                $.jStorage.set("deviceObj", deviceObj);
+                $state.go("app.home");
+            }
+        })
     }
 
     //popup success
@@ -323,6 +570,55 @@ angular.module('starter.controllers', ['ngCordova'])
         }, 2000);
     };
 
+    var options = {
+        maximumImagesCount: 1,
+        quality: 80
+    };
+
+    $scope.uploadProfilePic = function() {
+        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            // Success! Image data is here
+            console.log(resultImage);
+            $scope.imagetobeup = resultImage[0];
+            $scope.uploadPhoto(adminurl + "uploadfile/uploadmob", function(data) {
+                console.log(data);
+                console.log(JSON.parse(data.response));
+                $scope.register.image = JSON.parse(data.response);
+            });
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
+    }
+
+    $scope.uploadPhoto = function(serverpath, callback) {
+        console.log("function called");
+        $cordovaFileTransfer.upload(serverpath, $scope.imagetobeup, options)
+            .then(function(result) {
+                console.log(result);
+                callback(result);
+                $ionicLoading.hide();
+                //$scope.addretailer.store_image = $scope.filename2;
+            }, function(err) {
+                // Error
+                console.log(err);
+            }, function(progress) {
+                // constant progress updates
+                allfunction.loading();
+            });
+    };
+
+    $scope.getSearchResults = function() {
+        console.log($scope.search);
+        MyServices.findForApp($scope.search, function(data) {
+            console.log(data);
+            if (data.value != false) {
+                $scope.searchResults = data;
+            } else {
+                $scope.searchResults = [];
+            }
+        })
+    }
+
 })
 
 .controller('HospitalCtrl', function($scope, MyServices, $ionicLoading) {
@@ -348,25 +644,93 @@ angular.module('starter.controllers', ['ngCordova'])
                 $scope.shownodata = true;
             }
             $ionicLoading.hide();
+            $scope.$broadcast('scroll.infiniteScrollComplete');
         });
     }
     $scope.addMoreItems();
 
 })
 
-.controller('DonatenowCtrl', function($scope) {
+.controller('DonatenowCtrl', function($scope, $stateParams, MyServices, $ionicLoading, $state, $ionicPopup) {
+
+    $scope.donateNow = {};
+    $scope.donateNow.tid = new Date().getTime();
+
+    $scope.donate = function() {
+        var obj = {
+            merchant_id: "88667",
+            order_id: "" + $scope.donateNow.tid,
+            currency: "INR",
+            amount: $scope.donateNow.amt,
+            redirect_url: "http://api.thetmm.org/order/postRes",
+            cancel_url: "http://api.thetmm.org/order/postRes",
+            language: "EN",
+            billing_name: $scope.donateNow.name,
+            billing_tel: $scope.donateNow.mobile
+        }
+        var stringObj = JSON.stringify(obj);
+        // var ref = window.open("http://api.thetmm.org/order/postReq?data=" + stringObj, '_blank');
+        var ref = cordova.InAppBrowser.open("http://api.thetmm.org/order/postReq?data=" + stringObj, 'target=_system', 'location=no');
+        ref.addEventListener('loadstop', function(event) {
+            console.log(event.url);
+            if (event.url == "http://wohlig.co.in/paisoapk/fail.html") {
+                ref.close();
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Donate Now',
+                    template: '<h4 style="text-align:center;">Payment Failed</h4>'
+                });
+                alertPopup.then(function(res) {
+                    alertPopup.close();
+                    $state.go('app.home');
+                });
+            } else if (event.url == "http://wohlig.co.in/paisoapk/success.html") {
+                ref.close();
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Donate Now',
+                    template: '<h4 style="text-align:center;">Payment Successful. Thank You!</h4>'
+                });
+                alertPopup.then(function(res) {
+                    alertPopup.close();
+                    $state.go('app.home');
+                });
+            }
+        });
+    }
+
+    // $scope.pay = function() {
+    //     var obj = {
+    //         merchant_id: "88667",
+    //         order_id: "1234",
+    //         currency: "INR",
+    //         amount: 12.00,
+    //         redirect_url: "http://thetmm.org/activity/postRes",
+    //         cancel_url: "http://thetmm.org/activity/postRes",
+    //         language: "EN"
+    //     }
+    //     var stringObj = JSON.stringify(obj);
+    //     var ref = window.open("http://thetmm.org/activity/postReq?data=" + stringObj, '_blank');
+    // }
 
 })
 
 .controller('NotidetailCtrl', function($scope, $stateParams, MyServices, $ionicLoading) {
     allfunction.loading();
 
-    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").id) {
+    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").id && !$.jStorage.get("deviceObj").donorid) {
         var obj = {};
         obj._id = $stateParams.id;
         obj.user = $.jStorage.get("deviceObj").id;
         MyServices.saveNotification(obj, function(data) {
             console.log(data);
+            allfunction.countNotify();
+        });
+    } else if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+        var obj = {};
+        obj._id = $stateParams.id;
+        obj.donor = $.jStorage.get("deviceObj").donorid;
+        MyServices.saveNotification(obj, function(data) {
+            console.log(data);
+            allfunction.countNotify();
         });
     }
 
@@ -386,11 +750,29 @@ angular.module('starter.controllers', ['ngCordova'])
 
 })
 
-.controller('ProfileCtrl', function($scope, $ionicScrollDelegate) {
+.controller('ProfileCtrl', function($scope, $ionicScrollDelegate, $ionicPopup, $timeout, MyServices, $ionicLoading, $state, $cordovaImagePicker, $cordovaFileTransfer, $filter, $ionicModal) {
     //    tab change
     $scope.tab = 'new';
     $scope.classa = 'active';
     $scope.classb = '';
+    $scope.modal = '';
+
+    $ionicModal.fromTemplateUrl('templates/historyModal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+        $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+    };
+
+    $scope.openHistory = function() {
+        $scope.openModal();
+    }
 
     $scope.tabchange = function(tab, a) {
         //        console.log(tab);
@@ -405,6 +787,203 @@ angular.module('starter.controllers', ['ngCordova'])
             $scope.classb = "active";
         }
     };
+
+    var OGMobile = '';
+
+    function getUserData() {
+        if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+            allfunction.loading();
+            MyServices.getOneDonor($.jStorage.get("deviceObj").donorid, function(data) {
+                $ionicLoading.hide();
+                console.log(data);
+                if (data.value != false) {
+                    $scope.register = data;
+                    if ($scope.register.mobile) {
+                        OGMobile = $scope.register.mobile;
+                    }
+                    if ($scope.register.birthdate) {
+                        $scope.register.birthdate = $filter('date')($scope.register.birthdate, 'dd/MM/yyyy');
+                    }
+                }
+            })
+        }
+    }
+
+    getUserData();
+
+    $scope.showOtp = function(mobileno, fullData) {
+        if (OGMobile != mobileno) {
+            if (mobileno && mobileno != "" && mobileno.toString().length == 10) {
+                var fmobile = mobileno.toString().substr(mobileno.toString().length - 4);
+                var mobile = "XXXXXX" + fmobile;
+                var myPopup = $ionicPopup.show({
+                    template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad" style="padding:0 !important"><h4 style="margin-bottom:5px;">Confirm !</h4><p>OTP will be sent to ' + mobile + '</p></div></div>',
+                    scope: $scope,
+                    buttons: [{
+                        text: 'Cancel',
+                        onTap: function(e) {
+                            return false;
+                        }
+                    }, {
+                        text: '<b>OK</b>',
+                        type: 'button-positive',
+                        onTap: function(e) {
+                            return true;
+                        }
+                    }]
+                });
+
+                myPopup.then(function(res) {
+                    // console.log('Tapped!', res);
+                    if (res == true) {
+                        allfunction.loading();
+                        MyServices.sendSMS(mobileno, function(data) {
+                            $ionicLoading.hide();
+                            console.log(data);
+                            if (data.value != false) {
+                                $scope.enterOtp(data.otp, fullData);
+                            }
+                        })
+                    }
+                });
+            } else {
+                var myErrPopup = $ionicPopup.show({
+                    template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad" style="padding:0 !important"><h4 style="margin-bottom:5px;">Error !</h4><p>No/Invalid Mobile Number</p></div></div>',
+                    scope: $scope
+                });
+                $timeout(function() {
+                    myErrPopup.close();
+                }, 3000);
+            }
+        } else {
+            editDonor();
+        }
+    };
+
+    $scope.enterOtp = function(otpreceived, fullData) {
+        console.log(otpreceived);
+        $scope.valid = {};
+        smsplugin.startReception(function(result) {
+            console.log(result);
+            $scope.valid.otp = result.substr(result.length - 6);
+            $scope.$apply();
+            smsplugin.stopReception(function(stopresult) {
+                console.log(stopresult);
+            }, function(stoperror) {
+                if (stoperror) {
+                    console.log(stoperror);
+                }
+            });
+        }, function(error) {
+            if (error) {
+                console.log(error);
+            }
+        });
+        var myPopup = $ionicPopup.show({
+            template: '<input type="tel" ng-model="valid.otp">',
+            title: 'Enter OTP',
+            subTitle: 'Please enter the otp sent to your mobile number.',
+            scope: $scope,
+            buttons: [{
+                text: 'Cancel',
+                onTap: function(e) {
+                    return false;
+                }
+            }, {
+                text: '<b>Submit</b>',
+                type: 'button-positive',
+                onTap: function(e) {
+                    if ($scope.valid.otp) {
+                        return $scope.valid.otp;
+                    }
+                }
+            }]
+        });
+
+        myPopup.then(function(res) {
+            console.log(res);
+            if (res != false) {
+                if (otpreceived === parseInt(res)) {
+                    console.log("valid OTP");
+                    editDonor();
+                }
+            }
+        });
+    }
+
+    function editDonor() {
+        allfunction.loading();
+        console.log($scope.register);
+        if ($scope.register.vill) {
+            var foundIndex = _.findIndex($scope.allvillages, function(n) {
+                return n.name == $scope.register.vill;
+            })
+            $scope.register.village = [];
+            $scope.register.village.push($scope.allvillages[foundIndex]);
+        }
+        MyServices.updateForApp($scope.register, function(data) {
+            console.log(data);
+            $ionicLoading.hide();
+            if (data.value != false) {
+                $scope.register = {};
+                console.log($scope.register);
+                getUserData();
+                allfunction.getUserData();
+                var mySuccessPopup = $ionicPopup.show({
+                    template: '<div class="pop text-center" style="margin: -5px;"><div class="popup-body nopad" style="padding:0 !important"><h4 style="margin-bottom:5px;">Updated !</h4><p>Your changes have been updated</p></div></div>',
+                    scope: $scope
+                });
+                $timeout(function() {
+                    mySuccessPopup.close();
+                }, 3000);
+            }
+        })
+    }
+
+    var options = {
+        maximumImagesCount: 1,
+        quality: 80
+    };
+
+    $scope.uploadProfilePic = function() {
+        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            // Success! Image data is here
+            console.log(resultImage);
+            $scope.imagetobeup = resultImage[0];
+            $scope.uploadPhoto(adminurl + "uploadfile/uploadmob", function(data) {
+                console.log(data);
+                console.log(JSON.parse(data.response));
+                $scope.register.image = JSON.parse(data.response);
+            });
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
+    }
+
+    $scope.uploadPhoto = function(serverpath, callback) {
+        console.log("function called");
+        $scope.register.image = null;
+        console.log($scope.register);
+        $cordovaFileTransfer.upload(serverpath, $scope.imagetobeup, options)
+            .then(function(result) {
+                console.log(result);
+                callback(result);
+                $ionicLoading.hide();
+                //$scope.addretailer.store_image = $scope.filename2;
+            }, function(err) {
+                // Error
+                console.log(err);
+            }, function(progress) {
+                // constant progress updates
+                allfunction.loading();
+            });
+    };
+
+    MyServices.getAllVillages(function(data) {
+        console.log(data);
+        if (data.value != false)
+            $scope.allvillages = data;
+    });
 })
 
 .controller('ContactCtrl', function($scope, $ionicPopup, $timeout) {
@@ -431,8 +1010,10 @@ angular.module('starter.controllers', ['ngCordova'])
     $scope.pagedata = {};
     $scope.pagedata.pagenumber = 1;
     $scope.pagedata.pagesize = 20;
+    allfunction.loading();
 
     MyServices.getNotification($scope.pagedata, function(data) {
+        $ionicLoading.hide();
         console.log(data);
         if (data.value != false)
             $scope.notification = data;
@@ -464,5 +1045,90 @@ angular.module('starter.controllers', ['ngCordova'])
     }, {
         image: "img/user1.png",
     }];
+
+})
+
+.controller('GalleryCtrl', function($scope, $ionicModal, $timeout, $ionicScrollDelegate, $location, MyServices, $ionicLoading) {
+
+    $scope.folders = [];
+    $scope.msg = "";
+    $scope.pageno = 1;
+    $scope.keepscrolling = true;
+
+    allfunction.loading();
+    $scope.loadFolder = function(pageno) {
+        MyServices.getFolder(pageno, function(data) {
+
+            if (data.value == false) {
+                $scope.keepscrolling = false;
+            } else {
+                _.each(data.data, function(n) {
+                    $scope.folders.push(n);
+                })
+                $scope.folders = _.chunk($scope.folders, 2);
+                console.log($scope.folders);
+            }
+            $ionicLoading.hide();
+        });
+        $timeout(function() {
+            if ($scope.folders == "") {
+                $scope.msg = "No Folders.";
+            } else {
+                $scope.msg = "";
+            }
+        }, 2000);
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+        $scope.$broadcast('scroll.refreshComplete');
+    }
+    $scope.loadFolder($scope.pageno);
+
+    $scope.loadMoreFolders = function() {
+        $scope.loadFolder(++$scope.pageno);
+    }
+
+    $scope.openFolder = function(folder) {
+        $location.url("/app/innergallery/" + folder._id);
+    }
+
+})
+
+.controller('InnerGalleryCtrl', function($scope, $ionicModal, $timeout, $ionicScrollDelegate, $stateParams, MyServices, $filter, $ionicLoading) {
+
+    $scope.gallery = [];
+    $scope.msg = "";
+    allfunction.loading();
+    MyServices.getFolderImages($stateParams.id, function(data) {
+        if (data.value == false || !data.image || data.image == '') {
+            $scope.msg = "No Galleries";
+        }
+        _.each(data.image, function(n) {
+            $scope.gallery.push({
+                "src": $filter("uploadpath")(n)
+            });
+        });
+        $ionicLoading.hide();
+    });
+
+
+    $ionicModal.fromTemplateUrl('templates/modal-gallery.html', function($ionicModal) {
+        $scope.omodal = $ionicModal;
+    }, {
+        // Use our scope for the scope of the modal to keep it simple
+        scope: $scope,
+        // The animation we want to use for the modal entrance
+        animation: 'slide-in-up'
+    });
+
+    $scope.opengallery = function() {
+        $scope.omodal.show();
+    };
+
+    $scope.closegallery = function() {
+        $scope.omodal.hide();
+    };
+
+    $scope.openFolder = function(num) {
+        $scope.opengallery();
+    }
 
 });

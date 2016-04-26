@@ -1,7 +1,7 @@
 <ion-view hide-nav-bar="true">
   <ion-header-bar class="bar-positive" align-title="center">
       <div class="buttons button-left" style="position:absolute">
-          <button class="button button-icon ion-navicon no-hide" menu-toggle="left">
+          <button class="button button-icon ion-navicon no-hide custom-hide" menu-toggle="left">
           </button>
       </div>
     <img src="img/menu.png" style="height:35px;margin:0 auto;">
@@ -24,7 +24,7 @@
          </div>
       </div>
       <div class="noti-list">
-         <div class="list" ng-repeat="noti in notification">
+         <div class="list" ng-repeat="noti in notification" ng-if="$index<3">
             <a class="item item-avatar" ui-sref="app.notidetail({id:noti._id})">
                <div class="noti-img" ng-style="{'background-image':'url({{noti.image|uploadpath}})'}"></div>
                <h2>{{noti.title}}</h2>

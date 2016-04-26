@@ -1,0 +1,16 @@
+<ion-modal-view view-title="Gallery">
+    <ion-header-bar align-title="center" class="bar-calm">
+        <h1 class="title">Gallery</h1>
+        <div class="buttons">
+            <button class="button icon ion-android-close" ng-click="closegallery();"></button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <ion-gallery ion-gallery-items="gallery" ng-if="gallery.length>0"></ion-gallery>
+    </ion-content>
+    <!--
+	<div class="down">
+		<button class="button button-block button-calm" ng-click="closeterms();">I Accept the Terms and Conditions</button>
+	</div>
+-->
+</ion-modal-view>

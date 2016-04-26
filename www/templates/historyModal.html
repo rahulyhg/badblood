@@ -1,0 +1,40 @@
+<ion-modal-view>
+   <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">History</h1>
+      <div class="button button-clear" ng-click="modal.hide()">
+         <span class="icon ion-android-close"></span>
+      </div>
+   </ion-header-bar>
+   <ion-content>
+      <!-- <div style="margin: 5px;" ng-if="register.history.length>0">
+         <table class="table table-bordered" width="100%">
+            <thead>
+               <tr class="bg-dark">
+                  <th class="text-center">Sr No.</th>
+                  <th class="text-center">Camp Number</th>
+                  <th class="text-center">Camp Date</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr ng-repeat="value in register.history | orderBy:'date'">
+                  <td class="text-center">{{$index+1}}</td>
+                  <td class="text-center">{{value.campnumber}}</td>
+                  <td class="text-center">{{value.date | date : 'mediumDate' }}</td>
+               </tr>
+            </tbody>
+         </table>
+      </div> -->
+      <div class="list" ng-if="register.history.length>0">
+         <a class="item item-avatar" href="#" collection-repeat="value in register.history | orderBy:'date'">
+            <p>{{$index+1}}</p>
+            <h2>Camp - {{value.campnumber}}</h2>
+            <p>{{value.date | date : 'mediumDate' }}</p>
+         </a>
+      </div>
+      <ion-list ng-if="register.history.length==0">
+         <ion-item class="text-center">
+            No History Found
+         </ion-item>
+      </ion-list>
+   </ion-content>
+</ion-modal-view>
