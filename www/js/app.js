@@ -10,14 +10,14 @@ function onPushwooshInitialized(pushNotification) {
     //if you need push token at a later time you can always get it from Pushwoosh plugin
     pushNotification.getPushToken(
         function(token) {
-            console.info('push token: ' + token);
+            console.log('push token: ' + token);
         }
     );
 
     //and HWID if you want to communicate with Pushwoosh API
     pushNotification.getPushwooshHWID(
         function(token) {
-            console.info('Pushwoosh HWID: ' + token);
+            console.log('Pushwoosh HWID: ' + token);
         }
     );
 
@@ -27,19 +27,19 @@ function onPushwooshInitialized(pushNotification) {
             intTagName: 10
         },
         function(status) {
-            console.info('setTags success: ' + JSON.stringify(status));
+            console.log('setTags success: ' + JSON.stringify(status));
         },
         function(status) {
-            console.warn('setTags failed');
+            console.log('setTags failed');
         }
     );
 
     pushNotification.getTags(
         function(status) {
-            console.info('getTags success: ' + JSON.stringify(status));
+            console.log('getTags success: ' + JSON.stringify(status));
         },
         function(status) {
-            console.warn('getTags failed');
+            console.log('getTags failed');
         }
     );
 
@@ -56,12 +56,12 @@ function initPushwoosh() {
             var message = event.notification.message;
             var userData = event.notification.userdata;
 
-            alert("Push message opened: " + message);
-            console.info(JSON.stringify(event.notification));
+            console.log("Push message opened: " + message);
+            console.log(JSON.stringify(event.notification));
 
             //dump custom data to the console if it exists
             if (typeof(userData) != "undefined") {
-                console.warn('user data: ' + JSON.stringify(userData));
+                console.log('user data: ' + JSON.stringify(userData));
             }
         }
     );
@@ -76,12 +76,12 @@ function initPushwoosh() {
     //register for push notifications
     pushNotification.registerDevice(
         function(status) {
-            alert("registered with token: " + status.pushToken);
+            console.log("registered with token: " + status.pushToken);
             onPushwooshInitialized(pushNotification);
         },
         function(status) {
-            alert("failed to register: " + status);
-            console.warn(JSON.stringify(['failed to register ', status]));
+            console.log("failed to register: " + status);
+            console.log(JSON.stringify(['failed to register ', status]));
         }
     );
 }

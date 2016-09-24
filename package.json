@@ -26,7 +26,8 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "pushwoosh-cordova-plugin"
+    "pushwoosh-cordova-plugin",
+    "info.asankan.phonegap.smsplugin"
   ],
   "cordovaPlatforms": [
     "ios",
