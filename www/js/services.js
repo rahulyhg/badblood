@@ -1,7 +1,7 @@
 // var adminurl = "http://localhost:1337/";
 // var adminurl = "http://192.168.0.122:82/";
-// var adminurl = "http://192.168.0.122:1337/";
-var adminurl = "http://104.154.50.117/";
+// var adminurl = "http://192.168.0.126/";
+var adminurl = "http://api.thetmm.org/";
 var imgpath = adminurl + "uploadfile/resize?file=";
 
 angular.module('starter.services', [])
@@ -127,6 +127,15 @@ angular.module('starter.services', [])
                 }
             }).success(callback);
         },
+        getForExcel: function(donorid, callback) {
+            $http({
+                url: adminurl + 'donor/getforexcel',
+                method: 'POST',
+                data: {
+                    "donorid": donorid
+                }
+            }).success(callback);
+        },
         findForApp: function(search, callback) {
             $http({
                 url: adminurl + 'donor/findforapp',
@@ -189,6 +198,12 @@ angular.module('starter.services', [])
                 data: {
                     "getid": getid
                 }
+            }).success(callback);
+        },
+        getAllVillages: function(callback) {
+            $http({
+                url: adminurl + 'village/findDrop',
+                method: 'POST'
             }).success(callback);
         },
         setNotify: function(data) {

@@ -302,6 +302,15 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova','jett.ionic.fi
 .controller('NeedbloodCtrl', function($scope, $ionicScrollDelegate, MyServices, $ionicLoading) {
 
     $scope.need = {};
+    if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+        MyServices.getOneDonor($.jStorage.get("deviceObj").donorid, function(data) {
+            console.log(data);
+            $scope.need.donorid = data.donorid;
+            if (data.mobile) {
+                $scope.need.mobile = data.mobile;
+            }
+        })
+    }
 
     $scope.requestBlood = function() {
         if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
@@ -333,8 +342,10 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova','jett.ionic.fi
 
 .controller('RequestCtrl', function($scope, MyServices, $ionicLoading) {
 
-    allfunction.loading();
+    $scope.showRegMsg = false;
     if ($.jStorage.get("deviceObj") && $.jStorage.get("deviceObj").donorid) {
+        $scope.showRegMsg = false;
+        allfunction.loading();
         MyServices.getMyNeedBloodReq($.jStorage.get("deviceObj").donorid, function(data) {
             $ionicLoading.hide();
             console.log(data);
@@ -347,6 +358,8 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova','jett.ionic.fi
                 $scope.myBloodReqs = [];
             }
         })
+    } else {
+        $scope.showRegMsg = true;
     }
 
 })
@@ -655,7 +668,65 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova','jett.ionic.fi
 
 })
 
-.controller('DonatenowCtrl', function($scope) {
+.controller('DonatenowCtrl', function($scope, $stateParams, MyServices, $ionicLoading, $state, $ionicPopup) {
+
+    $scope.donateNow = {};
+    $scope.donateNow.tid = new Date().getTime();
+
+    $scope.donate = function() {
+        var obj = {
+            merchant_id: "88667",
+            order_id: "" + $scope.donateNow.tid,
+            currency: "INR",
+            amount: $scope.donateNow.amt,
+            redirect_url: "http://api.thetmm.org/order/postRes",
+            cancel_url: "http://api.thetmm.org/order/postRes",
+            language: "EN",
+            billing_name: $scope.donateNow.name,
+            billing_tel: $scope.donateNow.mobile
+        }
+        var stringObj = JSON.stringify(obj);
+        // var ref = window.open("http://api.thetmm.org/order/postReq?data=" + stringObj, '_blank');
+        var ref = cordova.InAppBrowser.open("http://api.thetmm.org/order/postReq?data=" + stringObj, 'target=_system', 'location=no');
+        ref.addEventListener('loadstop', function(event) {
+            console.log(event.url);
+            if (event.url == "http://wohlig.co.in/paisoapk/fail.html") {
+                ref.close();
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Donate Now',
+                    template: '<h4 style="text-align:center;">Payment Failed</h4>'
+                });
+                alertPopup.then(function(res) {
+                    alertPopup.close();
+                    $state.go('app.home');
+                });
+            } else if (event.url == "http://wohlig.co.in/paisoapk/success.html") {
+                ref.close();
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Donate Now',
+                    template: '<h4 style="text-align:center;">Payment Successful. Thank You!</h4>'
+                });
+                alertPopup.then(function(res) {
+                    alertPopup.close();
+                    $state.go('app.home');
+                });
+            }
+        });
+    }
+
+    // $scope.pay = function() {
+    //     var obj = {
+    //         merchant_id: "88667",
+    //         order_id: "1234",
+    //         currency: "INR",
+    //         amount: 12.00,
+    //         redirect_url: "http://thetmm.org/activity/postRes",
+    //         cancel_url: "http://thetmm.org/activity/postRes",
+    //         language: "EN"
+    //     }
+    //     var stringObj = JSON.stringify(obj);
+    //     var ref = window.open("http://thetmm.org/activity/postReq?data=" + stringObj, '_blank');
+    // }
 
 })
 
@@ -696,11 +767,29 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova','jett.ionic.fi
 
 })
 
-.controller('ProfileCtrl', function($scope, $ionicScrollDelegate, $ionicPopup, $timeout, MyServices, $ionicLoading, $state, $cordovaImagePicker, $cordovaFileTransfer, $filter) {
+.controller('ProfileCtrl', function($scope, $ionicScrollDelegate, $ionicPopup, $timeout, MyServices, $ionicLoading, $state, $cordovaImagePicker, $cordovaFileTransfer, $filter, $ionicModal) {
     //    tab change
     $scope.tab = 'new';
     $scope.classa = 'active';
     $scope.classb = '';
+    $scope.modal = '';
+
+    $ionicModal.fromTemplateUrl('templates/historyModal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+        $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+    };
+
+    $scope.openHistory = function() {
+        $scope.openModal();
+    }
 
     $scope.tabchange = function(tab, a) {
         //        console.log(tab);
@@ -842,6 +931,13 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova','jett.ionic.fi
     function editDonor() {
         allfunction.loading();
         console.log($scope.register);
+        if ($scope.register.vill) {
+            var foundIndex = _.findIndex($scope.allvillages, function(n) {
+                return n.name == $scope.register.vill;
+            })
+            $scope.register.village = [];
+            $scope.register.village.push($scope.allvillages[foundIndex]);
+        }
         MyServices.updateForApp($scope.register, function(data) {
             console.log(data);
             $ionicLoading.hide();
@@ -900,7 +996,11 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova','jett.ionic.fi
             });
     };
 
-
+    MyServices.getAllVillages(function(data) {
+        console.log(data);
+        if (data.value != false)
+            $scope.allvillages = data;
+    });
 })
 
 .controller('ContactCtrl', function($scope, $ionicPopup, $timeout) {

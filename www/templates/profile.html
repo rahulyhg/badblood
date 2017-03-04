@@ -21,6 +21,9 @@
          <div class="login-form m40 padding-horizontal">
             <form name="myForm" novalidate>
                <div class="list regi-user">
+                  <div>
+                     <p class="text-center" style="font-size: 16px;" ng-click="openHistory();">Donation Count : {{register.donationcount}}</p>
+                  </div>
                   <span>Donor ID</span>
                   <label class="item item-input marbfive">
                      <input type="text" placeholder="Donor Id" ng-model="register.donorid" readonly>
@@ -82,15 +85,11 @@
                   <p class="colpad" ng-if="myForm.age.$error.required && myForm.age.$touched">Age is required</p>
                   <span>Village</span>
                   <label class="item item-input marbfive">
-                     <!-- <input list="villages" name="village" placeholder="Village" ng-model="register.village" style="border: none;">
+                     <input list="villages" name="village" placeholder="Village" ng-model="register.vill" style="border: none;">
                      <datalist id="villages">
-                        <option value="Internet Explorer">
-                           <option value="Firefox">
-                              <option value="Chrome">
-                                 <option value="Opera">
-                                    <option value="Safari">
-                     </datalist> -->
-                     <input type="text" placeholder="Village" ng-model="register.village">
+                        <option value="{{village.name}}" ng-repeat="village in allvillages">
+                     </datalist>
+                     <!-- <input type="text" placeholder="Village" ng-model="register.village"> -->
                   </label>
                   <span>Address 1</span>
                   <label class="item item-input marbfive">

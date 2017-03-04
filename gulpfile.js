@@ -11,21 +11,22 @@ var plugin = require('gulp-cordova-plugin');
 var android = require('gulp-cordova-build-android');
 
 var paths = {
-  sass: ['./scss/**/*.scss','./www/lib/scss/**/*.scss'],
+  sass: ['./scss/**/*.scss']
 };
 
 gulp.task('default', ['sass']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
-    .pipe(sass({
-      errLogToConsole: true
-    }))
+    .pipe(sass())
+    .on('error', sass.logError)
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
       keepSpecialComments: 0
     }))
-    .pipe(rename({ extname: '.min.css' }))
+    .pipe(rename({
+      extname: '.min.css'
+    }))
     .pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
@@ -33,7 +34,6 @@ gulp.task('sass', function(done) {
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
 });
-
 gulp.task('install', ['git-check'], function() {
   return bower.commands.install()
     .on('log', function(data) {
@@ -51,7 +51,8 @@ gulp.task('build', function() {
     }))
     .pipe(gulp.dest('apk'));
 });
-// ~/Library/Android/sdk/build-tools/23.0.1/zipalign -v 4 platforms/android/build/outputs/apk/android-armv7-release.apk app-publish.apk
+
+// ~/Library/Android/sdk/build-tools/23.0.1/zipalign -v 4 apk/android-armv7-release.apk app-publish.apk
 
 gulp.task('git-check', function(done) {
   if (!sh.which('git')) {

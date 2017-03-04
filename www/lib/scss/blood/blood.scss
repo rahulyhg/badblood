@@ -315,7 +315,7 @@ background-position: top center !important;
   padding: 0 30px;
 }
 .user-back {
-  @include size(70px) @include border-radius(3px);
+  @include size(90px) @include border-radius(3px);
   overflow: hidden;
   background-position: center center;
   background-repeat: no-repeat;
@@ -419,7 +419,7 @@ background-position: top center !important;
 }
 .post {
   position: absolute;
-  bottom: -30px;
+  bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -473,15 +473,15 @@ background-position: top center !important;
   height: 160px;
   h4 {
     color: $light;
-    font-weight: $font-weight;
+    font-weight: 900;
     font-size: 15px;
     margin: 0;
     padding-bottom: 10px;
   }
   p {
     color: $light;
-    line-height: 150%;
-    font-weight: $font-weight;
+    line-height: 175%;
+    font-weight: 900;
     margin: 0;
     font-size: 13px;
     i {
@@ -851,4 +851,39 @@ right: inherit !important;
 }
 .imageView {
     background-color: rgb(69, 69, 69);
+}
+tr,th,td {
+    border: 1px solid #DADADA !important;
+}
+th {
+    font-weight: bold !important;
+    font-size: 15px !important;
+    padding: 5px !important;
+}
+td{
+  padding: 3px !important;
+}
+.item-avatar > p:first-child, .item-avatar .item-image, .item-avatar .item-content > p:first-child, .item-avatar .item-content .item-image, .item-avatar-left > img:first-child, .item-avatar-left .item-image, .item-avatar-left .item-content > p:first-child, .item-avatar-left .item-content .item-image {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    max-width: 40px;
+    max-height: 40px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    background: #E62739;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 17px;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
