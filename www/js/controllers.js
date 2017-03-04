@@ -1,6 +1,6 @@
 var allfunction = {};
 var userImage = '';
-angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
+angular.module('starter.controllers', ['ion-gallery', 'ngCordova','jett.ionic.filter.bar'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $stateParams, $ionicScrollDelegate, $ionicSlideBoxDelegate, $ionicPopup, $ionicLoading, MyServices, $state) {
 
@@ -79,7 +79,7 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
 
 })
 
-.controller('HomeCtrl', function($scope, $stateParams, $ionicScrollDelegate, MyServices, $ionicSlideBoxDelegate, $cordovaDevice, $ionicLoading, $timeout) {
+.controller('HomeCtrl', function($scope, $stateParams, $ionicScrollDelegate, MyServices, $ionicSlideBoxDelegate, $cordovaDevice, $ionicLoading, $timeout,$ionicFilterBar) {
 
     allfunction.countNotify();
     allfunction.getUserData();
@@ -189,7 +189,24 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova'])
     //     title: "Lorem ipsum dolor",
     //     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
     // }];
+    $scope.values = window.Values.sort(function (a, b) {
+      return a.first_name > b.first_name ? 1 : -1;
+    });
 
+    $scope.doRefresh = function () {
+      $scope.values = window.Values;
+      $scope.$broadcast('scroll.refreshComplete');
+    }
+
+    $scope.showFilterBar = function () {
+      filterBar = $ionicFilterBar.show({
+        items: $scope.values,
+        update: function (filteredItems) {
+          $scope.values = filteredItems
+        }
+        //filterProperties : 'first_name'
+      });
+    }
 })
 
 .controller('EmergencyCtrl', function($scope, $ionicPopup, $timeout, MyServices, $state, $ionicLoading) {
