@@ -526,13 +526,13 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova', 'jett.ionic.f
 
         function saveDonor() {
             allfunction.loading();
-            // $scope.register._id = $.jStorage.get("deviceObj").id;
+            $scope.register._id = $.jStorage.get("deviceObj").id;
             console.log($scope.register);
             MyServices.saveApp($scope.register, function (data) {
                 console.log(data);
                 $ionicLoading.hide();
                 if (data.value != false) {
-                    // var deviceObj = $.jStorage.get("deviceObj");
+                    var deviceObj = $.jStorage.get("deviceObj");
                     deviceObj.donorid = data.id;
                     $.jStorage.set("deviceObj", deviceObj);
                     $state.go("app.home");
@@ -543,14 +543,14 @@ angular.module('starter.controllers', ['ion-gallery', 'ngCordova', 'jett.ionic.f
         function getOldDonorDetails(fullData) {
             allfunction.loading();
             var obj = {};
-            // obj._id = $.jStorage.get("deviceObj").id;
+            obj._id = $.jStorage.get("deviceObj").id;
             obj.donor = fullData._id;
             console.log(obj);
             MyServices.saveApp(obj, function (data) {
                 console.log(data);
                 $ionicLoading.hide();
                 if (data.value != false) {
-                    // var deviceObj = $.jStorage.get("deviceObj");
+                    var deviceObj = $.jStorage.get("deviceObj");
                     deviceObj.donorid = data.id;
                     $.jStorage.set("deviceObj", deviceObj);
                     $state.go("app.home");
